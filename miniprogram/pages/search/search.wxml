@@ -1,0 +1,10 @@
+<!--pages/search/search.wxml-->
+<view class="search_row">
+   <input value="{{inputValue}}" bindinput="getSearch" class="inp" placeholder="请输入" bindconfirm='goSearch' confirm-type='search'></input>
+   <view class="iconsTwo" bindtap="goSearch">
+     <icon type='search' class='icons' size='65rpx' color="#f0f0f0"></icon>
+   </view>      
+</view>
+<view class="search_content">
+     
+</view>

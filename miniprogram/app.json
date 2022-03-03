@@ -1,0 +1,58 @@
+
+{
+  "pages": [  
+     "pages/canteen/canteen",
+     "pages/personal/personal", 
+    "pages/firstPage/firstPage", 
+    "pages/search/search",
+    "pages/index/index",
+    "pages/order/order",
+    "pages/orderDetails/orderDetails",
+    "pages/request/request",
+    "pages/explain/explain",
+    "pages/administrator/administrator",
+    "pages/rider/rider",
+
+    
+    "pages/evaluate/evaluate",
+    "pages/coupon/coupon",
+    "pages/payment/payment",
+    "pages/address/address",
+    "pages/modifyAddress/modifyAddress"
+  ],
+  "window": {
+    "backgroundColor": "#105450",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#105450",
+    "navigationBarTitleText": "点餐食堂",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh":true
+
+  },
+  "tabBar": {
+    "list":[
+      {
+        "pagePath":"pages/firstPage/firstPage",
+        "text":"首页",
+        "iconPath":"images/_home.png",
+        "selectedIconPath":"images/home.png"
+      },
+      {
+        "pagePath":"pages/order/order",
+        "text":"订单",
+        "iconPath":"images/_ordering.png",
+        "selectedIconPath":"images/ordering.png"
+      },
+      {
+        "pagePath":"pages/personal/personal",
+        "text":"我的",
+        "iconPath":"images/_mine.png",
+        "selectedIconPath":"images/mine.png"
+      }
+    ],
+    "color":"#8a8a8a",
+    "selectedColor":"#105450"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

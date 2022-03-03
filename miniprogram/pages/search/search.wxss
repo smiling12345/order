@@ -1,0 +1,22 @@
+/* pages/search/search.wxss */
+.search_row{
+    height:60rpx;
+    display:flex;
+    padding:10rpx;
+    background-color:var(--themeColor);
+}
+.inp{
+    width:90%;
+    height:100%;
+    background:#fff;
+    padding-left:20rpx;
+    align-items:center;/*垂直居中*/
+    border-radius:20rpx;/*设置圆角*/
+}
+.iconsTwo{
+    height:100%;
+    display:flex; /*重要，需设置*/
+    align-items:center;/*垂直居中*/
+    margin:0 auto 0 auto;/*水平居中*/
+}
+

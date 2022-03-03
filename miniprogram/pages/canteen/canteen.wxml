@@ -1,0 +1,42 @@
+<!--pages/canteen/canteen.wxml-->
+<view class="all">
+   <searchInput>
+   </searchInput>
+
+   <view class="second">
+      <!--评价-->
+      <view class="anniu">
+        <button size="mini" type="default" class="pingjia" style='color:#BB9340;width:150rpx;font-size:30rpx'>评价</button>
+      </view>
+      <!--楼号-->
+      <view class="zujian">
+        <button size="mini" type="default" class="one" style='color:#fff; background-color: #105450;width:150rpx;font-size:30rpx'>一楼</button>
+        <button size="mini" type="default" class="two" style='color:#BB9340;width:150rpx;font-size:30rpx'>二楼</button>
+        <button size="mini" type="default" class="three" style='color:#BB9340;width:150rpx;font-size:30rpx'>三楼</button>
+      </view>
+   </view>
+
+
+   <view class="scroll">
+       <!--左侧分类-->
+       <scroll-view scroll-y class="nav_left">
+          <block wx:for="{{lefts}}" wx:key="{{index}}">
+            <view class="nav_left_items {{leftCur==index?'active':''}}" data-index='{{index}}'  bindtap="switchLeftTab">
+              {{item._id}}
+            </view>
+          </block>
+       </scroll-view>
+
+       <!--右侧商品内容-->
+       <scroll-view scroll-y class="nav_right"> 
+         <view class="{{topx}}">
+           <block wx:for="{{rights}}" wx:key="index">
+              <view class="nav_right_items"  data-id="{{item._id}}">
+                <image src="{{item.picUrlTwo}}"></image>
+                <text>{{item.caiming}}</text>
+              </view>
+           </block>
+         </view>
+       </scroll-view>
+   </view>
+</view>

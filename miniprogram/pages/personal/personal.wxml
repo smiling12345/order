@@ -1,0 +1,92 @@
+<view class="person">
+   <view class="user"> 
+       
+   </view>
+
+<!--多行列表-->
+   <view class="nav"> 
+     <navigator class="item" url="../coupon/coupon">
+       <view class='left'>
+           <text class='iconfont icon-qian' style="color:#F3D8A1"></text> 
+           <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+           <text class="wenzi">代金券</text>   
+       </view>
+       <view class="icon">
+              <text class='iconfont icon-jinrujiantou'></text>
+       </view>
+     </navigator>
+
+      <navigator class="item" url="../address/address">
+       <view class='left'>
+           <text class='iconfont icon-dizhi' style="color:#B6DCFF"></text>    
+           <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+           <text class="wenzi">我的地址</text>
+       </view>
+       <view class="icon">
+             <text class='iconfont icon-jinrujiantou'></text>
+       </view>
+      </navigator>
+
+      <navigator class="item" url="../evaluate/evaluate">
+       <view class='left'>
+           <text class='iconfont icon-pingjia' style="color:#F9D4DC"></text>   
+           <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+           <text class="wenzi">我的评价</text>
+       </view>
+       <view class="icon">
+           <text class='iconfont icon-jinrujiantou'></text>
+       </view>
+      </navigator>
+
+      <button class="item" style="font-weight:normal;width:100%;font-size:33rpx;margin:0;padding: 0;" open-type="contact">
+       <view class='left'>
+           <text class='iconfont icon-kefu' style="color:#CAECDB"></text>    
+           <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+           <text>联系客服</text>
+       </view>
+       <view class="icon">
+           <text class='iconfont icon-jinrujiantou'></text>
+       </view>
+      </button>
+
+      <button class="item" style="font-weight:normal;width:100%;font-size:33rpx;margin:0;padding: 0;" open-type="feedback">
+       <view class='left'>
+           <text class='iconfont icon-shuomingshu' style="color:#F3D8A1"></text>   
+           <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+           <text class="wenzi">反馈意见</text>
+       </view>
+       <view class="icon">
+           <text class='iconfont icon-jinrujiantou'></text>
+       </view>
+      </button>
+
+      <navigator class="item" url="../administrator/administrator">
+       <view class='left'>
+           <text class='iconfont icon-guanliyuan' style="color:#B6DCFF"></text>   
+           <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+           <text class="wenzi">食堂管理</text>
+       </view>
+       <view class="icon">
+           <text class='iconfont icon-jinrujiantou'></text>
+       </view>
+      </navigator>
+
+      <navigator class="item" style="border-bottom: #ffffff;" url="../rider/rider">
+       <view class='left'>
+           <text class='iconfont icon-qishou' style="color:#F3D8A1"></text>    
+           <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
+           <text class="wenzi">骑手接单</text>
+       </view>
+       <view class="icon">
+           <text class='iconfont icon-jinrujiantou'></text>
+       </view>
+      </navigator>
+   </view>
+
+   <button class="tuichu">
+      退出账号
+   </button>
+     
+   
+   
+</view>

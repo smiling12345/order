@@ -1,0 +1,37 @@
+/* pages/firstPage/firstPage.wxss */
+swiper{
+    width:100%;
+    height:calc(100vw*280/520);
+}
+image{
+    width:100%;
+}
+
+.tuijian{
+    height: 270rpx;
+    margin:15rpx 0 0 0;
+    border-radius: 40rpx;
+    border-style:groove;
+    border-color:#105450;
+}
+
+.bottom{
+    display:flex;
+    flex-wrap: wrap;/*不加这个只能在一排*/
+    padding:40rpx 0 0 0;
+    margin:0 20rpx 0 20rpx;
+    border-style: solid;
+    border-radius: 50rpx;
+    border-width:0rpx;
+    box-shadow:0rpx 2rpx 4rpx 2rpx #105450;
+    border-color: #105450;
+}
+.shitang{
+     width:33.3%;
+     height:180rpx;
+     text-align:center;/*水平居中*/
+}
+.ziti{
+    margin:10rpx 0 0 0;
+    font-size:40rpx;
+}

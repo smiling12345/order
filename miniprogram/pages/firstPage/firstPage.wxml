@@ -1,0 +1,99 @@
+<!--pages/firstPage/firstPage.wxml-->
+<!--
+image图片标签
+1 src指定要加载的图片的路径
+  图片存在默认的宽度和高度320*240
+2.mode 决定图片内容如何和图片标签宽高做适配
+  1 scaleToFill 默认值 不保持纵横比缩放图片 使图片的宽高完全拉伸至填满 image元素
+  2 aspectFit 保持宽高比 确保图片的长边 显示出来 页面轮播图 常用
+  3.aspectFill 保持纵横比缩放图片，只保证图片的短边能完全显示出来 少用
+  4.widthFix 以前web的图片的宽度指定了之后 高度会自己按比例来调整 常用
+  5.bottom 类似以前的background-position
+3.小程序当中的图片 直接支持懒加载 lazy-load 
+   当图片出现在视口上下三层的高度之内的时候，自己开始加载图片
+-->
+
+<!--
+   1.轮播图外层容器 swiper
+   2.每一个轮播项 swiper-item
+   3.swiper标签 存在默认样式
+     1 width 100%
+     2 150px images 存在默认宽度和高度 320*240
+     3 swiper 高度 无法由内容撑开
+   4.先找出来原图的高度和宽度，等比例给swiper定宽度和高度
+     原图的宽度和高度
+     swiper宽度/swiper高度=原图的宽度/原图的高度
+     swiper高度=swiper宽度*原图的高度/原图的宽度
+   5.autoplay 自动轮播
+   6. interval 修改轮播时间
+   7.circular 衔接轮播
+   8.indicator-dots 显示 指示器 分页器 索引器
+   9.indicator-color 指示器的未选择的颜色
+   10.indicator-active-color 选中时候指示器的颜色
+-->
+<view class="pyg_index">
+   <view class="index_swiper"><!--轮播图区域-->
+      <swiper autoplay interval="1000" circular indicator-dots indicator-active-color="#105450">
+          <swiper-item wx:for="{{list}}">
+             <image mode="widthFix" src="{{item.picUrl}}" />
+          </swiper-item>
+      </swiper>
+   </view>
+
+   <view class="tuijian">
+      <view class="wenzi">
+         <text>今日推荐</text>
+      </view>
+      <view class="left_Image">
+      </view>
+      <view class="right_Image">
+
+      </view>
+   </view>
+
+    <view class="bottom">
+         <navigator url='../canteen/canteen' class="shitang">
+             <text class="iconfont icon-a-ziyuan10"></text>
+             <view class="ziti">芷园</view>
+         </navigator>
+
+         <navigator url='../canteen/canteen' class="shitang">
+             <text class="iconfont icon-a-ziyuan10"></text>
+             <view class="ziti">芷园</view>
+         </navigator>
+
+         <navigator url='../canteen/canteen' class="shitang">
+             <text class="iconfont icon-a-ziyuan10"></text>
+             <view class="ziti">芷园</view>
+         </navigator>
+
+         <navigator url='../canteen/canteen' class="shitang">
+             <text class="iconfont icon-a-ziyuan10"></text>
+             <view class="ziti">芷园</view>
+         </navigator>
+
+         <navigator url='../canteen/canteen' class="shitang">
+             <text class="iconfont icon-a-ziyuan10"></text>
+             <view class="ziti">芷园</view>
+         </navigator>
+
+         <navigator url='../canteen/canteen' class="shitang">
+             <text class="iconfont icon-a-ziyuan10"></text>
+             <view class="ziti">芷园</view>
+         </navigator>
+      </view>
+</view>
+<!--
+导航组件 navigator
+<navigator url="相对路径">轮播图页面</navigator>
+0 块级元素 默认会换行，可以直接加宽度和高度
+1 url 要跳转的页面路径 绝对路径/相对路径
+2 target 要跳转到当前的小程序 还是其他的小程序
+  self 当前的自己的小程序页面
+  miniProgram 其他的小程序的页面
+3 open-type 跳转的方式
+  1 navigate 默认值 保留当前页面，跳转到应用内的某个页面，但是不能跳转到tabbar页面
+  2 redirect 关闭当前页面，跳转到应用内的某个页面，但是不允许跳转到tabbar页面
+  3 switchTab 跳转到tabbar页面，并关闭其他所有非tabbar页面
+  4 reLaunch 关闭所有页面，打开到应用内的某个页面
+-->  

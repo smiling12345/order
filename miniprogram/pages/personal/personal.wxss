@@ -1,0 +1,41 @@
+.user{
+    height:300rpx;
+    background-color:#105450;
+}
+
+.nav{
+    height:600rpx;
+    margin-top: 50rpx;
+    padding-left:20rpx;
+    padding-right:20rpx;
+    margin-bottom: 45rpx;
+    border-top: 1rpx solid gray;
+    border-bottom: 1rpx solid gray;
+    background-color: #ffffff;
+}
+
+.item{
+   display: flex;
+   justify-content: space-between;
+   border-bottom: 1rpx solid gainsboro;
+   height: 84rpx;
+}
+
+.left{
+    display: flex;
+    align-items: center;
+}
+
+
+.icon{
+    display: flex;
+    align-items: center;
+}
+.wenzi{
+    font-size: 33rpx;/*设置字体大小实现自适应*/
+}
+.tuichu{
+    height:80rpx;
+    background:#105450;
+    color: #ffffff;
+}

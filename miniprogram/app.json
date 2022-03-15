@@ -1,6 +1,7 @@
 
 {
   "pages": [  
+    "pages/first/first",
      "pages/canteen/canteen",
      "pages/personal/personal", 
     "pages/firstPage/firstPage", 

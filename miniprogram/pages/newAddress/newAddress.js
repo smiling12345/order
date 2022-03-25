@@ -1,18 +1,11 @@
-// pages/order/order.js
+// pages/newAddress/newAddress.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-       tabs:['全部','待评价','退款','进行中'],
-       currentTab:0
-  },
-  //选中顶部导航栏
-  selectTab(event){
-    this.setData({
-      currentTab:event.currentTarget.dataset.index
-    })
+
   },
 
   /**

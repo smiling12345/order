@@ -1,2 +1,21 @@
 <!--pages/address/address.wxml-->
-<text>pages/address/address.wxml</text>
+<view class="all">
+   <!--地址内容-->
+   <view class="small">
+      <view class="first">
+        <view class="one">
+          <view>王小明</view>
+          <view>先生</view>
+          <view>13589380694</view>
+        </view>
+        <view>图形</view>
+      </view>
+     <view class="second">
+        <button size="mini" class="home" style='font-size:35rpx'>家</button>
+        <view>广东省广州市天河区</view>
+     </view>  
+  </view>
+
+  <!--悬浮按钮-->
+  <button class="xuanfu" size="default" style="font-size:35rpx;background-color: #105450;color: #ffffff;">新增地址</button>
+</view>

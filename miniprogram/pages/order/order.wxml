@@ -1,2 +1,63 @@
 <!--pages/order/order.wxml-->
-<text>pages/order/order.wxml</text>
+<view class="tabs_root">
+   <!--导航栏-->
+  <view class="tabs_root2">
+     <view class="tabs_item {{currentTab==index?'select_tab':''}}"
+          wx:for="{{tabs}}" wx:key="index" bindtap="selectTab" data-index="{{index}}">
+          {{item}}
+     </view>
+  </view>
+    <!--未渲染-->
+    <view class="content">
+        <view class="bianhao">
+            <view class="canteen">芷园</view>
+            <view>2021.06.16</view>
+        </view>
+        
+        <view class="card">
+           <view class="card-img">
+              <image src="/images/4.jpg" mode="widthFix"></image>
+           </view>
+           <view class="card-text">
+               <view class="card-text_">
+                  <view>比利时巧克力好</view>
+                  <view>已完成</view>
+               </view>
+               <view class="jiage">
+                  <view>实付：￥10</view>
+                  <view>×10</view>
+               </view>
+               <view class="card-button">
+                  <button class="again" size="mini">再来一单</button>
+                  <button class="evaluate" size="mini">评价</button>
+               </view>
+           </view>
+        </view>
+
+        <view class="card">
+           <view class="card-img">
+              <image src="/images/4.jpg" mode="widthFix"></image>
+           </view>
+           <view class="card-text">
+               <view class="card-text_">
+                  <view>比利时巧克力好</view>
+                  <view>商品状况</view>
+               </view>
+               <view class="jiage">
+                  <view>实付：￥10</view>
+                  <view>×10</view>
+               </view>
+               <view class="card-button">
+                  <button class="again" size="mini">再来一单</button>
+                  <button class="evaluate" size="mini">评价</button>
+               </view>
+           </view>
+        </view>
+
+        <view class="bottom-title">
+           <view>共2件商品</view>
+           <view>实付：￥198.00</view>
+        </view>
+       
+    </view>
+</view>

@@ -1,1 +1,42 @@
 /* pages/coupon/coupon.wxss */
+.none{
+   display:flex;
+   flex-direction: column;
+   height:180rpx;
+   border:1rpx solid gray;
+   background-color: #ffffff;
+   margin:10rpx;
+   padding:10rpx;
+}
+.first{
+  font-size: 45rpx;
+  font-weight: 900;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color:green;
+  height:80rpx;
+  align-items: center;
+  margin:0 30rpx;
+}
+
+.first>view{
+  display:flex;
+  flex-direction: row;
+}
+.second{
+  border-bottom: 1rpx solid gray;
+  height:50rpx;
+  font-size: 25rpx;
+  color:gray;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+}
+.three{
+   font-size:25rpx;
+   color:grey;
+   display: flex;
+   flex-direction: space-between;
+   height:50rpx;
+}

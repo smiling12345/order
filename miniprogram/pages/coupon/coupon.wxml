@@ -1,2 +1,25 @@
 <!--pages/coupon/coupon.wxml-->
-<text>pages/coupon/coupon.wxml</text>
+
+<view>
+   <!--已使用-->
+   <view class="used">
+      
+   </view>
+
+   <!--未使用-->
+   <view class="none">
+      <view class="first">
+         <view>代金券</view>
+         <view>
+            <text>￥</text> 
+            <view>5</view>    
+         </view>
+      </view>
+      <view class="second">
+         <text>满15可用</text>
+      </view>
+      <view class="three">
+         <text>有效期至</text>  <view>2021.12.15</view>
+      </view>
+   </view>
+</view>

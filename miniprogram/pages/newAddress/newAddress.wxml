@@ -1,0 +1,50 @@
+<!--pages/newAddress/newAddress.wxml-->
+<view class="all">
+<!--列表-->
+<view class="nav"> 
+     <navigator class="item" url="../coupon/coupon">
+       <view class='left'>
+           <view>收获地址：</view>
+           <text class="wenzi">选择收货地址</text>   
+       </view>
+       <view class="icon">
+              <text class='iconfont icon-jinrujiantou'></text>
+       </view>
+     </navigator>
+
+      <navigator class="item" url="../address/address">
+       <view class='left'>
+           <view>门牌号：</view>
+           <text class="wenzi">填写详细地址,例：1层1011011</text>
+       </view>
+      </navigator>
+
+      <view class="item3">
+        <view class="biaoqian">标签：</view>
+        <view class='left'>
+            <button size="mini" style="color:#ffffff;background-color: #A4ADB3;font-size: 30rpx;margin:10rpx 30rpx;">家</button>
+            <button size="mini" style="color:#ffffff;background-color: #A4ADB3;font-size: 30rpx;margin:10rpx 30rpx;">学校</button>
+            <button size="mini" style="color:#ffffff;background-color: #A4ADB3;font-size: 30rpx;margin:10rpx 30rpx;">公司</button>
+        </view>
+      </view>
+
+      <view class="item2">
+           <view class="shouhuo">
+             <view>收货人：</view>
+             <text class="wenzi">姓名</text>
+          </view>
+           <view class="gender">
+              <button size="mini" style="font-size: 30rpx;color: #ffffff;background-color: #A4ADB3;margin:10rpx 20rpx">先生</button>
+              <button size="mini" style="font-size: 30rpx;color: #ffffff;background-color: #A4ADB3;margin:10rpx 0">女士</button>
+           </view>
+      </view>
+
+       <view class='item4'>
+           <view>手机号：</view>
+           <text class="wenzi">收货人手机号码</text>
+       </view>
+   </view>
+
+   <!--按钮-->
+   <button style="color:#ffffff;background-color:#105450;font-size: 35rpx;margin-top:150rpx">保存</button>
+</view>

@@ -1,0 +1,67 @@
+/* pages/newAddress/newAddress.wxss */
+page{
+  font-size:35rpx;
+}
+.nav{
+  margin-top: 50rpx;
+  padding-left:20rpx;
+  padding-right:20rpx;
+  margin-bottom: 45rpx;
+  border-top: 1rpx solid gray;
+  border-bottom: 1rpx solid gray;
+  border-radius:30rpx;
+  background-color: #ffffff;
+}
+
+.item{
+ display: flex;
+ justify-content: space-between;
+ border-bottom: 1rpx solid gainsboro;
+ padding:10rpx 0;
+}
+.item4,.item3{
+  display: flex;
+  justify-content: start;
+  border-bottom: 1rpx solid gainsboro;
+  padding:10rpx 0;
+}
+
+.left>view,.biaoqian,.item4>view,.shouhuo>view{
+  color:#105450;
+  font-weight: 900;
+}
+.left,.item3,.item4{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+}
+.item2{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1rpx solid gainsboro;
+  padding:10rpx 0;
+}
+.gender{
+  display: flex;
+  flex-direction: end;
+  align-items: center;
+}
+.shouhuo{
+  display: flex;
+  flex-direction: start;
+  align-items: center;
+}
+.icon{
+  display: flex;
+  align-items: center;
+}
+.wenzi{
+  font-size: 33rpx;/*设置字体大小实现自适应*/
+  color:#A4ADB3;
+}
+.bottom{
+  display: flex;
+  justify-content: center;
+}

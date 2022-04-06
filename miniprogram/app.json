@@ -1,8 +1,9 @@
 
 {
-  "pages": [ 
+  "pages": [    
+    "pages/personal/personal", 
     "pages/coupon/coupon",
-    "pages/personal/personal",
+
     "pages/newAddress/newAddress",
      
     "pages/address/address",

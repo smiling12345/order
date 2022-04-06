@@ -1,4 +1,6 @@
 // pages/index/index.js
+const db = wx.cloud.database()
+const canteenCollection=db.collection('canteen')
 Page({
 
   /**
@@ -12,7 +14,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    canteenCollection.get().then(res =>{
+      //console.log(res)
+      this.setData({
+        canteen:res.data
+      })
+    })
   },
 
   /**

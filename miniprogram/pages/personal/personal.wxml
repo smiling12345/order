@@ -1,8 +1,18 @@
 <view class="person">
-   <view class="user"> 
-       
+   <view class="user"> <!--wx:if="{{openid!=''}}"-->
+     <view class="toplogo">
+       <open-data type="userAvatarUrl"></open-data>
+     </view>  
+     <view class="toptext">
+      <open-data type="userNickName" lang="zh_CN" class="user-name"></open-data>
+      <view class="user-name2">记得按时吃饭哦~</view>
+     </view>
    </view>
-
+<!--
+   <view class="user"> 
+       <button bindtap="getopenid" type="default">登录</button>
+    </view>
+-->
 <!--多行列表-->
    <view class="nav"> 
      <navigator class="item" url="../coupon/coupon">

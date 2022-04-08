@@ -1,7 +1,35 @@
 .user{
     height:300rpx;
     background-color:#105450;
+    border-radius: 10%;
+    margin-top:30rpx;
+    display:flex;
+    align-items: center;
 }
+
+.toplogo{/*设置圆形边框*/
+    margin-left:30rpx;
+    width:200rpx;
+    height:200rpx;
+    border-radius:50%;
+    overflow:hidden;/*溢出隐藏*/
+}
+
+.toptext{
+    margin-left:30rpx;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.user-name{
+     font-size:50rpx;
+}
+.user-name2{
+    margin-top: 60rpx;
+    font-size:30rpx;
+}
+
+
 
 .nav{
    /* height:600rpx;*/

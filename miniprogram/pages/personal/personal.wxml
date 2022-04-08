@@ -59,28 +59,6 @@
            <text class='iconfont icon-jinrujiantou'></text>
        </view>
       </button>
-
-      <navigator class="item" url="../administrator/administrator">
-       <view class='left'>
-           <text class='iconfont icon-guanliyuan' style="color:#B6DCFF"></text>   
-           <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
-           <text class="wenzi">食堂管理</text>
-       </view>
-       <view class="icon">
-           <text class='iconfont icon-jinrujiantou'></text>
-       </view>
-      </navigator>
-
-      <navigator class="item" style="border-bottom: #ffffff;" url="../rider/rider">
-       <view class='left'>
-           <text class='iconfont icon-qishou' style="color:#F3D8A1"></text>    
-           <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>
-           <text class="wenzi">骑手接单</text>
-       </view>
-       <view class="icon">
-           <text class='iconfont icon-jinrujiantou'></text>
-       </view>
-      </navigator>
    </view>
 
    <button class="tuichu">

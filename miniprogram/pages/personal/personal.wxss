@@ -4,7 +4,7 @@
 }
 
 .nav{
-    height:600rpx;
+   /* height:600rpx;*/
     margin-top: 50rpx;
     padding-left:20rpx;
     padding-right:20rpx;

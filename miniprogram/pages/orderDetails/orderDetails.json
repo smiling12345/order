@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "确定订单",
+  "navigationBarTextStyle": "black"
 }

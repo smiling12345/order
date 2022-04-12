@@ -1,2 +1,101 @@
-<!--pages/orderDetails/orderDetails.wxml-->
-<text>pages/orderDetails/orderDetails.wxml</text>
+<!--上面绿色背景的内容-->
+<view  style="height: 550rpx;">
+    <view class="top"> 
+        <!--第1行文字-->
+        <view style="display: flex;"> 
+            <view>订单配送至</view>
+            <view > 
+            </view>
+        </view>
+
+        <!--第2行文字-->
+        <view>
+            {{address}} 
+        </view>
+
+        <!--第3行文字-->
+        <view>
+        风先生 13532233653
+        </view>
+    </view>
+
+    <view class="out">
+    
+        <view class="mid" style="background-color: #ffffff;" >  
+            <view> 
+                <checkbox>全选</checkbox> 
+            </view>
+            <view class="midmid">
+                <view >
+                      <checkbox></checkbox> 
+                 
+                    <image src="{{img}}" mode="scaleToFill" style="margin-left: 20rpx; height: 100%;width: 150rpx; "></image>
+                    <text style="line-height: 10rpx;"> 宫保鸡丁</text>
+                </view>
+                <view>
+                    <view> 10元</view>
+                </view>
+             </view> 
+        </view>
+
+    </view>
+
+
+</view>
+
+
+<view class="low">
+    <view class="lowview">  
+        <view> 送达时间 </view>
+        <view style=" font-size: 24rpx;">
+            <picker mode="multiSelector" >
+                    {{time}}
+            </picker>
+        </view>
+        
+    </view>
+    <view class="lowview">  
+        <view> 配送服务 </view>
+        <view>
+        <text style="margin-left: 253rpx;"> 校园配送 配送费</text>
+    <text style="color: red;">{{money}} </text>
+        </view>
+
+    </view>
+
+    <view class="lowview">  
+        <view> 订单备注  </view>
+    <input class="input" type="number" bindinput="OrderNotes" placeholder="这里可以输入内容" /> 
+        
+    </view>
+
+    <view class="lowview">    
+        <view >打包费 </view>
+        <view style="margin-right: 40rpx; color: red;"> {{packMony}}</view>
+    </view>
+
+</view>
+
+
+<view class="us">
+
+    <view style="width: 230rpx; "> 
+     <view style="margin-left: 30rpx;">合计 <text style="color: red;">{{sumPrice}}</text></view>
+    </view>
+
+
+    <view> 
+        <view style="color: #8585859d; font-size: small; width: 200rpx;"> 已优惠{{discount}} </view>
+    
+    </view>
+
+
+    <view class="but">
+        <view class="button" bindtap="shopping">
+             <button style=" margin-left: 10rpx; color: rgb(241, 241, 238);" size="mini" > 确定支付</button> 
+        </view>
+        
+    </view>
+    
+</view>
+

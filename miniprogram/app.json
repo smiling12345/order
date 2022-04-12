@@ -1,9 +1,12 @@
 
 {
   "pages": [ 
+    "pages/orderDetails/orderDetails",
+
     "pages/personal/personal",
     "pages/coupon/coupon",
     "pages/newAddress/newAddress",
+  
      
     "pages/address/address",
     "pages/order/order",
@@ -15,7 +18,6 @@
     "pages/search/search",
     "pages/index/index",
     
-    "pages/orderDetails/orderDetails",
     "pages/request/request",
     "pages/explain/explain",
     "pages/administrator/administrator",

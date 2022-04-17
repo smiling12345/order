@@ -1,15 +1,16 @@
 
 {
   "pages": [ 
-    "pages/orderDetails/orderDetails",
-
+  
+    "pages/testComponent/testComponent",
     "pages/personal/personal",
     "pages/coupon/coupon",
     "pages/newAddress/newAddress",
   
-     
-    "pages/address/address",
     "pages/order/order",
+    "pages/orderDetails/orderDetails",
+    "pages/address/address",
+   
     "pages/firstPage/firstPage", 
     "pages/first/first",
      "pages/canteen/canteen",
@@ -64,5 +65,9 @@
     "selectedColor":"#105450"
   },
   "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "style": "v2",
+
+  "usingComponents": { 
+    "rider": "/components/riderOrders/riderOrders"
+  }
 }

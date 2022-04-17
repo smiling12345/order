@@ -1,0 +1,8 @@
+/* components/riderOrders/riderOrders.wxss */
+.top{
+    display: flex;
+    background-color: red;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align:center
+}

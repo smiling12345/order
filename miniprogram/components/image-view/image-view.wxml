@@ -1,0 +1,11 @@
+<!--components/image-view/image-view.wxml-->
+<!--用wx:if控制显示图片-->
+<view class='content' style='width:{{750/size}}rpx;height:{{750/size}}rpx;'>
+  <view class='img-view' wx:if="{{!add}}">
+    <image src='{{src}}' bindtap='showImg' style='width:{{750/size-16}}rpx;height:{{750/size-16}}rpx;' mode='aspectFill'></image>
+    <icon bindtap='deleteImg' class='close' color='#105450' type='clear' size='18rpx'></icon>
+  </view>
+  
+    <text class='iconfont icon-tianjia' bindtap='addImg' style="font-size:250rpx;" ></text>
+ 
+</view>

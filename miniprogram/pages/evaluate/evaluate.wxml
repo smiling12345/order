@@ -1,2 +1,30 @@
 <!--pages/evaluate/evaluate.wxml-->
-<text>pages/evaluate/evaluate.wxml</text>
+<view>
+  <view>
+     <view class="XingXing">
+         <stars description='味道'></stars>
+         <stars description='配送'></stars>
+         <stars description='包装'></stars>
+     </view>
+  </view>
+ <!--<image-view></image-view>--> 
+  
+  <view class="zan">
+    <view class="tuijian">
+      <text class="iconfont icon-zhichi" style="font-size:50rpx"></text>
+      <text>推荐</text>
+    </view>
+     <view class="butuijian">
+       <text class="iconfont icon-buzhichi" style="font-size:50rpx"></text>
+       <text>不推荐</text>
+     </view>
+   </view>
+
+     <view class="user-input">
+        <textarea bindinput="textareaInput" style="height:300rpx" maxlength="-1" placeholder="点评一下~"/>
+     </view>
+
+     <button size="default" style="color: white;background-color: #105450;">提交评价</button>
+     
+</view>
+  

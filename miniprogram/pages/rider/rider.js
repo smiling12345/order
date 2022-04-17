@@ -1,18 +1,27 @@
 // pages/rider/rider.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
-  },
-
+    data:{
+       list:[],  //把数据库数据存入数组
+       name:'deliveryPage'
+    },
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      //云函数调用
+      wx.cloud.callFunction({
+        name:'deliveryLogin'
+      })
+      .then(res=>{
+          console.log('云函数获取数据成功',res.result.data)
+          this.setData({
+            list:res.result.data
+          })  
+      })
+      .catch(res=>{
+          console.log('云函数获取数据失败',res)
+      })
   },
 
   /**

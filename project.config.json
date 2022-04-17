@@ -1,6 +1,7 @@
 {
   "miniprogramRoot": "miniprogram/",
   "cloudfunctionRoot": "cloudfunctions/",
+  "description": "项目配置文件",
   "setting": {
     "urlCheck": true,
     "es6": true,
@@ -41,7 +42,10 @@
   },
   "appid": "wx7e0aa07c65583653",
   "projectname": "canteen-Master",
-  "libVersion": "2.14.1",
+  "libVersion": "2.23.3",
+  "compileType": "miniprogram",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
   "condition": {
     "search": {
       "list": []

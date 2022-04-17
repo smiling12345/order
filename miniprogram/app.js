@@ -14,9 +14,31 @@ App({
         traceUser: true,
       })
     }
+    //调用getOpenid获取用户id
+    this.getOpenid();
 
-    this.globalData = {}
+
+    this.globalData = {
+      userid:''
+    }
   },
+  //获取用户openid
+  getOpenid(){
+     let that=this;
+     wx.cloud.callFunction({
+      name:'openapi',
+      success:res=>{
+        console.log(res)
+        var usid=res.result.openid
+        console.log(usid)
+        this.globalData.userid=res.result.openid //把获得的openid赋值到全局变量上
+      },
+     fail(res){
+       console.log("获取失败",res);
+      }
+     })
+  },
+
   onShow(){
     //应用 被用户看到
     //对应用的数据或者页面效果重置

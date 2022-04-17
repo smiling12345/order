@@ -1,0 +1,6 @@
+<!--pages/user-login/user-login.wxml-->
+<!--跳转到带tabbar的页面-->
+<button bindtap="goNext" open-type="getUserInfo">用户登录</button>
+<button bindtap="login">管理员登录</button>
+<button>骑手登录</button>
+

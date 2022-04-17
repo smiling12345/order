@@ -1,18 +1,24 @@
 // pages/evaluate/evaluate.js
+let ID=''
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+     
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+     ID=options.id
+     console.log("接收的id",ID)
+  },
+//获取用户输入的值
+  getContent(event){
+    console.log('获取输入的值',event.detaill.value)
   },
 
   /**

@@ -1,0 +1,31 @@
+<!--components/evaluation/evaluation.wxml-->
+<view class="content">
+  <view class="top">
+     <image></image>
+     <view class="top-time">
+        <view class="time">
+           <text style="font-size:40rpx;">yhu</text>
+           <text style="font-size:30rpx;color:gray;">798</text>
+        </view>
+        <stars></stars>
+     </view>
+  </view>
+
+  <view class="middle">
+    <text style="font-size: 33rpx;">很好吃</text>
+    <view>
+      <view class="middle-image">
+        <image class="tupian"></image>
+        <image class="tupian"></image>
+      </view>
+    
+    </view>
+    
+  </view>
+
+  <view class="bottom">
+     <view class="reply">商家回复：</view>
+     <view style="font-size:33rpx">感谢你的支持感谢你的支持感谢你的支持感谢你的支持感谢你的支持</view>
+  </view>
+
+</view>

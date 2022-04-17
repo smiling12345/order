@@ -1,0 +1,15 @@
+<!--components/food/food.wxml-->
+<view class="container">
+  <image class="photo" src='{{src}}'></image>
+  <view class="right">
+      <view class="top">
+        <text>{{name}}</text>
+        <text>月售{{sale}}</text>
+      </view>
+      <view class="middle">
+        <text style="font-size:40rpx;font-weight:bold;color: red;">￥{{price}}</text>
+        <text class="iconfont icon-gouwuchefill" style="font-size:65rpx;color:#105450"></text>
+      </view>
+      <stars></stars>
+  </view>
+</view>

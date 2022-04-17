@@ -1,4 +1,6 @@
 // pages/personal/personal.js
+var app=getApp()
+
 Page({
 
   /**
@@ -13,31 +15,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(app.globalData)
+  },
+  
 
-  },
-  getUserInfo(e){
-    console.log(e);
-    this.setData({
-      username:e.detail.userInfo.nickName
-    })
-  },
-  getopenid(){
-     var that=this;
-     wx.cloud.callFunction({
-       name:'open',
-       success:(res)=>{
-          var usid=res.result.openid
-          console.log(usid)
-          this.setData({
-            openid:res.result.openid,
-          })
-          getApp().globalData.userid=res.result.openid
-       },
-       fail(res){
-         console.log("获取失败",res);
-       }
-     })
-  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

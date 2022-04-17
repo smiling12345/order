@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "image-view":"../../components/image-view/image-view",
+    "stars":"../../components/stars/stars"
+ },
+ "navigationBarTitleText":"评价"
 }

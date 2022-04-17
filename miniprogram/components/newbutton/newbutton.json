@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "newbutton":"../../components/newbutton/newbutton"
+  }
+}

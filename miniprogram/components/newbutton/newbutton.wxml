@@ -1,0 +1,2 @@
+<!--components/newbutton/newbutton.wxml-->
+<button class="again" size="mini">{{name}}</button>

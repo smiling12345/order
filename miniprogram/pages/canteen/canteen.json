@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "searchInput":"../../components/searchInput/searchInput"
+    "searchInput":"../../components/searchInput/searchInput",
+    "food":"../../components/food/food"
   },
   "navigationBarTitleText":"芷园"
 }

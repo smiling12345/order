@@ -1,0 +1,54 @@
+/* components/food-dialog/food-dialog.wxss */
+@import "../../style/iconfont.wxss";
+
+.all{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content{
+  position: fixed;
+  top:200rpx;
+  width:90%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding:15rpx;
+
+  border-radius:30rpx;
+  border:1rpx solid #bb9340;
+}
+
+.tupian{
+  width:95%;
+  height:300rpx;
+  border:1rpx solid #105450;
+  margin-top:20rpx;
+  margin-bottom:20rpx;
+}
+.top{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.middle{
+  width:100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-bottom:30rpx;
+  align-items: center;
+}
+
+.jiage{
+  margin-left:20rpx;
+  margin-right:20rpx;
+  color:red;
+  font-size:40rpx;
+  font-weight: bold;
+}
+.zhu,.liao{
+  margin-left:20rpx;
+  margin-right:20rpx;
+}

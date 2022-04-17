@@ -10,9 +10,9 @@
       </view>
       <!--楼号-->
       <view class="zujian">
-        <button size="mini" type="default" class="one" style='color:#fff; background-color: #105450;width:150rpx;font-size:30rpx'>一楼</button>
-        <button size="mini" type="default" class="two" style='color:#BB9340;width:150rpx;font-size:30rpx'>二楼</button>
-        <button size="mini" type="default" class="three" style='color:#BB9340;width:150rpx;font-size:30rpx'>三楼</button>
+        <button size="mini" type="default" class="one" style='color:#fff; background-color: #105450;width:150rpx;font-size:30rpx' bindtap="tabSelect">一楼</button>
+        <button size="mini" type="default" class="two" style='color:#BB9340;width:150rpx;font-size:30rpx' bindtap="tabSelect2">二楼</button>
+        <button size="mini" type="default" class="three" style='color:#BB9340;width:150rpx;font-size:30rpx' bindtap="tabSelect3">三楼</button>
       </view>
    </view>
 
@@ -31,12 +31,20 @@
        <scroll-view scroll-y class="nav_right"> 
          <view class="{{topx}}">
            <block wx:for="{{rights}}" wx:key="index">
-              <view class="nav_right_items"  data-id="{{item._id}}">
-                <image src="{{item.picUrlTwo}}"></image>
-                <text>{{item.caiming}}</text>
+              <view data-id="{{item._id}}">
+                 <food src="{{item.food_image}}" sale="{{item.food_sales}}" name="{{item.food_name}}"></food>
               </view>
            </block>
          </view>
        </scroll-view>
    </view>
+
+   <view class="bottom">
+     <view class="iconfont icon-gouwuche" style="color: white;font-size:100rpx"></view>
+     <view style="font-size:40rpx">配送费</view>
+     <view style="font-size:40rpx">去结算</view>
+  </view>
+   
+  
+   
 </view>

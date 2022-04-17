@@ -1,1 +1,28 @@
 /* pages/evaluate/evaluate.wxss */
+.zan{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tuijian{
+  width:50%;
+  text-align: center;/*水平居中*/
+  border-right: 1rpx solid #105450;
+}
+.butuijian{
+  width:50%;
+  text-align: center;/*水平居中*/
+}
+
+.user-input{
+  border:1rpx solid  #105450;
+  border-radius: 20rpx;
+  padding:20rpx;
+  margin:10rpx;
+  box-shadow: 10rpx 10rpx 10rpx #105450;
+}
+
+button{
+  margin-top:150rpx !important;
+}

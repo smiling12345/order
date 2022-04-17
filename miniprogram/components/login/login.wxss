@@ -1,0 +1,27 @@
+/* components/login/login.wxss */
+.big{
+   margin-top: 200rpx;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.xinxi{
+  padding: 10rpx;
+  margin-top: 15rpx;
+  width:85%;
+  height:60rpx;
+  border-radius: 20rpx;
+  border:1rpx solid #105450;
+  background-color:#ffffff;
+}
+
+button{
+  margin-top:150rpx;
+  color:white !important;
+  background-color: #105450 !important;
+  border:1rpx solid #105450 !important;
+  border-radius:10rpx;
+  width:250rpx !important;
+}

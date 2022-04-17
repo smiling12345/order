@@ -1,32 +1,29 @@
-
 {
-  "pages": [ 
-    "pages/personal/personal",
-    "pages/coupon/coupon",
-    "pages/newAddress/newAddress",
-     
-    "pages/address/address",
-    "pages/order/order",
-    "pages/firstPage/firstPage", 
-    "pages/first/first",
-     "pages/canteen/canteen",
-      
+  "pages": [
+    "pages/canteen/canteen",
+    "pages/ceshi/ceshi",
     
+    "pages/evaluateDetail/evaluateDetail",
+    
+    
+    "pages/personal/personal",
+    "pages/evaluate/evaluate",
+    "pages/user-login/user-login",
+    "pages/order/order",
+    "pages/newAddress/newAddress",
+    "pages/address/address",
+    "pages/firstPage/firstPage",
+    "pages/first/first",
     "pages/search/search",
     "pages/index/index",
-    
     "pages/orderDetails/orderDetails",
     "pages/request/request",
     "pages/explain/explain",
-    "pages/administrator/administrator",
-    "pages/rider/rider",
-
-    
-    "pages/evaluate/evaluate",
-    
     "pages/payment/payment",
-
-    "pages/modifyAddress/modifyAddress"
+    "pages/modifyAddress/modifyAddress",
+    "pages/adminPage/adminPage",
+    "pages/deliveryPage/deliveryPage"
+    
   ],
   "window": {
     "backgroundColor": "#105450",
@@ -34,32 +31,41 @@
     "navigationBarBackgroundColor": "#105450",
     "navigationBarTitleText": "点餐食堂",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh":true
-
+    "enablePullDownRefresh": true
   },
+  "subpackages": [
+    {
+      "root": "packageA",
+      "pages": [
+        "pages/coupon",
+        "pages/rider",
+        "pages/administrator"
+      ]
+    }
+  ],
   "tabBar": {
-    "list":[
+    "list": [
       {
-        "pagePath":"pages/firstPage/firstPage",
-        "text":"首页",
-        "iconPath":"images/_home.png",
-        "selectedIconPath":"images/home.png"
+        "pagePath": "pages/firstPage/firstPage",
+        "text": "首页",
+        "iconPath": "images/_home.png",
+        "selectedIconPath": "images/home.png"
       },
       {
-        "pagePath":"pages/order/order",
-        "text":"订单",
-        "iconPath":"images/_ordering.png",
-        "selectedIconPath":"images/ordering.png"
+        "pagePath": "pages/order/order",
+        "text": "订单",
+        "iconPath": "images/_ordering.png",
+        "selectedIconPath": "images/ordering.png"
       },
       {
-        "pagePath":"pages/personal/personal",
-        "text":"我的",
-        "iconPath":"images/_mine.png",
-        "selectedIconPath":"images/mine.png"
+        "pagePath": "pages/personal/personal",
+        "text": "我的",
+        "iconPath": "images/_mine.png",
+        "selectedIconPath": "images/mine.png"
       }
     ],
-    "color":"#8a8a8a",
-    "selectedColor":"#105450"
+    "color": "#8a8a8a",
+    "selectedColor": "#105450"
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"

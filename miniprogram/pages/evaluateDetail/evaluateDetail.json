@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "stars":"../../components/stars/stars",
+    "newbutton":"../../components/newbutton/newbutton",
+    "evaluation":"../../components/evaluation/evaluation"
+  }
+}

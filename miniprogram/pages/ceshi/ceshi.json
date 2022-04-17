@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "food-dialog":"../../components/food-dialog/food-dialog",
+    "food":"../../components/food/food"
+  }
+}

@@ -1,0 +1,5 @@
+/* components/newbutton/newbutton.wxss */
+.again{
+  background:#105450;
+  color: #ffffff;
+}

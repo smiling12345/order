@@ -1,2 +1,4 @@
 <!--pages/administrator/administrator.wxml-->
-<text>pages/administrator/administrator.wxml</text>
+<!--将数据库的数据传入组件中-->
+<login outData="{{list}}" prove="{{name}}"> 
+</login>

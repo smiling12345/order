@@ -1,0 +1,32 @@
+/* components/food/food.wxss */
+@import '../../style/iconfont.wxss';
+.container{
+  border: 1rpx solid gray;
+  border-top-right-radius: 30rpx;
+  border-bottom-right-radius: 30rpx;
+  box-shadow:2rpx 2rpx 10rpx #105450;/*x-坐标值，y-坐标值，模糊程度*/
+
+  display:flex;
+  flex-direction: row;
+  height:200rpx;
+  margin-right:5rpx;
+  margin-top:30rpx;
+}
+
+.photo{
+  width:300rpx;
+  height:200rpx;
+  background-color: brown;
+}
+
+.right{
+  padding: 10rpx;
+  width:100%;
+}
+
+.top,.middle{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom:20rpx;
+}

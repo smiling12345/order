@@ -2,10 +2,8 @@
   "pages": [
     "pages/canteen/canteen",
     "pages/ceshi/ceshi",
-    
     "pages/evaluateDetail/evaluateDetail",
-    
-    
+    "pages/orderDetails/orderDetails",
     "pages/personal/personal",
     "pages/evaluate/evaluate",
     "pages/user-login/user-login",
@@ -16,14 +14,12 @@
     "pages/first/first",
     "pages/search/search",
     "pages/index/index",
-    "pages/orderDetails/orderDetails",
     "pages/request/request",
     "pages/explain/explain",
     "pages/payment/payment",
     "pages/modifyAddress/modifyAddress",
     "pages/adminPage/adminPage",
     "pages/deliveryPage/deliveryPage"
-    
   ],
   "window": {
     "backgroundColor": "#105450",

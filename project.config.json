@@ -34,10 +34,7 @@
         "packNpmManually": false,
         "packNpmRelationList": [],
         "minifyWXSS": true,
-        "disableUseStrict": false,
-        "minifyWXML": true,
-        "showES6CompileOption": false,
-        "useCompilerPlugins": false
+        "showES6CompileOption": false
     },
     "appid": "wx7e0aa07c65583653",
     "projectname": "canteen-Master",

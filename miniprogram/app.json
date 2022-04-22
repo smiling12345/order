@@ -1,7 +1,7 @@
 
 {
   "pages": [ 
-  
+    "pages/park/park",
     "pages/testComponent/testComponent",
     "pages/personal/personal",
     "pages/coupon/coupon",

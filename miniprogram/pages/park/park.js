@@ -1,34 +1,13 @@
-// pages/testComponent/testComponent.js
+// pages/park/park.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        person: '小明',
-        phone: '13525638940',
-        orderNum: '90125789236',
-        component:[
-          {id: 2, orderNum: 90125789236, person: '小米', phone:13532233643},
-          {id: 2, orderNum: 90125789236, person: '小米', phone:13532233643},
-          {id: 2, orderNum: 90125789236, person: '小米', phone:13532233643},
-        ],
+
     },
 
-    copy: function(e){
-        wx.setClipboardData({
-          data: this.orderNum,
-          success: function(res){
-              wx.getClipboardData({
-                success:function(res){
-                    wx.showToast({
-                      title: '复制成功',
-                    })
-                }
-              })
-          }
-        })
-    },
     /**
      * 生命周期函数--监听页面加载
      */

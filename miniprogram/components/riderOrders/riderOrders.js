@@ -1,17 +1,22 @@
 // components/riderOrders/riderOrders.js
 Component({
+    options: {
+        addGlobalClass: true
+    },
     /**
      * 组件的属性列表
      */
     properties: {
-        orderNum : Number
+        orderNum : Number,
+        person : String,
+        phone : String 
     },
 
     /**
      * 组件的初始数据
      */
     data: {
-        count:0
+        count:0,
     },
 
     /**

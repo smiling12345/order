@@ -1,0 +1,24 @@
+/* pages/park/park.wxss */
+
+.viewww{
+    display: flex;
+    background-color: aquamarine;
+    height: 76rpx;
+}
+
+.left{
+    background-color: rgb(57, 73, 73);
+    height: 76rpx;
+    width: 37%;
+}
+
+.mid{
+    background-color: rgb(2, 139, 59);
+    height: 76rpx;
+    width: 43%;
+}
+.right{
+    background-color: rgb(90, 131, 131);
+    height: 76rpx;
+    width: 20%;
+}

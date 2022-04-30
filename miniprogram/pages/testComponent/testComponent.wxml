@@ -1,0 +1,34 @@
+
+    <view style="margin-left: 20rpx; " class="top">
+        <view class="left">
+            <image class="image" src="https://s.cn.bing.net/th?id=OIP-C.nRlAFygdctTCHmIWN7GxRwHaEK&w=333&h=187&c=8&rs=1&qlt=90&o=6&dpr=1.24&pid=3.1&rm=2"></image>
+            <button class="but" style="width: 100%; color: #225648;"> 新订单</button>
+        </view>
+        <view class="left">
+            <image class="image" src="https://s.cn.bing.net/th?id=OIP-C.nRlAFygdctTCHmIWN7GxRwHaEK&w=333&h=187&c=8&rs=1&qlt=90&o=6&dpr=1.24&pid=3.1&rm=2"></image>
+            <button class="but" style=" width: 100%;    color: #225648;"> 已完成</button>
+        </view>
+      
+    </view>
+
+
+    
+    <view class="rider" style="  margin-top: 250rpx;">
+    <rider orderNum="{{orderNum}}" person="{{person}}" phone="{{phone}}"></rider>
+    </view>
+
+    <view wx:for="{{component}}">
+        <view class="rider">
+             <rider orderNum="{{item.orderNum}}" person="{{item.person}}" phone="{{item.phone}}"></rider>
+        </view>
+    </view>
+
+
+   
+
+
+
+
+
+
+

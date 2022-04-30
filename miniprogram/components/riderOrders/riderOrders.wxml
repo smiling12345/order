@@ -1,0 +1,38 @@
+    <!--components/riderOrders/riderOrders.wxml-->
+<view class="top0">
+    <view class="top2" style=" border-top-left-radius: 40rpx; border-top-right-radius: 40rpx; ">
+        <view style="margin-left: 30rpx;  width: 100rpx; color: rgba(148, 145, 134, 0.74);">订单号</view>
+        <view style=" left: 100rpx;margin-left: 40rpx;">{{orderNum}}</view>
+        <view style="margin-left: 40rpx; width: 270rpx; height: 90rpx;  margin-right: 0;  border-top-right-radius: 40rpx;"><button style="border-radius: 40rpx; width: 100%; height: 100%; color: #5d98b8;"> 复制订单号</button> </view>
+    </view>
+    <view class="top2">
+        <view style="margin-left: 30rpx; color: rgba(148, 145, 134, 0.74);">收货人</view>
+        <view style="margin-left: 50rpx;">{{person}}</view>
+        <view style=" margin-left: 150rpx;"> 电话: 13525638940</view>
+    </view>
+
+    <view class="top2">
+        <view style="margin-left: 30rpx; color: rgba(148, 145, 134, 0.74);" >地址</view>
+        <view style="margin-left: 100rpx;">泰山区10栋楼下</view>
+    </view>
+
+    <view  class="top3">
+        <view style="margin-left: 30rpx; color: rgba(148, 145, 134, 0.74);">商品</view>
+        <view style="margin-left: 200rpx;">
+            糖醋小排 x1 1楼2号
+        </view>
+    </view>
+
+    <view  class="top2">
+        <view style="margin-left: 30rpx; color: rgba(148, 145, 134, 0.74);">口味选择 </view>
+        <view style="margin-left: 30rpx;"> 无</view>
+    </view>
+
+    <view  class="top2">
+        <view style="margin-left: 30rpx; color: rgba(148, 145, 134, 0.74);">备注 </view>
+        <view style="margin-left: 95rpx;"> 无</view>
+    </view>
+    <view style=" border-bottom-left-radius: 40rpx; border-bottom-right-radius: 40rpx; height: 90rpx;">
+        <button style="margin-top: 10rpx; width: 200rpx; height: 70rpx; background-color: #1f5c57; color: white;"> 接单</button> 
+    </view>
+</view>

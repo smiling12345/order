@@ -1,0 +1,62 @@
+/* pages/testComponent/testComponent.wxss */
+
+.top{
+    display: flex;
+    justify-content: space-around;
+    width: 750rpx;
+    height: 230rpx;
+    background-color:#f5f5f5;
+    position:fixed;
+    z-index: 999;
+}
+
+
+.rider{
+    width: 700rpx;
+    top: 50rpx;
+    border-radius: 20rpx;
+    margin-top: 50rpx;
+    margin-left: 25rpx;
+    margin-bottom: 50rpx;
+}
+.bottom0{
+    margin-top: 50rpx; 
+    width: 700rpx;
+    margin-left: 25rpx;
+    border-radius: 50rpx; 
+    border-style: solid;
+    border-width: 1rpx;
+    border-color: #c9c9c9;
+}
+.bottom{
+    display: flex;
+    justify-content: space-between;
+    background-color: #fefcfd;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align:center;
+
+    border-style: solid;
+    border-width: 1rpx;
+    border-color: #c9c9c9;
+}
+
+.left{
+    margin-top: 50rpx;
+    width: 200rpx;
+    display: flex;
+    flex-direction: column;
+    width: 60px;
+    align-items: center;
+
+}
+
+.left{
+    width: 200rpx;
+}
+
+.image{
+    display: flex;
+    width: 100rpx;
+    height: 100rpx;
+}

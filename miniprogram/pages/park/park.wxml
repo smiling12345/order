@@ -1,5 +1,25 @@
 <!--pages/park/park.wxml-->
 
-<text class="iconfont icon-a-ziyuan10"></text>
-<view class="iconfont "> </view>
 
+<view class="iconfont icon-a-ziyuan10"> </view>
+
+<view wx:for="{{component}}">
+    <view class="viewww">
+        <view class="left">
+            <image 
+            style="height: 76rpx"
+            mode="aspectFit"
+            src="miniprogram\images\6.jpg">
+            </image>
+        </view>
+
+        <view class="mid">
+            
+        </view>
+
+        <view class="right">
+            
+         </view>
+    </view>
+           
+</view>

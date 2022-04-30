@@ -1,0 +1,58 @@
+<!--pages/edit/edit.wxml-->
+<view class="name" style="margin-top: 10rpx;"> 
+    <view class="font">商品名称</view>
+    <view style="margin-left: 13rpx; width: 410rpx;"> 
+        <input type="text" class="input"  placeholder="请输入商品名称" 
+        bindinput="userNameInput"/>
+    </view>
+</view>
+
+
+<view class="name"> 
+    <view class="font">商品价格</view>
+    <view style="margin-left: 13rpx; width: 150rpx;"> 
+        <input type="text" class="input" 
+        bindinput="userNameInput"/>
+    </view>
+    <view class="font" style="margin-left: 10rpx;">元</view>
+</view>
+
+
+<view class="name"> 
+    <view class="font">商品图片</view>
+</view>
+<view class="image">
+    <image src="https://tse4-mm.cn.bing.net/th/id/OIP-C.RIO9rq0jjSe8AxlVZ9Uq7QHaE-?w=270&h=181&c=7&r=0&o=5&dpr=1.24&pid=1.7" mode="aspectFit" style="height: 100%; margin-left: 50rpx;"></image>
+</view>
+
+
+<view class="name"> 
+    <view class="font">商品详情</view>
+</view>
+<view class="detail">
+    <view class="smell" style="margin-top: 20rpx;">
+        <view>主料：</view>
+        <view style=" width: 410rpx;"> 
+            <input type="text" class="deInput"  />
+         </view>
+    </view>
+    <view class="smell" >
+        <view>口味：</view>
+        <view style=" width: 410rpx;"> 
+            <input type="text" class="deInput"  />
+         </view>
+    </view>
+    <view class="smell" >
+        <view>价格说明：</view>
+    </view>
+    <view>
+        <view style=" width: 410rpx; margin-left: 110rpx;"> 
+            <input type="text" class="deInput"  />
+         </view>
+    </view>
+</view>
+
+
+<view style=" border-bottom-left-radius: 40rpx; border-bottom-right-radius: 40rpx; height: 90rpx;">
+        <button style="margin-top: 10rpx; width: 200rpx; height: 70rpx; background-color: #1f5c57; color: white; font-size: small;"> 保存</button> 
+    </view>

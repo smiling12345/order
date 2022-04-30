@@ -1,15 +1,11 @@
-// pages/park/park.js
+// pages/edit/edit.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        component:[
-            {id: 2, orderNum: 90125789236, person: '小米', phone:13532233643},
-            {id: 2, orderNum: 90125789236, person: '小米', phone:13532233643},
-            {id: 2, orderNum: 90125789236, person: '小米', phone:13532233643},
-          ],
+
     },
 
     /**

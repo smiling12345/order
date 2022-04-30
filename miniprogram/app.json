@@ -2,13 +2,14 @@
 {
   "pages": [ 
     "pages/park/park",
+    "pages/edit/edit",
     "pages/testComponent/testComponent",
     "pages/personal/personal",
     "pages/coupon/coupon",
     "pages/newAddress/newAddress",
   
     "pages/order/order",
-    "pages/orderDetails/orderDetails",
+   
     "pages/address/address",
    
     "pages/firstPage/firstPage", 

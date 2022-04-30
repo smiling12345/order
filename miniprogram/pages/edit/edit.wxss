@@ -1,0 +1,65 @@
+/* pages/edit/edit.wxss */
+page {
+    background-color: #f2f2f2;
+}
+
+.name{
+    display: flex;
+    line-height: 120rpx;
+    align-items:center;
+    height: 120rpx;
+    margin-left: 20rpx;
+}
+.font{
+    color: #c3a569;
+    font-weight:bolder;
+}
+
+input{
+    background-color: #ffffff;
+    color: #d2d2d2;
+    height: 55rpx;
+    border-style: solid;
+    border-radius: 20rpx;
+}
+.image{
+    display: flex;
+    line-height: 30rpx;
+    align-items:center;
+    height: 300rpx;
+    margin-left: 20rpx;
+    background-color: burlywood;
+}
+
+.detail{
+    margin-left: 30rpx;
+    background-color: #ffffff;
+    height: 300rpx;
+    width: 690rpx;
+}
+
+button{
+    height: 600rpx;
+    font-size: 10rpx;
+    color: white;
+    width: 50rpx;
+    background-color: #0f544f;
+}
+
+.smell{
+    margin-left: 25rpx;
+    background-color: ffffff;
+    display: flex;
+    line-height: 120rpx;
+    align-items:center;
+    height: 60rpx;
+}
+
+.deInput{
+    width: 450rpx;
+    height: 10rpx;
+    border-top-color: #ffffff;
+    border-left-color: #ffffff;
+    border-right-color: #ffffff;
+    border-bottom-color: #e7e7e7;
+}

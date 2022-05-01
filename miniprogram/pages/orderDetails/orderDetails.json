@@ -1,5 +1,6 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "确定订单",
-  "navigationBarTextStyle": "black"
+  "usingComponents": {
+    "food":"../../components/food/food"
+  },
+  "navigationBarTitleText": "确定订单"
 }

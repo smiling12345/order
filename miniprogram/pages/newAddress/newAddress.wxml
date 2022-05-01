@@ -2,49 +2,34 @@
 <view class="all">
 <!--列表-->
 <view class="nav"> 
-     <navigator class="item" url="../coupon/coupon">
-       <view class='left'>
-           <view>收获地址：</view>
-           <text class="wenzi">选择收货地址</text>   
-       </view>
-       <view class="icon">
-              <text class='iconfont icon-jinrujiantou'></text>
-       </view>
-     </navigator>
-
-      <navigator class="item" url="../address/address">
-       <view class='left'>
-           <view>门牌号：</view>
-           <text class="wenzi">填写详细地址,例：1层1011011</text>
-       </view>
-      </navigator>
-
-      <view class="item3">
-        <view class="biaoqian">标签：</view>
-        <view class='left'>
-            <button size="mini" style="color:#ffffff;background-color: #A4ADB3;font-size: 30rpx;margin:10rpx 30rpx;">家</button>
-            <button size="mini" style="color:#ffffff;background-color: #A4ADB3;font-size: 30rpx;margin:10rpx 30rpx;">学校</button>
-            <button size="mini" style="color:#ffffff;background-color: #A4ADB3;font-size: 30rpx;margin:10rpx 30rpx;">公司</button>
-        </view>
-      </view>
-
-      <view class="item2">
-           <view class="shouhuo">
-             <view>收货人：</view>
-             <text class="wenzi">姓名</text>
+     <picker class="item" bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+         <view class="left">
+             <view>收货地址：</view>
+             <text class="wenzi">{{array[index]}}</text>  
+             <text class='iconfont icon-jinrujiantou' style="font-size:50rpx"></text>
           </view>
-           <view class="gender">
-              <button size="mini" style="font-size: 30rpx;color: #ffffff;background-color: #A4ADB3;margin:10rpx 20rpx">先生</button>
-              <button size="mini" style="font-size: 30rpx;color: #ffffff;background-color: #A4ADB3;margin:10rpx 0">女士</button>
-           </view>
-      </view>
+     </picker>
 
        <view class='item4'>
+           <view>详细地址：</view>
+           <input bindinput="getAddress" placeholder="详细地址，如34栋靠教五" maxlength="{{max}}"></input>
+           <text style="color:gray">{{currentNumber}}/{{max}}</text>
+       </view>
+
+      <view class="item2">
+             <view>联系人：</view>
+             <input placeholder="姓名" bindinput="getName" maxlength="{{maxName}}"></input>
+             <text style="color:gray">{{currentName}}/{{maxName}}</text>
+              <button size="mini" class="{{gender=='先生'?'selected':''}}" style="font-size: 30rpx;color: #ffffff;background-color: #A4ADB3;margin:10rpx 20rpx" bindtap="Getgender">先生</button>
+              <button size="mini" class="{{gender=='女士'?'selected':''}}" style="font-size: 30rpx;color: #ffffff;background-color: #A4ADB3;margin:10rpx 0" bindtap="Getgender2">女士</button>
+      </view>
+
+       <view class='item3'>
            <view>手机号：</view>
-           <text class="wenzi">收货人手机号码</text>
+           <input placeholder="联系人手机号码" bindinput="getIphone" type="number"></input>
        </view>
    </view>
 
    <!--按钮-->
-   <button style="color:#ffffff;background-color:#105450;font-size: 35rpx;margin-top:150rpx">保存</button>
+      <button style="color:#ffffff;background-color:#105450;font-size: 35rpx;margin-top:150rpx" catchtap="preserve" data-phone="{{phone}}">保存</button>
 </view>

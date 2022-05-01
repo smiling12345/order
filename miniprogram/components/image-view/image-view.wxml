@@ -1,11 +1,16 @@
 <!--components/image-view/image-view.wxml-->
+<!--这是上传图片的组件-->
 <!--用wx:if控制显示图片-->
-<view class='content' style='width:{{750/size}}rpx;height:{{750/size}}rpx;'>
-  <view class='img-view' wx:if="{{!add}}">
-    <image src='{{src}}' bindtap='showImg' style='width:{{750/size-16}}rpx;height:{{750/size-16}}rpx;' mode='aspectFill'></image>
-    <icon bindtap='deleteImg' class='close' color='#105450' type='clear' size='18rpx'></icon>
+<view class='content'>
+  <view class='img-view' wx:for="{{fileList}}"  style="position:relative">
+    <!--图片会变形，待修正，由于mode缘故
+        将图标设置在图片里面，父子组件，父组件设position:relative,子组件设position:absolute
+    -->
+    
+    <image bindtap='showImg' src="{{item}}" mode="scaleToFill" style="width:230rpx;height:230rpx;border-radius: 5rpx;"></image>
+    <view bindtap='deleteImg' data-index="{{index}}" class='iconfont icon-a-shanchucuowu' style="position:absolute;right:15rpx;top:15rpx;color:#105450;"></view>
   </view>
   
-    <text class='iconfont icon-tianjia' bindtap='addImg' style="font-size:250rpx;" ></text>
+  <view class='iconfont icon-tianjia' bindtap='addImg' style="font-size:230rpx" ></view>
  
 </view>

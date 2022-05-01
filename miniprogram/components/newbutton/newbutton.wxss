@@ -1,5 +1,11 @@
 /* components/newbutton/newbutton.wxss */
 .again{
-  background:#105450;
-  color: #ffffff;
+  background:white;
+  color: #105450;
+  border:1rpx solid #105450;
+}
+
+.select{
+  color:white !important;
+  background-color: #105450 !important;
 }

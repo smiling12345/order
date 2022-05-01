@@ -1,18 +1,145 @@
 // pages/evaluateDetail/evaluateDetail.js
+const db=wx.cloud.database()
+const _ = db.command
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+     fileList:[],
+     list:["全部","好评","差评","有图"],
+     countList:[],//放在顶部的评分总的显示，改变按钮，顶部评分依旧不变
+     select:"全部",
+     taste:0,
+     translate:0,
+     pack:0,
+     average:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      this.allData()
+  },
+  //判断选择的是全部还是好评、差评、有图等来渲染页面
+  select(e){
+    console.log(e)
+    if(e.currentTarget.dataset.item=="全部"){
+        this.setData({
+          select:"全部"
+        })
+        this.allData()
+    }else  if(e.currentTarget.dataset.item=="好评"){
+      this.setData({
+        select:"好评"
+      })
+      this.goodData()
+    }else if(e.currentTarget.dataset.item=="差评"){
+      this.setData({
+        select:"差评"
+      })
+      this.badData()
+    }else if(e.currentTarget.dataset.item=="有图"){
+      this.setData({
+        select:"有图"
+      })
+      this.hasImage()
+    }
+  },
+  //获取全部评论数据库的数据
+  allData(){
+     db.collection('comment').get()
+     .then(res=>{
+       console.log('获取数据库成功',res.data)
+       this.setData({
+         fileList:res.data,
+         countList:res.data
+       })
+       this.countAll()
+       console.log(this.data.fileList)
+     })
+     .catch(res=>{
+       console.log('获取数据库失败',res)
+     })
+  },
+  //计算评分数据
+  countAll(){
+    let countList=this.data.countList
+    let taste=0
+    let translate=0
+    let pack=0
+    let average=0
+    for(let i=0;i<countList.length;i++){
+       taste+=countList[i].taste
+       translate+=countList[i].translate
+       pack+=countList[i].pack
+       average+=countList[i].average
+    }
+    taste=taste/countList.length
+    translate=translate/countList.length
+    pack=pack/countList.length
+    average=average/countList.length
+    console.log(average)
+    this.setData({
+      taste:taste.toFixed(),
+      translate:translate.toFixed(),
+      pack:pack.toFixed(),
+      average:average.toFixed()
+    })
+    console.log(this.data.average)
+  },
+  //获取好评的评论数据库数据，以dianzan这条来划分好评还是差评
+  goodData(){
+    db.collection('comment')
+    .where({
+      dianzan:_.eq(true)
+    }).get()
+    .then(res=>{
+      console.log('获取数据库成功',res.data)
+      this.setData({
+        fileList:res.data
+      })
+      console.log(this.data.fileList)
+    })
+    .catch(res=>{
+      console.log('获取数据库失败',res)
+    })
+  },
+  //获取差评的评论数据库数据
+  badData(){
+    db.collection('comment')
+    .where({
+      dianzan:_.eq(false)
+    }).get()
+    .then(res=>{
+      console.log('获取数据库成功',res.data)
+      this.setData({
+        fileList:res.data
+      })
+      console.log(this.data.fileList)
+    })
+    .catch(res=>{
+      console.log('获取数据库失败',res)
+    })
+  },
+  //获取是否有图的数据库数据，以fileId是否为空
+  hasImage(){
+    db.collection('comment')
+    .where({
+      fileId:_.neq([])
+    }).get()
+    .then(res=>{
+      console.log('获取数据库成功',res.data)
+      this.setData({
+        fileList:res.data
+      })
+      console.log(this.data.fileList)
+    })
+    .catch(res=>{
+      console.log('获取数据库失败',res)
+    })
   },
 
   /**

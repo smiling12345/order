@@ -7,25 +7,20 @@
            <text style="font-size:40rpx;">yhu</text>
            <text style="font-size:30rpx;color:gray;">798</text>
         </view>
-        <stars></stars>
+        <stars2 starId="{{starsId}}"></stars2>
      </view>
   </view>
 
   <view class="middle">
-    <text style="font-size: 33rpx;">很好吃</text>
-    <view>
-      <view class="middle-image">
-        <image class="tupian"></image>
-        <image class="tupian"></image>
-      </view>
-    
+    <text style="font-size: 33rpx;">{{pinglun}}</text>
+    <view class="img-view">  
+      <image  src="{{item}}" wx:for="{{image}}" mode="scaleToFill" style="width:230rpx;height:230rpx;border-radius: 5rpx;"></image>
     </view>
-    
   </view>
 
   <view class="bottom">
      <view class="reply">商家回复：</view>
-     <view style="font-size:33rpx">感谢你的支持感谢你的支持感谢你的支持感谢你的支持感谢你的支持</view>
+     <view class="reply2" style="font-size:33rpx">感谢你的支持感谢你的支持感谢你的支持感谢你的支持感谢你的支持6788789676565644443</view>
   </view>
 
 </view>

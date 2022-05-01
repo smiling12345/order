@@ -1,2 +1,2 @@
 <!--components/newbutton/newbutton.wxml-->
-<button class="again" size="mini">{{name}}</button>
+<button class="again {{selected==true?'select':''}}" size="mini">{{name}}</button>

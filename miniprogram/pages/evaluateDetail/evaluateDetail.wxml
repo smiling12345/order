@@ -1,2 +1,21 @@
 <!--pages/evaluateDetail/evaluateDetail.wxml-->
-<evaluation></evaluation>
+<view class="dingbu">
+   <view class="top">
+      <view class="left">
+         <view style="font-size: 100rpx;font-weight: bold;color:red">{{average}}</view>
+         <view>食堂评分</view>
+      </view>
+
+      <view class="right">
+         <stars2 description="味道" starId="{{taste}}"></stars2>
+         <stars2 description="配送" starId="{{translate}}"></stars2>
+         <stars2 description="包装" starId="{{pack}}"></stars2>
+      </view>
+   </view>
+
+   <view class="bottom">
+      <newbutton   wx:for="{{list}}" name="{{item}}" data-item="{{item}}" catchtap="select" selected="{{select==item}}"></newbutton>
+   </view>
+</view>
+
+<evaluation wx:for="{{fileList}}" data-item="{{item}}" pinglun="{{item.user_comment}}" starsId="{{item.average}}" image="{{item.fileId}}"></evaluation>

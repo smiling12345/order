@@ -2,29 +2,29 @@
 <view>
   <view>
      <view class="XingXing">
-         <stars description='味道'></stars>
-         <stars description='配送'></stars>
-         <stars description='包装'></stars>
+            <stars description="味道" data-description="味道" bindstarsNumber="starsnumber"></stars>
+            <stars description="配送" data-description="配送" bindstarsNumber="starsnumber"></stars>
+            <stars description="包装" data-description="包装" bindstarsNumber="starsnumber"></stars>
      </view>
   </view>
- <!--<image-view></image-view>--> 
+ <image-view bindaddImg="addImg" binddeleteImg="deleteImg"></image-view>
   
   <view class="zan">
-    <view class="tuijian">
-      <text class="iconfont icon-zhichi" style="font-size:50rpx"></text>
+    <view class="tuijian" catchtap="tuijian">
+      <text class="iconfont icon-zhichi {{dianzan==true?'good':''}}" style="font-size:50rpx"></text>
       <text>推荐</text>
     </view>
-     <view class="butuijian">
-       <text class="iconfont icon-buzhichi" style="font-size:50rpx"></text>
+     <view class="butuijian" catchtap="nottuijian">
+       <text class="iconfont icon-buzhichi {{dianzan==false?'good':''}}" style="font-size:50rpx"></text>
        <text>不推荐</text>
      </view>
    </view>
 
      <view class="user-input">
-        <textarea bindinput="textareaInput" style="height:300rpx" maxlength="-1" placeholder="点评一下~"/>
+        <textarea bindinput="getContent" style="height:300rpx" maxlength="-1" placeholder="点评一下~"/>
      </view>
 
-     <button size="default" style="color: white;background-color: #105450;">提交评价</button>
+     <button size="default" style="color: white;background-color: #105450;" bindtap="submit">提交评价</button>
      
 </view>
   

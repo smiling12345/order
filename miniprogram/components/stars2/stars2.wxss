@@ -1,0 +1,14 @@
+/* components/stars2/stars2.wxss */
+@import '../../style/iconfont.wxss';
+
+
+.xingxing{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  font-size:35rpx;
+}
+
+.point{
+  margin-right: 20rpx;
+}

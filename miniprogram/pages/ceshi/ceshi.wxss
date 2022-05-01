@@ -1,1 +1,5 @@
 /* pages/ceshi/ceshi.wxss */
+
+.midmid{
+  width:300rpx;
+}

@@ -4,7 +4,18 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+      starsId:{//接收页面传来的参数，渲染星星个数
+        type:Number,
+        value:0
+      },
+      pinglun:{//接收页面传来的评论数据
+         type:String,
+         value:''
+      },
+      image:{//接收页面传来的图片fileid
+         type:Array,
+         value:[]
+      }
   },
 
   /**

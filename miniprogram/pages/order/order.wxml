@@ -8,55 +8,34 @@
      </view>
   </view>
     <!--未渲染-->
-    <view class="content">
+    <view class="content" wx:for="{{list}}" data-item="{{item}}">
         <view class="bianhao">
             <view class="canteen">芷园</view>
             <view>2021.06.16</view>
         </view>
-        
-        <view class="card">
-           <view class="card-img">
-              <image src="/images/4.jpg" mode="widthFix"></image>
-           </view>
+                                              <!--防止双层循环item冲突，给item重命名-->
+        <view class="card" wx:for="{{item.uapproval}}" wx:for-item="foodItem">
+          <image src="{{foodItem.foodsId.food_image}}" mode="aspectFill" style="width:350rpx;height:230rpx;"></image>
            <view class="card-text">
                <view class="card-text_">
-                  <view>比利时巧克力好</view>
-                  <view>已完成</view>
+                  <view>{{foodItem.foodsId.food_name}}</view>
+                  <view>{{foodItem.foodsId.status}}</view>
                </view>
                <view class="jiage">
-                  <view>实付：￥10</view>
-                  <view>×10</view>
+                  <view>实付：￥{{foodItem.foodsId.count*foodItem.foodsId.food_price}}</view>
+                  <view>×{{foodItem.foodsId.count}}</view>
                </view>
                <view class="card-button">
                   <button class="again" size="mini">再来一单</button>
-                  <button class="evaluate" size="mini">评价</button>
-               </view>
-           </view>
-        </view>
-
-        <view class="card">
-           <view class="card-img">
-              <image src="/images/4.jpg" mode="widthFix"></image>
-           </view>
-           <view class="card-text">
-               <view class="card-text_">
-                  <view>比利时巧克力好</view>
-                  <view>商品状况</view>
-               </view>
-               <view class="jiage">
-                  <view>实付：￥10</view>
-                  <view>×10</view>
-               </view>
-               <view class="card-button">
-                  <button class="again" size="mini">再来一单</button>
-                  <button class="evaluate" size="mini">评价</button>
+                  <button class="evaluate" size="mini" bindtap="pingjia">评价</button>
                </view>
            </view>
         </view>
 
         <view class="bottom-title">
-           <view>共2件商品</view>
-           <view>实付：￥198.00</view>
+           <view>配送费:{{item.money}}元</view>
+           <view>打包费:{{item.packMoney}}元</view>
+           <view>实付:￥{{item.totalMoney}}元</view>
         </view>
        
     </view>

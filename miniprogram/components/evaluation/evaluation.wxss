@@ -48,6 +48,11 @@ image{
    margin-top:15rpx;
 }
 
+.img-view{
+  display: flex;
+  flex-wrap: wrap;/*flex默认不换行，设置了这个会自动换行*/
+}
+
 .bottom{
   border:1rpx solid gray;
   border-radius: 30rpx;
@@ -55,11 +60,13 @@ image{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center;
 }
 
 .reply{
   margin-right:10rpx;
   font-size:33rpx;
-  width:300rpx;
+  width:232rpx;
+}
+.reply2{
+  width:700rpx
 }

@@ -1,17 +1,49 @@
 /* pages/orderDetails/orderDetails.wxss */
+.one{
+    border-radius: 0rpx;
+    border-bottom-left-radius: 10rpx;
+    border-top-left-radius: 10rpx;
+    border-style:solid;
+    border-width: 1rpx;
+    border-color: white;
+    border-right-color: #BB9340;
+}
+
+
+.two{
+    border-radius: 0rpx;
+    border-style:solid;
+    border-width: 1rpx;
+    border-color: white;
+    border-right-color: #BB9340;
+}
+
+.three{
+    border-radius: 0rpx;
+    border-style:solid;
+    border-width: 1rpx;
+    border-color: white;
+    border-bottom-right-radius: 10rpx;
+    border-top-right-radius: 10rpx;
+}
+
+.selected{
+    background-color: #bb9340 !important;
+}
+
+
 .top {
     background-color: #0f544f;
-    margin-top: 1px; 
     height: 300rpx;
     color: white;
     width: 100%;
-    position:absolute;
-    z-index: 1;
 }
 
 .top view:nth-child(1){
-    padding-left: 8rpx;
+    padding: 10rpx;
     font-size: 30rpx;
+    display: flex;
+    justify-content: space-between;
 }
 
 .top view:nth-child(2){
@@ -19,43 +51,50 @@
     font-size: 45rpx;
 }
 .top view:nth-child(3){
-    padding-left: 8rpx;
+    padding-left: 10rpx;
     font-size: 30rpx;
-}
-
-.out{
-    box-shadow: 1px 1px 10px 2px #0f544f;
-    position:relative;
-    z-index: 2;
-    top: 200rpx;
+    margin:20rpx 0;
 }
 
 .mid {
+    box-shadow: 1px 1px 10px 2px #0f544f;
+    margin-top: -60rpx;
     border-radius: 25rpx;
-    background-color: cadetblue;
-    height: 300rpx;
+    background-color: #ffffff;
     width: 700rpx;
-}
-
-.mid view:nth-child(1){
-    padding-left: 55rpx;
-    height: 100rpx;
-    line-height: 100rpx;
-}
-.mid view:nth-child(2){
-    
-    height: 100rpx;
+    margin-left: auto;/*水平居中*/
+    margin-right: auto;
     border-top-color: #f1f1f1;
     border-top-style:solid;
+}
 
+.all{/*全选*/
+    padding-left: 55rpx;
+    line-height: 100rpx;
+    height:100rpx;
+    border-bottom: 1rpx solid gray;
 }
 
 .midmid{
     display: flex;
+    flex-direction: column;
 }
+
+.foodlist{
+    display: flex;
+    flex-direction: row;
+}
+
+.foodlist>food{
+    width:80%;
+    margin-bottom:10rpx;
+}
+
+
 .low {
-    margin-top: 50rpx;
+    margin-top: 150rpx;
     background-color: #ffffff;
+    margin-bottom:130rpx;
 }
 .lowview{
     color:black;
@@ -73,26 +112,31 @@
 
 .input {
     height: 75rpx;
-    width: 250rpx;
+    width: 600rpx;
     font-size: 28rpx;
-    text-align:center;
+    text-align:end;
 }
 
 
 .us{
-     height: 130rpx;
+      height: 100rpx;
       display: flex;
-        margin-top: 180rpx;
       width: 100%;
       background-color: #ffffff;
-      line-height: 130rpx;
+      line-height: 100rpx;
       box-sizing: border-box;
       justify-content: space-between;
+      position:fixed;
+      bottom:0;
+      z-index:101 /*提高层级，避免input的placeholder悬浮出来*/
   }
 
  .button{
-     width: 200rpx;
-     height: 130rpx;
-        background-color: #0f544f;
-         line-height: 150rpx;
+     width: 25%;
+     height: 100rpx;
+     background-color: #0f544f;
+     line-height: 100rpx;
+     color:white;
+     display: flex;
+     justify-content: center;
   }

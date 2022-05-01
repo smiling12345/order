@@ -1,6 +1,7 @@
 /* pages/order/order.wxss */
 page{
   background: #F5F5F5;
+  font-size: 31rpx;
 }
 
 
@@ -58,9 +59,9 @@ page{
     flex-direction: row;
     margin: 10rpx 20rpx 10rpx 20rpx;
 }
-.card-img{
+/*.card-img{
   background-color:#75eb4e;
-}
+}*/
 .card-img>image{/*设置图片大小*/
   width: 250rpx;
 }

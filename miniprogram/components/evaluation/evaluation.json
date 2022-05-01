@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "stars":"../stars/stars"
+    "stars2":"../stars2/stars2"
   }
 }

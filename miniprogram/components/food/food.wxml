@@ -8,7 +8,11 @@
       </view>
       <view class="middle">
         <text style="font-size:40rpx;font-weight:bold;color: red;">￥{{price}}</text>
-        <text class="iconfont icon-gouwuchefill" style="font-size:65rpx;color:#105450"></text>
+        <view>
+          <text wx:if="{{num!==0}}" class="iconfont icon-yuanquan_jianshao1" style="font-size:50rpx;color:#105450;margin-right:5rpx;" bindtap="reduce"></text>
+          <text>{{num}}</text>
+          <text class="iconfont icon-yuanquan_tianjia" style="font-size:50rpx;color:#105450;margin-left:5rpx;" bindtap="add"></text>
+        </view>
       </view>
       <stars></stars>
   </view>

@@ -1,4 +1,7 @@
 /* pages/firstPage/firstPage.wxss */
+page{
+    height:100%
+}
 swiper{
     width:100%;
     height:calc(100vw*280/520);
@@ -18,7 +21,6 @@ image{
 .bottom{
     display:flex;
     flex-wrap: wrap;/*不加这个只能在一排*/
-    padding:40rpx 0 0 0;
     margin:0 20rpx 0 20rpx;
     border-style: solid;
     border-radius: 50rpx;
@@ -27,9 +29,12 @@ image{
     border-color: #105450;
 }
 .shitang{
+     display:flex;
+     flex-direction: column;
      width:33.3%;
      height:180rpx;
      text-align:center;/*水平居中*/
+     justify-content: center;/*垂直居中*/
 }
 .ziti{
     margin:10rpx 0 0 0;

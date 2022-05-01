@@ -1,1 +1,34 @@
 /* pages/evaluateDetail/evaluateDetail.wxss */
+.top,.bottom{
+    display:flex;
+    justify-content: space-around;
+}
+
+.left{
+   display:flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+.bottom{
+  margin-top:50rpx;
+}
+.right{
+  margin-top:50rpx;
+}
+.dingbu{
+  height:300rpx;
+  width:95%;
+  border:1rpx solid #105450;
+  border-radius: 30rpx;
+  box-shadow: 10rpx 10rpx 5rpx #105450;
+  margin:40rpx auto;
+  padding-bottom:10rpx;
+}
+
+evaluation{
+  margin-top:5rpx;
+}
+
+
+

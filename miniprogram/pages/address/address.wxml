@@ -17,5 +17,8 @@
   </view>
 
   <!--悬浮按钮-->
-  <button class="xuanfu" size="default" style="font-size:35rpx;background-color: #105450;color: #ffffff;">新增地址</button>
+  <navigator url="../newAddress/newAddress">
+     <button class="xuanfu" size="default" style="font-size:35rpx;background-color: #105450;color: #ffffff;">新增地址</button>
+  </navigator>
+  
 </view>

@@ -1,2 +1,11 @@
 /* components/image-view/image-view.wxss */
-@import '../../style/iconfont.wxss'
+@import '../../style/iconfont.wxss';
+
+.content,.img-view{
+  display: flex;
+  flex-wrap: wrap;/*flex默认不换行，设置了这个会自动换行*/
+}
+
+.img-view{
+  padding:10rpx;
+}

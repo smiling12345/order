@@ -10,7 +10,33 @@ Page({
     //轮播图数组
     list:[],
     //导航数组
-    cateList:[]
+    cateList:[],
+    //餐厅数组
+    canteenList:[
+      {
+        icon:'icon-bianlidian5',
+        name:"荷园"
+      },
+      {
+        icon:'icon-bianlidian6',
+        name:"稻香园"
+      },
+      {
+        icon:'icon-bianlidian',
+        name:"莘园"
+      },
+      {
+        icon:'icon-store',
+        name:"西园"
+      },
+      {
+        icon:'icon-store',
+        name:"芷园"
+      },
+      {
+        icon:'icon-bianlidian4',
+        name:"绿榕园"
+      }]
   },
 
   /**

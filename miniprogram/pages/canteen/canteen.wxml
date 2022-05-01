@@ -6,13 +6,13 @@
    <view class="second">
       <!--评价-->
       <view class="anniu">
-        <button size="mini" type="default" class="pingjia" style='color:#BB9340;width:150rpx;font-size:30rpx'>评价</button>
+        <button size="mini" type="default" class="pingjia {{select==true?'select':''}}" style='color:#BB9340;width:150rpx;font-size:30rpx' bindtap="pingjia">评价</button>
       </view>
       <!--楼号-->
       <view class="zujian">
-        <button size="mini" type="default" class="one" style='color:#fff; background-color: #105450;width:150rpx;font-size:30rpx' bindtap="tabSelect">一楼</button>
-        <button size="mini" type="default" class="two" style='color:#BB9340;width:150rpx;font-size:30rpx' bindtap="tabSelect2">二楼</button>
-        <button size="mini" type="default" class="three" style='color:#BB9340;width:150rpx;font-size:30rpx' bindtap="tabSelect3">三楼</button>
+        <button size="mini" type="default" class="one {{bgcolor=='一楼'?'selected':''}}" style='color:#BB9340; width:150rpx;font-size:30rpx' bindtap="tabSelect">一楼</button>
+        <button size="mini" type="default" class="two {{bgcolor=='二楼'?'selected':''}}" style='color:#BB9340;width:150rpx;font-size:30rpx' bindtap="tabSelect2">二楼</button>
+        <button size="mini" type="default" class="three {{bgcolor=='三楼'?'selected':''}}" style='color:#BB9340;width:150rpx;font-size:30rpx' bindtap="tabSelect3">三楼</button>
       </view>
    </view>
 
@@ -29,22 +29,67 @@
 
        <!--右侧商品内容-->
        <scroll-view scroll-y class="nav_right"> 
-         <view class="{{topx}}">
            <block wx:for="{{rights}}" wx:key="index">
-              <view data-id="{{item._id}}">
-                 <food src="{{item.food_image}}" sale="{{item.food_sales}}" name="{{item.food_name}}"></food>
-              </view>
+                 <food  bindaddNum="addCart" data-item="{{item}}" src="{{item.food_image}}"  sale="{{item.food_sales}}"  price="{{item.food_price}}"  name="{{item.food_name}}" num="{{item.num}}"></food>
            </block>
-         </view>
        </scroll-view>
    </view>
 
    <view class="bottom">
-     <view class="iconfont icon-gouwuche" style="color: white;font-size:100rpx"></view>
-     <view style="font-size:40rpx">配送费</view>
-     <view style="font-size:40rpx">去结算</view>
+     <view class="bottomFirst" bindtap="openMask">
+        <view class="iconfont icon-gouwuche" style="color: white;font-size:100rpx"></view>
+        <view wx:if="{{numall!==0}}" style="margin-bottom: 50rpx;font-size:30rpx;color: white;">{{numall}}</view>
+     </view>
+     <view style="font-size:35rpx;color:#BB9340">另需配送费￥</view>
+     <navigator style="font-size:40rpx;color:white" url="../orderDetails/orderDetails" >去结算</navigator>
   </view>
-   
-  
-   
 </view>
+
+<!--实现蒙层效果-->
+<view class="mask_bg"  wx:if="{{isMask}}" bindtap="closeMask"></view>
+<!--购物车列表-->
+<view class="cart_content" wx:if="{{isMask}}">
+  <view class="cart_top">
+  <view>
+    <text>已选商品</text>
+    <text style="color:red">（打包费￥3）</text>
+  </view>
+   <view>
+     <text class="iconfont icon-shanchu" style="font-size:65rpx"></text>
+     <text>清空购物车</text>
+   </view>
+  </view>
+                                <!--阻止页面滚动条滚动，有点类似阻止冒泡事件
+                                     必须设置高度，否则无法滚动，事件监听高度-->
+  <scroll-view class="cart_food" scroll-y="true" catchtouchmove="true" style="height:{{height?500+'rpx':'auto'}}">
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+  <!--  <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>
+    <view>1</view>-->
+  </scroll-view>
+
+</view>
+

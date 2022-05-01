@@ -1,10 +1,36 @@
 <!--pages/search/search.wxml-->
 <view class="search_row">
-   <input value="{{inputValue}}" bindinput="getSearch" class="inp" placeholder="请输入" bindconfirm='goSearch' confirm-type='search'></input>
+   <input value="{{inputValue}}" bindinput="getSearch" class="inp" placeholder="请输入" bindconfirm='goSearch' confirm-type='search'> </input>
    <view class="iconsTwo" bindtap="goSearch">
      <icon type='search' class='icons' size='65rpx' color="#f0f0f0"></icon>
    </view>      
 </view>
-<view class="search_content">
-     
+
+<view wx:if="{{searchKey===''}}">
+  <view class="hotSearch">
+     <view class="hotSearchTitleView">
+        <view class="hotSearchTitle" style="font-size:30rpx">热门搜索</view>
+        <view class="iconfont icon-yuanquan_guanbi" style="font-size:40rpx"></view>
+     </view>
+     <view class="hotSearchTagView">
+        <view class="hotSearchTag" wx:for="{{hotSearchArr}}" wx:key="index" bindtap='ClickHotSearchItem' data-text='{{item}}'>{{item}}</view>
+     </view>
+  </view>
+
+  <view class="hotSearch">
+    <view class="hotSearchTitleView">
+        <view class="hotSearchTitle" style="font-size:30rpx">历史搜索</view>
+        <view class="iconfont icon-yuanquan_guanbi" style="font-size:40rpx"></view>
+     </view>
+     <view class="hotSearchTagView">
+        <view class="hotSearchTag" wx:for="{{searchHistoryArr}}" wx:key="index" bindtap='ClickHistoryItem' data-text='{{item}}'>{{item}}</view>
+     </view>
+  </view>
+</view>
+
+<view wx:if="{{searchKey!==''}}">
+  <view class="resultCell" wx:for="searchResultArr" wx:key="index" bindtap='ClickResultItem' data-text='{{item}}'>
+    <view class="iconfont icon-sousuo" style="font-size:50rpx;"></view>
+    <view class="resultText">{{searchResultArr[index]}}</view>
+  </view>
 </view>

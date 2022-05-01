@@ -1,13 +1,13 @@
 // pages/search/search.js
 const db=wx.cloud.database()
-let searchKey=''
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+     searchKey:''
   },
   //获取用户输入的内容
   getSearch(e){

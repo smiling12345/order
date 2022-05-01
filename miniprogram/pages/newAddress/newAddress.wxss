@@ -1,6 +1,6 @@
 /* pages/newAddress/newAddress.wxss */
 page{
-  font-size:35rpx;
+  font-size:32rpx;
 }
 .nav{
   margin-top: 50rpx;
@@ -13,55 +13,58 @@ page{
   background-color: #ffffff;
 }
 
-.item{
- display: flex;
- justify-content: space-between;
+.item,.item4,.item3{
  border-bottom: 1rpx solid gainsboro;
  padding:10rpx 0;
+ height:70rpx;
 }
-.item4,.item3{
+
+.left>view,.item4>view,.item2>view,.item3>view{
+  color:#105450;
+  font-weight: 900;
+  font-size: 35rpx;
+}
+.left{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height:70rpx;
+}
+
+.item2,.item3,.item4{
+  align-items: center;
   display: flex;
+  flex-direction: row;
   justify-content: start;
   border-bottom: 1rpx solid gainsboro;
   padding:10rpx 0;
 }
+.item2>button{
+  width:15%;
+}
+.item2>view,.item3>view{
+  width:20%;
+}
+.item4>view{
+    width:25%
+}
+.item2>input{
+  width:38%;
+  text-align: center;/*文本水平居中，注意有placeholder不会水平居中*/
+  height:70rpx;/*垂直居中，设置行高与高相等*/
+  line-height: 70rpx;
+}
 
-.left>view,.biaoqian,.item4>view,.shouhuo>view{
-  color:#105450;
-  font-weight: 900;
+.selected{/*选中先生or女士的样式*/
+    background-color:#105450 !important;
 }
-.left,.item3,.item4{
-  display:flex;
-  flex-direction: row;
-  align-items: center;
+
+/*水平垂直居中*/
+.item3>input,.item4>input{
+  text-align: center;/*文本水平居中，注意有placeholder不会水平居中*/
+  height:70rpx;/*垂直居中，设置行高与高相等*/
+  line-height: 70rpx;
+  width:65%;
 }
-.item2{
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  border-bottom: 1rpx solid gainsboro;
-  padding:10rpx 0;
-}
-.gender{
-  display: flex;
-  flex-direction: end;
-  align-items: center;
-}
-.shouhuo{
-  display: flex;
-  flex-direction: start;
-  align-items: center;
-}
-.icon{
-  display: flex;
-  align-items: center;
-}
-.wenzi{
-  font-size: 33rpx;/*设置字体大小实现自适应*/
-  color:#A4ADB3;
-}
-.bottom{
-  display: flex;
-  justify-content: center;
-}
+

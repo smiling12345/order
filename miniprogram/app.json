@@ -1,25 +1,24 @@
 {
-  "pages": [
-    "pages/canteen/canteen",
-    "pages/ceshi/ceshi",
-    "pages/evaluateDetail/evaluateDetail",
-    "pages/orderDetails/orderDetails",
-    "pages/personal/personal",
-    "pages/evaluate/evaluate",
-    "pages/user-login/user-login",
-    "pages/order/order",
-    "pages/newAddress/newAddress",
-    "pages/address/address",
-    "pages/firstPage/firstPage",
-    "pages/first/first",
-    "pages/search/search",
+  "pages": ["pages/firstPage/firstPage",
+    "pages/order/order","pages/orderDetails/orderDetails",
+     "pages/evaluate/evaluate","pages/personal/personal",
+    "pages/address/address","pages/canteen/canteen",
+     "pages/evaluateDetail/evaluateDetail",
+     "pages/newAddress/newAddress",
+     "pages/ceshi/ceshi","pages/first/first",
     "pages/index/index",
-    "pages/request/request",
+    "pages/deliveryPage/deliveryPage",
+    
+    "pages/search/search",
     "pages/explain/explain",
+    "pages/user-login/user-login",
+    
     "pages/payment/payment",
+    
+     
+    "pages/request/request",
     "pages/modifyAddress/modifyAddress",
-    "pages/adminPage/adminPage",
-    "pages/deliveryPage/deliveryPage"
+    "pages/adminPage/adminPage"
   ],
   "window": {
     "backgroundColor": "#105450",

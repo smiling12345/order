@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "stars":"../../components/stars/stars",
+    "stars2":"../../components/stars2/stars2",
     "newbutton":"../../components/newbutton/newbutton",
     "evaluation":"../../components/evaluation/evaluation"
   }

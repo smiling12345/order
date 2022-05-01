@@ -7,7 +7,8 @@ Component({
       name:{
         type:String,
         value:''
-      }
+      },
+      selected:false
   },
 
   /**

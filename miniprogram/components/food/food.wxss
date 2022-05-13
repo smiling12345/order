@@ -1,5 +1,8 @@
 /* components/food/food.wxss */
 @import '../../style/iconfont.wxss';
+page{
+  font-size:34rpx;
+}
 .container{
   border: 1rpx solid gray;
   border-top-right-radius: 30rpx;
@@ -34,4 +37,23 @@
 .middle>view{
   display: flex;
   align-items: center;
+}
+
+.empty{/*选择在售还是售罄后得到的样式*/
+   color:#105450;
+   text-decoration:underline;
+}
+
+.material{
+  overflow: hidden;/*超出部分隐藏*/
+  text-overflow: ellipsis;
+  white-space: nowrap;/*强制放在一行，不换行*/
+  width:300rpx;
+  margin-right:20rpx;
+}
+.name{
+  overflow: hidden;/*超出部分隐藏*/
+  text-overflow: ellipsis;
+  white-space: nowrap;/*强制放在一行，不换行*/
+  width:170rpx;
 }

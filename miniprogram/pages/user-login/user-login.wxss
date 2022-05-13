@@ -1,7 +1,11 @@
 /* pages/user-login/user-login.wxss */
+page{
+  background:#3aafa7
+}
+
 button{
   border-radius:30rpx !important;
   color: aliceblue !important;
   background-color: #105450 !important;
-  margin:30rpx;
+  margin:80rpx auto 0 auto;
 }

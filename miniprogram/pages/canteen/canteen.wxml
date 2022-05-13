@@ -6,7 +6,7 @@
    <view class="second">
       <!--评价-->
       <view class="anniu">
-        <button size="mini" type="default" class="pingjia {{select==true?'select':''}}" style='color:#BB9340;width:150rpx;font-size:30rpx' bindtap="pingjia">评价</button>
+        <button size="mini" type="default" class="pingjia"  hover-class="button-hover" bindtap="pingjia" data-name="{{name}}">评价</button>
       </view>
       <!--楼号-->
       <view class="zujian">
@@ -41,7 +41,7 @@
         <view wx:if="{{numall!==0}}" style="margin-bottom: 50rpx;font-size:30rpx;color: white;">{{numall}}</view>
      </view>
      <view style="font-size:35rpx;color:#BB9340">另需配送费￥</view>
-     <navigator style="font-size:40rpx;color:white" url="../orderDetails/orderDetails" >去结算</navigator>
+     <navigator style="font-size:40rpx;color:white" url="../orderDetails/orderDetails?name={{name}}" >去结算</navigator>
   </view>
 </view>
 

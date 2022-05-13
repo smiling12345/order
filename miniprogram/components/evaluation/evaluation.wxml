@@ -18,9 +18,14 @@
     </view>
   </view>
 
-  <view class="bottom">
+  <view class="bottom" wx:if="{{select=='显示评论'}}">
      <view class="reply">商家回复：</view>
      <view class="reply2" style="font-size:33rpx">感谢你的支持感谢你的支持感谢你的支持感谢你的支持感谢你的支持6788789676565644443</view>
+  </view>
+
+  <view class="bottom2" wx:if="{{select=='商家'}}" style="display: flex;justify-content: flex-start;">
+     <view class="reply">商家回复：</view>
+     <input style="border:1rpx solid F5F5F5;border-radius:10rpx;width:600rpx;background-color: #F5F5F5;"></input>
   </view>
 
 </view>

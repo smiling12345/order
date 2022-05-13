@@ -93,17 +93,20 @@ preserve(e){//点击保存后若手机号校验成功则弹出保存成功，且
     })
     return false
   }else{
-     var arr=wx.getStorage('dizhi')||[]
-     if(arr==[]){
-      arr[0].push(this.data.address)
-      arr[0].push(this.data.phone)
+     let arrayList=wx.getStorageSync('dizhi')||[]
+     console.log(arrayList)
+     if(arrayList.length==0){//注意不能用arrayList===[]来判断，此时已经是两个对象
+       let arr={address:this.data.address,phone:this.data.phone}
+       arrayList.push(arr)
+       console.log(arrayList)
      }else{
-       let len=arr.length
+      // let len=arr.length
       // arr[len].push(this.data.address)
       // arr[len].push(this.data.phone)
+      console.log('已有数组')
      }
      
-     console.log(arr)
+     console.log(arrayList)
   }
 
 },

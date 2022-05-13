@@ -1,4 +1,9 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "newbutton":"../../components/newbutton/newbutton",
+    "riderOrders":"../../components/riderOrders/riderOrders",
+    "evaluation":"../../components/evaluation/evaluation",
+    "food":"../../components/food/food"
+  },
   "navigationBarTitleText":"管理人员"
 }

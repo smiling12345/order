@@ -15,6 +15,10 @@ Component({
       image:{//接收页面传来的图片fileid
          type:Array,
          value:[]
+      },
+      select:{
+        type:String,
+        value:'显示评论'//默认是显示评论 若为商家则是输入框形式
       }
   },
 

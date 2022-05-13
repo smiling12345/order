@@ -3,17 +3,25 @@
   <image class="photo" src='{{src}}'></image>
   <view class="right">
       <view class="top">
-        <text>{{name}}</text>
-        <text>月售{{sale}}</text>
+        <text class="name">{{name}}</text>
+        <text wx:if="{{show=='用户'}}">月售{{sale}}</text>
+        <text wx:if="{{show=='食堂'}}" style="color: #C19946;">编辑<text  class="iconfont icon-bianjishuru" style="font-size: 40rpx;"></text></text>
+        
       </view>
       <view class="middle">
         <text style="font-size:40rpx;font-weight:bold;color: red;">￥{{price}}</text>
         <view>
           <text wx:if="{{num!==0}}" class="iconfont icon-yuanquan_jianshao1" style="font-size:50rpx;color:#105450;margin-right:5rpx;" bindtap="reduce"></text>
-          <text>{{num}}</text>
-          <text class="iconfont icon-yuanquan_tianjia" style="font-size:50rpx;color:#105450;margin-left:5rpx;" bindtap="add"></text>
+          <text wx:if="{{show=='用户'}}">{{num}}</text>
+          <text wx:if="{{show=='用户'}}" class="iconfont icon-yuanquan_tianjia" style="font-size:50rpx;color:#105450;margin-left:5rpx;" bindtap="add"></text>
+          <text wx:if="{{show=='食堂'}}" style="color: #C19946;">删除<text  class="iconfont icon-shanchu1" style="font-size: 40rpx;"></text></text>
         </view>
       </view>
-      <stars></stars>
+      <stars wx:if="{{show=='用户'}}"></stars>
+      <view wx:if="{{show=='食堂'}}" style="margin-bottom: 30rpx;display: flex;justify-content: flex-end;">
+         <text class="material" >主料：{{material}}</text>
+         <text class="{{empty=='在售'?'empty':''}}" catchtap="saleLing" style="margin-right:20rpx">在售</text>
+         <text class="{{empty=='售罄'?'empty':''}}" catchtap="saleEmpty" style="margin-right:0">售罄</text>
+      </view>
   </view>
 </view>

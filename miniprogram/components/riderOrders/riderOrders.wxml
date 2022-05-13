@@ -1,0 +1,42 @@
+    <!--components/riderOrders/riderOrders.wxml-->
+<view class="top0">
+    <view class="top2">
+        <view style="color: rgba(148, 145, 134, 0.74);">订单号</view>
+        <view>{{orderNum}}</view>
+        <view style="color:#0D8CD2">复制订单号</view>
+    </view>
+    <view class="top2">
+        <view style="color: rgba(148, 145, 134, 0.74);">收货人</view>
+        <view>{{person}}</view>
+        <view> 电话: 13525638940</view>
+    </view>
+
+    <view class="top4">
+        <view style="color: rgba(148, 145, 134, 0.74);">地址</view>
+        <view class="detail">泰山区10栋楼下</view>
+    </view>
+
+    <view  class="top3" style="border-bottom: 1rpx solid gray;padding:20rpx 0;">
+        <view style="color: rgba(148, 145, 134, 0.74);">商品</view>
+          <view class="hang">
+             <view>糖醋小排</view>
+             <view>x1</view>
+             <view>1楼2号</view>
+          </view>  
+          <view class="bottom" style="display:flex;justify-content: flex-end;margin-top: 25rpx;">
+             <text style="margin-right:20rpx">配送费:<text style="color:red;">3.5元</text></text>
+             <text style="margin-right:20rpx">打包费:<text style="color:red;">2元</text></text> 
+             <text>共<text style="color:red;">12元</text></text>
+          </view>
+    </view>
+
+    <view  class="top4">
+        <view style="color: rgba(148, 145, 134, 0.74);">备注 </view>
+        <view class="detail"> 无</view>
+    </view>
+    <view style="display: flex;justify-content: space-around;margin: 20rpx 0;">
+      <newbutton name="接单" bindtap="accept" selected="{{selected=='接单'}}"></newbutton>
+      <newbutton name="取消接单" bindtap="unaccept" selected="{{selected=='取消接单'}}"></newbutton>
+    </view>
+    
+</view>

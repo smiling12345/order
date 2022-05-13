@@ -1,6 +1,7 @@
 // pages/canteen/canteen.js
 const db=wx.cloud.database()
 const $=db.command.aggregate
+const _ = db.command
 
 Page({
   /**
@@ -19,7 +20,8 @@ Page({
       numall:0,//加入购物车的商品件数
       isMask:false,
       bgcolor:'一楼',
-      select:false
+      select:false,
+      name:''
 
   },
 
@@ -27,7 +29,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
+    wx.setNavigationBarTitle({//修改标题栏
+      title: options.name,
+      success: function(res) {
+        console.log('修改成功',res)
+      }
+    })
+
+    this.setData({
+      name:options.name
+    })
+    //显示{name:'X园'}，用其进行数据库数据选取
+    console.log(this.data.name)
     db.collection('food').aggregate()
+    .match({
+      canteen:_.eq(this.data.name)
+    })
     .group({
          _id:'$louhao'   //依据楼号进行分组
      })
@@ -50,7 +68,8 @@ Page({
     let louhao=this.data.tabs[this.data.tabCur]._id
     db.collection('food').aggregate()
       .match({
-        louhao
+        louhao,
+        canteen:_.eq(this.data.name)
       })
       .group({
          _id:'$dishes'
@@ -73,7 +92,8 @@ Page({
      db.collection('food')
       .where({
         louhao,
-        dishes
+        dishes,
+        canteen:_.eq(this.data.name)
       }).get()
       .then(res=>{
         console.log(louhao+dishes+' 菜品',res)
@@ -136,12 +156,13 @@ Page({
       this.food()
     }) 
   },
-  pingjia(){
+  pingjia(e){
+      console.log(e)
       this.setData({
         select:true
       })
       wx.navigateTo({
-        url:"../evaluateDetail/evaluateDetail"
+        url:"../evaluateDetail/evaluateDetail?name="+e.currentTarget.dataset.name
       })
   },
 
@@ -157,7 +178,7 @@ Page({
     e.currentTarget.dataset.item.type=e.detail.type;//对购物车商品数量进行加或减的判断
     this.data.goods=e.currentTarget.dataset.item//放入本地数据
     //获取购物车的缓存数组(没有数据，则赋予一个空数组)
-     var arr=wx.getStorageSync('cart')||[];
+     var arr=wx.getStorageSync(this.data.name)||[];//'cart'
      console.log(arr)
      if(arr.length>0){
        //遍历购物车数组
@@ -172,7 +193,7 @@ Page({
              
          //把购物车数据存入缓存，直接更新当前数组
          try{
-           wx.setStorageSync('cart',arr)
+           wx.setStorageSync(this.data.name,arr)
            this.countall();
          }catch(e){
            console.log(e)
@@ -191,7 +212,7 @@ Page({
      }
      //最后，把购物车数据存放入缓存
      try{
-       wx.setStorageSync('cart',arr)   
+       wx.setStorageSync(this.data.name,arr)   
        this.countall();
        return
      }catch(e){
@@ -202,7 +223,8 @@ Page({
  //将缓存数据放入页面，渲染相关数据
  getData(){
    var that=this
-    var arr=wx.getStorageSync('cart')
+    var arr=wx.getStorageSync(this.data.name)
+    console.log(arr)
     for(var i in this.data.rights){
       for(var j in arr){
         if(this.data.rights[i]._id===arr[j]._id){
@@ -216,7 +238,7 @@ Page({
  },
 
  countall(){
-     var arr=wx.getStorageSync('cart')
+     var arr=wx.getStorageSync(this.data.name)
      let data=0
      for(var i in arr){
        data+=arr[i].count

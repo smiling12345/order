@@ -16,9 +16,11 @@ Page({
     })
   },
   //跳转评价页面
- pingjia(){
+ pingjia(e){
+   console.log(e)
+   console.log(e.currentTarget.dataset.item._id)//获得orderDetail里的商品唯一id
     wx.navigateTo({
-      url: '../evaluate/evaluate',
+      url: '../evaluate/evaluate?Id='+e.currentTarget.dataset.item._id
     })
  },
 

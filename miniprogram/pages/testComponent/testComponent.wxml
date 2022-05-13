@@ -1,0 +1,30 @@
+    <view class="kefu" style="display:flex;flex-direction: column;position: fixed;z-index: 1000;color: #105450;right:0">
+        <text class="iconfont icon-kefu" style="font-size: 80rpx;text-align: center;"></text>
+        <text style="color:#0D8CD2;font-size: 28rpx;text-align: center;">联系客服</text>
+    </view>
+
+    <view class="top">
+        <view class="left" catchtap="newOrder">
+            <text class="iconfont icon-dingdanguanli" style="font-size: 100rpx;color:#105450"></text>
+            <view class="but" style="color: #225648;font-weight: bold;font-size:34rpx"> 新订单</view>
+        </view>
+        <view class="left" catchtap="alreadyOrder">
+            <text class="iconfont icon-complete-fill" style="font-size: 100rpx;color:#105450">
+            </text>
+            <view class="but" style="color: #225648;font-weight: bold;font-size:34rpx">已完成</view>
+        </view>
+    </view>
+
+    <view wx:for="{{component}}" class="rider">
+             <rider orderNum="{{item.orderNum}}" person="{{item.person}}" phone="{{item.phone}}"></rider>
+    </view>
+
+
+   
+
+
+
+
+
+
+

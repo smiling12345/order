@@ -1,0 +1,38 @@
+/* components/riderOrders/riderOrders.wxss */
+page{
+    font-size:32rpx;
+}
+.top0{
+    border-radius: 50rpx;
+    border:1rpx solid #105450;
+    background-color: #ffffff;
+    padding:0 30rpx;
+}
+
+.top2{
+    display: flex;
+    width:100%;
+    justify-content: space-between;/*水平布局*/
+    height:90rpx;/*垂直居中*/
+    line-height: 90rpx;
+    text-align:center;/*水平居中*/
+    border-bottom: 1rpx solid gray;
+}
+
+.top4{
+    display: flex;
+    justify-content: flex-start;
+    height:90rpx;
+    line-height: 90rpx;
+    text-align: center;
+    border-bottom: 1rpx solid gray;
+}
+
+.detail{
+    margin-left:120rpx;
+}
+.hang{
+    display:flex;
+    justify-content: space-around;
+    margin-left: 50rpx;
+}

@@ -10,7 +10,7 @@
     <!--未渲染-->
     <view class="content" wx:for="{{list}}" data-item="{{item}}">
         <view class="bianhao">
-            <view class="canteen">芷园</view>
+            <view class="canteen">{{item.canteen}}</view>
             <view>2021.06.16</view>
         </view>
                                               <!--防止双层循环item冲突，给item重命名-->
@@ -27,7 +27,7 @@
                </view>
                <view class="card-button">
                   <button class="again" size="mini">再来一单</button>
-                  <button class="evaluate" size="mini" bindtap="pingjia">评价</button>
+                  <button wx:if="{{foodItem.foodsId.status=='待接单'}}" class="evaluate" size="mini" bindtap="pingjia" data-item="{{foodItem}}">评价</button>
                </view>
            </view>
         </view>

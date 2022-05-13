@@ -14,13 +14,25 @@ Page({
      taste:0,
      translate:0,
      pack:0,
-     average:0
+     average:0,
+     name:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      console.log(options)
+      wx.setNavigationBarTitle({//修改标题栏
+        title: options.name+'-评价',
+        success: function(res) {
+          console.log('修改成功',res)
+        }
+      })
+
+      this.setData({
+        name:options.name
+      })
       this.allData()
   },
   //判断选择的是全部还是好评、差评、有图等来渲染页面
@@ -50,7 +62,9 @@ Page({
   },
   //获取全部评论数据库的数据
   allData(){
-     db.collection('comment').get()
+     db.collection('comment').where({
+       canteen:_.eq(this.data.name)
+     }).get()
      .then(res=>{
        console.log('获取数据库成功',res.data)
        this.setData({
@@ -77,6 +91,7 @@ Page({
        pack+=countList[i].pack
        average+=countList[i].average
     }
+    console.log(countList)
     taste=taste/countList.length
     translate=translate/countList.length
     pack=pack/countList.length
@@ -94,6 +109,7 @@ Page({
   goodData(){
     db.collection('comment')
     .where({
+      canteen:_.eq(this.data.name),
       dianzan:_.eq(true)
     }).get()
     .then(res=>{
@@ -111,6 +127,7 @@ Page({
   badData(){
     db.collection('comment')
     .where({
+      canteen:_.eq(this.data.name),
       dianzan:_.eq(false)
     }).get()
     .then(res=>{
@@ -128,6 +145,7 @@ Page({
   hasImage(){
     db.collection('comment')
     .where({
+      canteen:_.eq(this.data.name),
       fileId:_.neq([])
     }).get()
     .then(res=>{

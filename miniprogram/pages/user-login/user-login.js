@@ -44,6 +44,20 @@ Page({
     })
   },
 
+  //跳转至管理员登陆页面
+  adminLogin(){
+    wx.navigateTo({
+      url: '../administrator/administrator',
+    })
+  },
+  //跳转至骑手登陆界面
+  riderLogin(){
+    wx.navigateTo({
+      url: '../rider/rider',
+    })
+  },
+
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,6 +1,6 @@
 // pages/evaluate/evaluate.js 
 var db=wx.cloud.database();
-let ID=''
+const _=db.command
 let pinglun=""
 let taste=0
 let translate=0
@@ -17,15 +17,19 @@ Page({
       fileList:[],
       temporary:[], //存放选择的图片的临时数组,有fileid，传给数据库使用
       dianzan:true,
-      isClicked:false
+      isClicked:false,
+      ID:''//orderDetail中的唯一id
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-     ID=options.id
-     console.log("接收的id",ID)
+     console.log(options)
+     console.log(options.Id)
+     this.setData({
+       ID:options.Id
+     })
   },
   //接收星星的值
   starsnumber(e){
@@ -77,10 +81,13 @@ Page({
    console.log(this.data.fileList)
   },
   submit(e){
-       if(this.data.isClicked==false){
+       if(this.data.isClicked==false){//控制只提交一次
           this.data.isClicked=true
           let fileList=this.data.fileList
          count=fileList.length
+         if(fileList.length==0){
+          this.uploadInformation()
+         }
           for(let i=0;i<fileList.length;i++){
              this.uploadImg(fileList[i])
            }
@@ -104,7 +111,7 @@ Page({
              })
              count=count-1
              console.log(count)
-             if(count==0){
+             if(count==0){//等图片上传完再上传信息
                 this.uploadInformation()
              }
              console.log(that.data.temporary)
@@ -120,6 +127,19 @@ Page({
    },
    //上传信息到数据库中
    uploadInformation(){
+      db.collection('orderDetail').doc(this.data.ID).update({
+        data:{
+          ['foodsId.'+'status']:'已完成'
+        }
+      })
+      .then(res=>{
+        console.log('修改订单状态成功',res)
+      })
+      .catch(res=>{
+        console.log('修改订单状态失败',res)
+      })
+
+
       db.collection('comment').add({
           data:{
              taste:taste,
@@ -128,7 +148,8 @@ Page({
              average:average,
              fileId:this.data.temporary,
              dianzan:this.data.dianzan,
-             user_comment:pinglun
+             user_comment:pinglun,
+             orderDetailID:this.data.ID
           }
       })
       .then(res=>{

@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "stars":"../stars/stars"
+    "stars":"../stars/stars",
+    "newbutton":"../newbutton/newbutton"
   }
 }

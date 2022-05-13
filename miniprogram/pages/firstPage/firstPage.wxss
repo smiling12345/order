@@ -21,7 +21,7 @@ image{
 .bottom{
     display:flex;
     flex-wrap: wrap;/*不加这个只能在一排*/
-    margin:0 20rpx 0 20rpx;
+    margin:40rpx 20rpx 0 20rpx;
     border-style: solid;
     border-radius: 50rpx;
     border-width:0rpx;

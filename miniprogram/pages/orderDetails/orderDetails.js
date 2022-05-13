@@ -29,7 +29,8 @@ Page({
     bgcolor:'配送',
     arrlist:[],//存放加入购物车的菜品数据
     arrSelected:[], //存储选中的数据，对象数组，以便支付时将数据存储到数据库
-    select_all:false
+    select_all:false,
+    name:''//标志是哪个园
   },
 
   bindPickerChange: function(e) {//送达时间
@@ -187,6 +188,7 @@ uploadOrder(){
       money:that.data.money,//配送费
       packMoney:that.data.packMoney,//打包费
       totalMoney:that.data.totalmoney,//实付价格，包括配送费和打包费
+      canteen:that.data.name
     },
   })
   .then(res=>{
@@ -229,7 +231,7 @@ addCart(e){
   console.log(e)
   //点击拿到要添加入购物车的商品
    //获取购物车的缓存数组
-    var arr=wx.getStorageSync('cart');
+    var arr=wx.getStorageSync(this.data.name);
     console.log(arr)
     if(arr.length>0){
       //遍历购物车数组
@@ -243,7 +245,7 @@ addCart(e){
          }
         //把购物车数据存入缓存，直接更新当前数组
         try{
-          wx.setStorageSync('cart',arr)
+          wx.setStorageSync(this.data.name,arr)
           this.setData({
             arrlist:arr
           })
@@ -260,9 +262,13 @@ addCart(e){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      console.log(options)
+      this.setData({
+        name:options.name
+      })
       let that=this
       try{
-         var value=wx.getStorageSync('cart')
+         var value=wx.getStorageSync(this.data.name)
          if(value){
            that.setData({
                arrlist:value

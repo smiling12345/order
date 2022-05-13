@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3166670 */
-  src: url('//at.alicdn.com/t/font_3166670_5l7l5lsjgig.woff2?t=1651427826556') format('woff2'),
-       url('//at.alicdn.com/t/font_3166670_5l7l5lsjgig.woff?t=1651427826556') format('woff'),
-       url('//at.alicdn.com/t/font_3166670_5l7l5lsjgig.ttf?t=1651427826556') format('truetype');
+  src: url('//at.alicdn.com/t/font_3166670_7rqzmf4p38j.woff2?t=1651478650968') format('woff2'),
+       url('//at.alicdn.com/t/font_3166670_7rqzmf4p38j.woff?t=1651478650968') format('woff'),
+       url('//at.alicdn.com/t/font_3166670_7rqzmf4p38j.ttf?t=1651478650968') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,18 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shanchu1:before {
+  content: "\e612";
+}
+
+.icon-dingdanguanli2:before {
+  content: "\e611";
+}
+
+.icon-dingdanguanli1:before {
+  content: "\ea61";
 }
 
 .icon-bianlidian4:before {
@@ -324,3 +336,4 @@
 .icon-danchaofan:before {
   content: "\faa4";
 }
+

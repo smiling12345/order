@@ -1,42 +1,82 @@
     <!--components/riderOrders/riderOrders.wxml-->
 <view class="top0">
     <view class="top2">
-        <view style="color: rgba(148, 145, 134, 0.74);">订单号</view>
-        <view>{{orderNum}}</view>
-        <view style="color:#0D8CD2">复制订单号</view>
+        <view class="first1">订单号</view>
+        <view class="second1">{{orders.orderId}}</view>
+        <view class="third1">复制订单号</view>
     </view>
-    <view class="top2">
-        <view style="color: rgba(148, 145, 134, 0.74);">收货人</view>
-        <view>{{person}}</view>
-        <view> 电话: 13525638940</view>
+    <view class="top4">
+        <view class="left1">下单时间</view>
+        <view class="detail">{{orders.children[0].timestamp}}</view>
+    </view>
+    <view class="top4">
+        <view class="left1">收货人</view>
+        <view class="detail">{{orders.children[0].name+orders.children[0].gender}}</view>
+    </view>
+    <view class="top4" >
+        <view class="left1">商品窗口</view>
+        <view class="detail" >{{orders.children[0].dishes}}</view>
     </view>
 
     <view class="top4">
-        <view style="color: rgba(148, 145, 134, 0.74);">地址</view>
-        <view class="detail">泰山区10栋楼下</view>
+        <view class="left1">配送方式</view>
+        <view class="detail">{{orders.children[0].bgcolor}}</view>
     </view>
 
-    <view  class="top3" style="border-bottom: 1rpx solid gray;padding:20rpx 0;">
-        <view style="color: rgba(148, 145, 134, 0.74);">商品</view>
-          <view class="hang">
-             <view>糖醋小排</view>
-             <view>x1</view>
-             <view>1楼2号</view>
+    <view class="top4">
+        <view class="left1">地址</view>
+        <view class="detail" wx:if="{{orders.children[0].bgcolor=='配送'}}">{{orders.children[0].address}}</view>
+        <view class="detail" wx:elif="{{orders.children[0].bgcolor=='自提'}}">商家打包好，等待骑手来取</view>
+        <view class="detail" wx:else>等待用户取餐，商家无需打包菜品</view>
+    </view>
+
+    <view  class="top3">
+          <view class="left1">商品</view>
+          <view class="hang" wx:for="{{orders.children}}" wx:key="id">
+             <view>{{item.food_name}}</view>
+             <view>x{{item.count}}</view>
+             <view>￥{{item.food_price}}</view>
           </view>  
-          <view class="bottom" style="display:flex;justify-content: flex-end;margin-top: 25rpx;">
-             <text style="margin-right:20rpx">配送费:<text style="color:red;">3.5元</text></text>
-             <text style="margin-right:20rpx">打包费:<text style="color:red;">2元</text></text> 
-             <text>共<text style="color:red;">12元</text></text>
-          </view>
     </view>
 
     <view  class="top4">
-        <view style="color: rgba(148, 145, 134, 0.74);">备注 </view>
-        <view class="detail"> 无</view>
+        <view class="left1">备注 </view>
+        <view class="detail"> {{orders.children[0].remark}}</view>
     </view>
-    <view style="display: flex;justify-content: space-around;margin: 20rpx 0;">
-      <newbutton name="接单" bindtap="accept" selected="{{selected=='接单'}}"></newbutton>
-      <newbutton name="取消接单" bindtap="unaccept" selected="{{selected=='取消接单'}}"></newbutton>
+    <view class="orders" >
+       <view wx:if="{{orders.children[0].status=='待接单'&&user=='商家'}}">
+         <newbutton  name="接单" bindtap="accept" data-index="{{orders.children}}" selected="{{selected=='接单'}}" unabled="{{unabled}}" ></newbutton>
+         <newbutton  name="取消接单" bindtap="unaccept" data-index="{{orders.children}}" selected="{{selected=='取消接单'}}" unabled="{{unabled}}" ></newbutton>
+       </view>
+       <view wx:if="{{orders.children[0].status=='商家已接单'&&user=='商家'}}">
+          <!--data-index将信息传回方法中-->
+         <newbutton name="制作完成" bindtap="accept" data-index="{{orders.children}}" selected="{{selected=='接单'}}" unabled="{{unabled}}"></newbutton>
+         <newbutton name="取消接单" bindtap="unaccept" data-index="{{orders.children}}" selected="{{selected=='取消接单'}}" unabled="{{unabled}}"></newbutton>
+       </view>
+       <view wx:if="{{orders.children[0].status=='菜品制作完成'&&user=='商家'}}">
+           菜品制作完成
+        </view>
+        <view wx:if="{{orders.children[0].status=='骑手已接单'&&user=='商家'}}">
+           <view>骑手{{orders.children[0].riderName}}已接单</view>
+           <view>联系电话是:{{orders.children[0].riderPhone}}</view>
+        </view>
+        <view wx:if="{{orders.children[0].status=='用户已取餐'&&user=='商家'}}">
+           用户已取餐
+        </view>
+        
+       <view wx:if="{{orders.children[0].status=='菜品制作完成'&&user=='骑手'}}">
+          <newbutton  name="接单" bindtap="accept" data-index="{{orders.children}}" selected="{{selected=='接单'}}" unabled="{{unabled}}" ></newbutton>
+        </view>
+        <view wx:if="{{orders.children[0].status=='骑手已接单'&&user=='骑手'}}">
+          <newbutton  name="已送达" bindtap="accept" data-index="{{orders.children}}" selected="{{selected=='接单'}}" unabled="{{unabled}}" ></newbutton>
+        </view>
+        <view wx:if="{{orders.children[0].status=='骑手已送达目的地'&&user=='骑手'}}">
+           已送达目的地
+        </view>
+        <view wx:if="{{orders.children[0].status=='用户已取餐'&&user=='骑手'}}">
+           用户已取餐
+        </view>
+
     </view>
     
 </view>

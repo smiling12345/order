@@ -1,0 +1,11 @@
+<!--pages/personLogin/personLogin.wxml-->
+<button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+  <image class="avatar" src="{{avatarUrl}}"></image>
+</button> 
+<form catchsubmit="formSubmit">
+   <!--使用form为input内表单提交时，必须要给input加上name!!!!-->
+   <!--bindinput不是必要的但是会报警告，因此放一个空函数-->
+  <input name="input" type="nickname" bindinput="fakeCallback" class="weui-input" placeholder="请输入昵称"/>
+  <button type="primary" style="margin-top: 40rpx;margin-bottom: 20rpx;" formType="submit">提交</button>
+</form>
+

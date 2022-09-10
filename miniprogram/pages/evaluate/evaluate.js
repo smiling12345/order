@@ -1,5 +1,6 @@
 // pages/evaluate/evaluate.js 
 var db=wx.cloud.database();
+const time = require("../utils/utils.js");//引入时间戳转换为日期的js文件
 const _=db.command
 let pinglun=""
 let taste=0
@@ -18,7 +19,11 @@ Page({
       temporary:[], //存放选择的图片的临时数组,有fileid，传给数据库使用
       dianzan:true,
       isClicked:false,
-      ID:''//orderDetail中的唯一id
+      ID:'',//orderDetail中的唯一id
+      canteen:'',
+      louhao:'',
+      foodname:'',
+      dishes:''
   },
 
   /**
@@ -28,7 +33,11 @@ Page({
      console.log(options)
      console.log(options.Id)
      this.setData({
-       ID:options.Id
+       ID:options.Id,
+       canteen:options.canteen,
+       louhao:options.louhao,
+       foodname:options.foodname,
+       dishes:options.dishes
      })
   },
   //接收星星的值
@@ -46,9 +55,10 @@ Page({
     console.log(taste) 
     console.log(translate)
     console.log(pack)
-    average=(taste+translate+pack)/3
-    average=average.toFixed()
-    console.log(average)
+    average=(taste+translate+pack)/3//string类型，存入数据库时需要改变
+    average=parseInt(average.toFixed())
+    console.log(typeof(average))
+    
   },
   //接收推荐还是不推荐
   tuijian(){
@@ -127,9 +137,17 @@ Page({
    },
    //上传信息到数据库中
    uploadInformation(){
+     console.log(this.data.dishes)
+
+     console.log(this.data.ID)
+     var timestamp=Date.parse(new Date())
+     console.log(timestamp)//将日期存入数据库
+     let timeStamp=time.formatTime(timestamp, 'Y/M/D h:m:s')
+      
+
       db.collection('orderDetail').doc(this.data.ID).update({
         data:{
-          ['foodsId.'+'status']:'已完成'
+          ['status']:'已评价'
         }
       })
       .then(res=>{
@@ -138,8 +156,7 @@ Page({
       .catch(res=>{
         console.log('修改订单状态失败',res)
       })
-
-
+      
       db.collection('comment').add({
           data:{
              taste:taste,
@@ -149,7 +166,13 @@ Page({
              fileId:this.data.temporary,
              dianzan:this.data.dianzan,
              user_comment:pinglun,
-             orderDetailID:this.data.ID
+             orderDetailID:this.data.ID,
+             timestamp:timeStamp,
+             canteen:this.data.canteen,
+             louhao:this.data.louhao,
+             foodname:this.data.foodname,
+             dishes:this.data.dishes,
+             adminComment:''//先放置商家回复评论的空数据，后续会进行更新
           }
       })
       .then(res=>{

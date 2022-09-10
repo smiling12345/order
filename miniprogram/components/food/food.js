@@ -28,7 +28,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-      
+      showModel:false,
   },
 
   /**
@@ -76,7 +76,22 @@ Component({
       this.setData({
         empty:'售罄'
       })
-    }
-      
+    },
+
+    //弹出窗口
+    dialog(){
+       this.setData({
+         showModel:true,
+       })
+
+       this.triggerEvent('maskShow',{showModel:true})
+    },
+
+    guanbiEvent(e){//关闭弹窗
+       this.setData({
+         showModel:false
+       })
+    },
+ 
   }
 })

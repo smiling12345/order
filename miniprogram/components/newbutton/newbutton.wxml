@@ -1,2 +1,3 @@
 <!--components/newbutton/newbutton.wxml-->
-<button class="again {{selected==true?'select':''}}" size="mini">{{name}}</button>
+<!--disabled属性控制是否禁用-->
+<button class="again {{selected==true?'select':''}}" size="mini" disabled="{{unabled}}">{{name}}</button>

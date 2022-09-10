@@ -18,10 +18,16 @@ Page({
         
       },
       numall:0,//加入购物车的商品件数
-      isMask:false,
+      showModel:false,
       bgcolor:'一楼',
       select:false,
       name:''//餐厅的名字，选择存入哪个餐厅的本地存储
+  },
+
+  searchTo(){
+    wx.navigateTo({
+      url:"/pages/search/search?canteen="+this.data.name
+    })
   },
 
   /**
@@ -29,37 +35,39 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
+    
+    
     wx.setNavigationBarTitle({//修改标题栏
-      title: options.name,
+      title: options.canteen,
       success: function(res) {
         console.log('修改成功',res)
       }
     })
 
     this.setData({
-      name:options.name
+      name:options.canteen,
     })
-    //显示{name:'X园'}，用其进行数据库数据选取
-    console.log(this.data.name)
-    db.collection('food').aggregate()
-    .match({
-      canteen:_.eq(this.data.name)
-    })
-    .group({
-         _id:'$louhao'   //依据楼号进行分组
-     })
-     .end()
-      .then(res=>{   //异步 暂缓执行
-        console.log('楼号列表',res)
-        this.setData({
-          tabs:res.list.sort()
-        })
-        this.dishes()
+      //显示{name:'X园'}，用其进行数据库数据选取
+      console.log(this.data.name)
+      db.collection('food').aggregate()
+      .match({
+        canteen:_.eq(this.data.name)
       })
-      .catch(res=>{
-        console.log('获取楼号失败',res)
-      }
-      )
+      .group({
+           _id:'$louhao'   //依据楼号进行分组
+       })
+       .end()
+        .then(res=>{   //异步 暂缓执行
+          console.log('楼号列表',res.list.sort())
+          this.setData({
+            tabs:res.list.sort()
+          })
+          this.dishes()
+        })
+        .catch(res=>{
+          console.log('获取楼号失败',res)
+        }
+        )
   },
 
   //加载当前的菜式窗口
@@ -188,11 +196,15 @@ Page({
              arr[j].count=arr[j].count+1;//相等的话且点击的是+，则数量加1
            }else if(this.data.goods.type=='-'){
             arr[j].count=arr[j].count-1;//相等的话且点击的是-，则数量减1
+            if(arr[j].count==0){
+              arr.splice(j,1)//如果数量为0则不加入购物车的缓存数组中
+            }
           }
              
          //把购物车数据存入缓存，直接更新当前数组
          try{
            wx.setStorageSync(this.data.name,arr)
+           console.log(arr)
            this.countall();
          }catch(e){
            console.log(e)
@@ -239,6 +251,7 @@ Page({
  countall(){
      var arr=wx.getStorageSync(this.data.name)
      let data=0
+     console.log(arr)
      for(var i in arr){
        data+=arr[i].count
      }
@@ -246,18 +259,17 @@ Page({
        numall:data
      })
  },
-//关闭蒙层
- closeMask(){
-    this.setData({
-      isMask:false
-    })
+
+ maskShow(e){
+   this.setData({
+    showModel:true
+   })
  },
- //打开蒙层
- openMask(){
-  this.setData({
-    isMask:true
-  })
-},
+ guanbiEvent(){
+   this.setData({
+     showModel:false
+   })
+ },
 
  
   /**
@@ -279,7 +291,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-      
+   // this.countall()
   },
 
   /**

@@ -1,4 +1,6 @@
 // pages/user-login/user-login.js
+const db=wx.cloud.database()
+const _ = db.command
 
 Page({
 
@@ -6,43 +8,43 @@ Page({
    * 页面的初始数据
    */
   data: {
+     isLogged:false,//判断是否登录过了，默认未登录过，若登录过则点击用户登录时直接跳转，否则需要跳转上传用户信息页面
+  },
 
+  logged(userid){//查看数据库user的openid和全局的userid是否相等，若相等，则表示登录过了
+    console.log(userid)
+    db.collection('user').where({
+ 
+        openid:_.eq(userid)
+
+    }).get()
+    .then(res=>{
+      console.log('获取用户个人信息成功',res)
+    })
+    .catch(err=>{
+      console.log('获取用户个人信息失败',err)
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+        
+        
   },
 
   goNext:function(){
-    wx.switchTab({
-      url: '../personal/personal',
-    })
+       const app=getApp()
+        var userid=app.globalData.userid
+        console.log(userid)
+        this.logged(userid)
+
+  /*  wx.navigateTo({
+      url: '../personLogin/personLogin',
+    })*/
   },
   
-  login:function(e){
-    wx.getUserProfile({
-       desc:'展示用户信息',//声明获取用户个人信息后的用途，后续会展示在弹窗中
-       success:(xx)=>{
-         let userInfo=xx.userInfo;
-         console.log(userInfo)
-         if(!this.data.login&&userInfo){
-              wx.showLoading({
-                  title:'登陆中'
-              })
-             /* wx.cloud.database().collection('user').add({
-                data:{
-                  userinfo:{
-
-                  }
-                }
-              })*/
-         }
-       }
-    })
-  },
 
   //跳转至管理员登陆页面
   adminLogin(){

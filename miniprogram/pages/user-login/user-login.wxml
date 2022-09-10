@@ -5,7 +5,7 @@
 <view style="display: flex;justify-content: space-around;width:90%;margin:50% auto 60rpx auto;color: #96773D;font-weight: bold;font-size:40rpx">
   <text>欢</text> <text>迎</text> <text>使</text> <text>用</text> 
 </view>
-<button bindtap="goNext" open-type="getUserInfo">用户登录</button>
+<button bindtap="goNext">用户登录</button>
 <button bindtap="adminLogin">管理员登录</button>
 <button bindtap="riderLogin"> 骑手登录</button>
 

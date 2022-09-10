@@ -10,32 +10,32 @@
     <!--未渲染-->
     <view class="content" wx:for="{{list}}" data-item="{{item}}">
         <view class="bianhao">
-            <view class="canteen">{{item.canteen}}</view>
-            <view>2021.06.16</view>
+            <view class="canteen">{{item.children[0].canteen}}</view>
+            <view>{{item.children[0].timestamp}}</view>
         </view>
                                               <!--防止双层循环item冲突，给item重命名-->
-        <view class="card" wx:for="{{item.uapproval}}" wx:for-item="foodItem">
-          <image src="{{foodItem.foodsId.food_image}}" mode="aspectFill" style="width:350rpx;height:230rpx;"></image>
+        <view class="card" wx:for="{{item.children}}" wx:for-item="foodItem">
+          <image src="{{foodItem.food_image}}" mode="aspectFill" style="width:350rpx;height:230rpx;"></image>
            <view class="card-text">
                <view class="card-text_">
-                  <view>{{foodItem.foodsId.food_name}}</view>
-                  <view>{{foodItem.foodsId.status}}</view>
+                  <view>{{foodItem.food_name}}</view>
+                  <view>{{foodItem.status}}</view>
                </view>
                <view class="jiage">
-                  <view>实付：￥{{foodItem.foodsId.count*foodItem.foodsId.food_price}}</view>
-                  <view>×{{foodItem.foodsId.count}}</view>
+                  <view>单价：￥{{foodItem.food_price}}</view>
+                  <view>×{{foodItem.count}}</view>
                </view>
                <view class="card-button">
                   <button class="again" size="mini">再来一单</button>
-                  <button wx:if="{{foodItem.foodsId.status=='待接单'}}" class="evaluate" size="mini" bindtap="pingjia" data-item="{{foodItem}}">评价</button>
+                  <button wx:if="{{foodItem.status!=='已评价'}}" class="evaluate" size="mini" bindtap="pingjia" data-item="{{foodItem}}">评价</button>
                </view>
            </view>
         </view>
 
         <view class="bottom-title">
-           <view>配送费:{{item.money}}元</view>
-           <view>打包费:{{item.packMoney}}元</view>
-           <view>实付:￥{{item.totalMoney}}元</view>
+           <view>配送费:{{item.children[0].money}}元</view>
+           <view>打包费:{{item.children[0].packMoney}}元</view>
+           <view>实付:￥{{item.children[0].totalMoney}}元</view>
         </view>
        
     </view>

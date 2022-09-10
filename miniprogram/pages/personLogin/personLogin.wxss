@@ -1,0 +1,23 @@
+/* pages/personLogin/personLogin.wxss */
+.avatar-wrapper{
+  width:200rpx;
+  height:200rpx;
+  padding:0;
+  background: none;
+}
+
+.avatar{
+  width:200rpx;
+  height:200rpx;
+  border-radius:100rpx;
+}
+
+.weui-input{
+  border-radius:3rpx;
+  width:90%;
+  height:100rpx;
+  margin:20rpx auto;
+  padding-left:15rpx;
+  background-color: #eee;
+
+}

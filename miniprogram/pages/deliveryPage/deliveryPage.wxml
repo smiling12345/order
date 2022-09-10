@@ -1,2 +1,58 @@
-<!--pages/deliveryPage/deliveryPage.wxml-->
-<text>pages/deliveryPage/deliveryPage.wxml</text>
+<view>
+  <view class="kefu" style="display:flex;flex-direction: column;position: fixed;z-index: 1000;color: #105450;right:0">
+        <text class="iconfont icon-kefu" style="font-size: 70rpx;text-align: center;"></text>
+        <text style="color:#0D8CD2;font-size: 23rpx;text-align: center;">联系客服</text>
+    </view>
+
+    <view class="top">
+        <view class="left {{currentTab==0?'selected':''}}" bindtap="newOrder">
+            <text class="iconfont icon-dingdanguanli1" style="font-size: 80rpx;color:#105450"></text>
+            <view class="but" style="color: #225648;font-weight: bold;font-size:30rpx">新订单</view>
+        </view>
+        <view class="left {{currentTab==1?'selected':''}}" bindtap="orderIng">
+            <text class="iconfont icon-qishou" style="font-size: 80rpx;color:#105450"></text>
+            <view class="but" style="color: #225648;font-weight: bold;font-size:30rpx">进行中</view>
+        </view>
+        <view class="left {{currentTab==2?'selected':''}}" bindtap="alreadyOrder">
+            <text class="iconfont icon-complete-fill" style="font-size: 80rpx;color:#105450">
+            </text>
+            <view class="but" style="color: #225648;font-weight: bold;font-size:30rpx">已完成</view>
+        </view>
+    </view>
+
+    
+    <view class="order">
+      <view wx:for="{{list}}" wx:for-item="item" >
+        <view style="margin:30rpx 0">{{item}}</view>
+        <view  wx:for="{{newArr}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&currentTab==0}}">
+             <riderOrders orders="{{items}}" user="{{user}}" rider="{{rider}}"></riderOrders>
+       </view>
+
+        <view  wx:for="{{orderIng}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&currentTab==1}}">
+             <riderOrders orders="{{items}}" user="{{user}}" ></riderOrders>
+       </view>
+
+       <view  wx:for="{{alreadyOrder}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&currentTab==2}}">
+             <riderOrders orders="{{items}}" user="{{user}}" ></riderOrders>
+       </view>
+
+       <view  wx:for="{{customOrder}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&currentTab==2}}">
+             <riderOrders orders="{{items}}" user="{{user}}" ></riderOrders>
+       </view>
+
+      </view>
+    </view>
+    
+
+</view>
+    
+
+
+   
+
+
+
+
+
+
+

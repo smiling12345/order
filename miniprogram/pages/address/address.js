@@ -26,9 +26,11 @@ Page({
 
   },
 
-  bianji:function(){//用catchtap阻止事件冒泡，防止点击编辑按钮会影响默认选中
+  bianji:function(e){//用catchtap阻止事件冒泡，防止点击编辑按钮会影响默认选中
+    console.log(e.currentTarget.dataset.item)
     wx.navigateTo({
-      url: '../newAddress/newAddress',
+      //传递的数据如果是一个对象，则需要序列化
+      url: '../newAddress/newAddress?item='+encodeURIComponent(JSON.stringify(e.currentTarget.dataset.item)),
     })
   },
     selected:function(e){
@@ -37,6 +39,37 @@ Page({
        leftCur:e.currentTarget.dataset.index
      })
      wx.setStorageSync('selected', e.currentTarget.dataset.index)
+   },
+
+   //删除某个缓存地址
+   delete:function(e){
+     //得到某个需要删除地址的下标，从缓存数组中删除
+      console.log(e.currentTarget.dataset.index)
+      var arr=wx.getStorageSync('dizhi')
+      let index=e.currentTarget.dataset.index;
+      let that=this
+
+      wx.showModal({
+        title:'提示',
+        content:'是否确认删除此地址',
+        success:function(res){
+           if(res.confirm){//用户点了确定之后
+             console.log('用户点击确定')
+             arr.splice(index,1)//splice方法改变原数组
+             console.log(arr)
+             wx.setStorageSync('dizhi', arr)
+             that.setData({//渲染页面数据改变
+                  dizhi:arr
+               })
+           }else{//用户点了取消之后
+            console.log('用户点击取消')
+           }
+        }
+      })
+
+     
+      
+      
    },
   /**
    * 生命周期函数--监听页面显示

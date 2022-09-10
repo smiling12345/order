@@ -7,16 +7,10 @@ Component({
       outData:{
          type:Array,
          value:[],
-         observer:function(newVal,oldVal){
-           //属性值变化时执行
-         }
       },
-      prove:{
+      prove:{//adminPage/deliveryPage
         type:String,
         value:'',
-        observer:function(newVal,oldVal){
-          //属性值变化时执行
-        }
       },
       canteen:{
         type:String,
@@ -90,31 +84,37 @@ Component({
       for(let i=0;i<outData.length;i++){
         if(inAccount==outData[i].user&&inPassword==outData[i].code)
         {
-           if(canteen==outData[i].canteen&&louhao==outData[i].louhao&&dishes==outData[i].dishes)
-           {
-            console.log('登陆成功')
-            wx.showToast({
-              title:'登陆成功'
-            })
-            setTimeout(function(){
-              if(prove=='adminPage'){
-                 wx.navigateTo({
-                   url: '../../pages/'+prove+'/'+prove+'?id='+outData[i].user+'&canteen='+canteen+'&louhao='+louhao+'&dishes='+dishes,
-                 })
-              }else{
+          if(prove=='deliveryPage'){
+                console.log('骑手登陆成功')
+                wx.showToast({
+                    title:'骑手登陆成功'
+                })
+              setTimeout(function(){
                 wx.navigateTo({
-                  url: '../../pages/'+prove+'/'+prove+'?id='+outData[i].user,
+                  url: '../../pages/'+prove+'/'+prove+'?name='+outData[i].name+'&phone='+outData[i].phone+'&id='+outData[i]._id,
                  })
-                }
-              },100)   
-             return 
-           }else{
-              wx.showToast({
-                icon:'none',
-                title:'选择管理窗口错误'
-              })
+              },100)
               return
-           }   
+          }else{
+             if(canteen==outData[i].canteen&&louhao==outData[i].louhao&&dishes==outData[i].dishes){
+                console.log('商家登陆成功')
+                wx.showToast({
+                  title:'商家登陆成功'
+                })
+                setTimeout(function(){
+                  wx.navigateTo({
+                    url: '../../pages/'+prove+'/'+prove+'?id='+outData[i].user+'&canteen='+canteen+'&louhao='+louhao+'&dishes='+dishes,
+                  })
+                }, 100);
+                return
+             }else{
+                wx.showToast({
+                  icon:'none',
+                  title:'选择管理窗口错误'
+                })
+                return
+             }
+          } 
       }else{
           console.log('登陆失败')
           wx.showToast({

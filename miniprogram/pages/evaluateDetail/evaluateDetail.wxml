@@ -18,4 +18,5 @@
    </view>
 </view>
 
-<evaluation wx:for="{{fileList}}" data-item="{{item}}" pinglun="{{item.user_comment}}" starsId="{{item.average}}" image="{{item.fileId}}"></evaluation>
+<evaluation wx:for="{{fileList}}" item="{{item}}">
+</evaluation>

@@ -8,7 +8,15 @@ Component({
         type:String,
         value:''
       },
-      selected:false
+      selected:{
+        type:Boolean,
+        value:false
+      },
+      unabled:{
+        type:Boolean,
+        value:false
+      },
+      
   },
 
   /**
@@ -22,6 +30,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+   
   }
 })

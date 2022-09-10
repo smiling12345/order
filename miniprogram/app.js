@@ -31,7 +31,7 @@ App({
         console.log(res)
         var usid=res.result.openid
         console.log(usid)
-        this.globalData.userid=res.result.openid //把获得的openid赋值到全局变量上
+        that.globalData.userid=res.result.openid //把获得的openid赋值到全局变量上
       },
      fail(res){
        console.log("获取失败",res);

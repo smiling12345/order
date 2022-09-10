@@ -8,5 +8,17 @@ cloud.init({
 // 云函数入口函数
 exports.main = async (event, context) => {
   //云函数获取数据
-  return cloud.database().collection("food").get();
+  try{
+    if(event.action=='all'){
+      return await cloud.database().collection("food").get();
+    }else if(event.action=='part'){
+      return await cloud.database().collection("food").where({
+         canteen:event.canteen,
+         louhao:event.louhao,
+         dishes:event.dishes
+      }).get();
+    }
+  }catch(e){
+    console.log(e)
+}
 }

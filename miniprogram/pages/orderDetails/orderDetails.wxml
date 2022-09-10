@@ -12,12 +12,16 @@
         </view>
 
         <!--第2行文字-->
-        <view>
+        <view wx:if="{{bgcolor=='配送'}}" bindtap="addressSelected">
+            {{address}} 
+        </view>
+
+        <view wx:if="{{bgcolor=='自提'||bgcolor=='堂食'}}">
             {{address}} 
         </view>
 
         <!--第3行文字-->
-        <view>{{contact}}</view>
+        <view>{{name}}{{gender}} {{phone}}</view>
   </view>
 
   <view class="mid">  
@@ -26,8 +30,8 @@
             </view>
              <checkbox-group class="midmid" bindchange="checkboxChange">
                  <view class="foodlist" wx:for="{{arrlist}}" wx:key="index">
-                      <checkbox value="{{item._id}}" style="margin-top:100rpx; margin-left: 55rpx;margin-right: 20rpx;" checked="{{item.checked}}"></checkbox>
-                      <food  bindaddNum="addCart" data-item="{{item}}"  arrObject="{{item}}" num="{{item.count}}"></food>
+                      <checkbox wx:if="{{item.count!=0}}" value="{{item._id}}" style="margin-top:100rpx; margin-left: 55rpx;margin-right: 20rpx;" checked="{{item.checked}}"></checkbox>
+                      <food  wx:if="{{item.count!=0}}" bindaddNum="addCart" data-item="{{item}}"  arrObject="{{item}}" num="{{item.count}}"></food>
                  </view> 
              </checkbox-group> 
 
@@ -53,7 +57,7 @@
     </view>
 
     <view class="lowview">  
-        <view> 订单备注  </view>
+        <view> 订单备注</view>
         <input class="input" type="text" bindinput="OrderNotes" placeholder="这里可以输入内容" maxlength="22"/> 
     </view>
 

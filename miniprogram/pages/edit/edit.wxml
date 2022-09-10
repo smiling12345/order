@@ -17,7 +17,12 @@
     <view class="font">商品图片</view>
 </view>
 <view class="image">
-    <image src="https://tse4-mm.cn.bing.net/th/id/OIP-C.RIO9rq0jjSe8AxlVZ9Uq7QHaE-?w=270&h=181&c=7&r=0&o=5&dpr=1.24&pid=1.7" style="height:300rpx;width:300rpx"></image>
+  <view wx:if="{{flag==true}}" style="position:relative">
+    <image src="{{imgAddress}}" mode="scaleToFill" style="width:280rpx;height:280rpx;border-radius: 8rpx;"></image>
+    <view bindtap='deleteImg' class='iconfont icon-a-shanchucuowu' style="position:absolute;right:15rpx;top:15rpx;color:#105450;"></view>
+  </view>
+  
+  <view wx:if="{{flag==false}}" class='iconfont icon-tianjia' bindtap='addImg' style="font-size:300rpx" ></view>
 </view>
 
 

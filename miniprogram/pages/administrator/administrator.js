@@ -5,8 +5,8 @@ Page({
      name:'adminPage',
      //用于渲染页面 [['荷园','西园','芷园','莘园','稻香园','绿榕园'], ['一楼','二楼','三楼'],['其他','大众菜']]
      multiArray: [],
-     multiIndex: [0, 0, 0],
-     //存储所有food的餐厅（荷园、西园...）以及相对应的楼号以及相对应的窗口信息的菜品对象的数组
+     multiIndex: [0, 0, 0],//对应的是数组的索引值
+     //存储所有canteen的餐厅（荷园、西园...）以及相对应的楼号以及相对应的窗口信息的菜品对象的数组
      array:[]
   },
 
@@ -139,7 +139,10 @@ Page({
         break;
     }
     console.log(data.multiIndex);
-    this.setData(data);
+    this.setData({
+      multiArray:data.multiArray,
+      multiIndex:data.multiIndex
+    });
   },
 
 getArray:function(j,m){//j参数代表西园，芷园。。m参数代表楼号
@@ -149,11 +152,13 @@ getArray:function(j,m){//j参数代表西园，芷园。。m参数代表楼号
             for(let i=0;i<array.length;i++){
                if(array[i].canteen==this.data.multiArray[0][j]){
                    arrayFirst.push(array[i].louhao)
-                   if(array[i].louhao==arrayFirst[m]){
+                   if(array[i].louhao==this.data.multiArray[1][m]){
                      arraySecond.push(array[i].dishes)
                    }
                }
             }
+            console.log(arrayFirst)
+            console.log(arraySecond)
             return [[...new Set(arrayFirst)],[...new Set(arraySecond)]]
             //结合set进行数组的去重
   },
@@ -164,7 +169,7 @@ getArray:function(j,m){//j参数代表西园，芷园。。m参数代表楼号
 onLoad: function (options) {
 //云函数调用
 wx.cloud.callFunction({
-  name:'food'
+  name:'admin',
 })
 .then(res=>{
     console.log('云函数获取数据成功',res.result.data)
@@ -177,7 +182,7 @@ wx.cloud.callFunction({
          arr.push(res.result.data[n].dishes)
       }
     }
-    
+    console.log(arr)
     multiArray.push([...new Set(arr)])
     this.setData({
       array:res.result.data,

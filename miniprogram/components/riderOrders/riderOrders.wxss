@@ -10,29 +10,58 @@ page{
 }
 
 .top2{
-    display: flex;
-    width:100%;
-    justify-content: space-between;/*水平布局*/
-    height:90rpx;/*垂直居中*/
-    line-height: 90rpx;
-    text-align:center;/*水平居中*/
+    display: grid;
+    grid-template-rows:auto;/*定义一行*/
+    grid-template-columns: 25% 1fr 27%;
+    align-items: center;/*设置子元素内容垂直居中*/
+    grid-gap: 20rpx;/*设置间距*/
     border-bottom: 1rpx solid gray;
+    padding:10rpx 0;
+}
+
+.first1{
+  color: rgba(148, 145, 134, 0.74);
+}
+.second1{/*截取长单词换行，很重要！！！*/
+  word-break: break-all;
+}
+.third1{
+  color:#0D8CD2;
 }
 
 .top4{
     display: flex;
     justify-content: flex-start;
-    height:90rpx;
-    line-height: 90rpx;
-    text-align: center;
+    /*不能设置高度，设置了高度的话自动换行会有问题，因为有高度的限制*/
+    line-height: 75rpx;
+    width:100%;
     border-bottom: 1rpx solid gray;
+}
+.top3{
+  border-bottom: 1rpx solid gray;
+  padding:20rpx 0;
+}
+
+
+.left1{
+  color: rgba(148, 145, 134, 0.74);
+  width:25%;
 }
 
 .detail{
-    margin-left:120rpx;
+    margin-left:3%;
+    width:72%;/*保证超过宽度则换行，不然会影响左边的宽度*/
 }
 .hang{
     display:flex;
-    justify-content: space-around;
-    margin-left: 50rpx;
+    margin-left: 100rpx;
+}
+.hang>view{
+    width:33%
+}
+.orders>view{
+  height:100rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

@@ -3,6 +3,7 @@
   "usingComponents": {
     "stars":"../stars/stars",
     "newbutton":"../newbutton/newbutton",
-    "stars2":"../stars2/stars2"
+    "stars2":"../stars2/stars2",
+    "food-dialog":"../food-dialog/food-dialog"
   }
 }

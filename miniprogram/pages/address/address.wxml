@@ -8,9 +8,13 @@
           <view>{{item.gender}}</view>
           <view>{{item.phone}}</view>
         </view>
-        <text class="iconfont icon-bianjishuru" style='font-size:45rpx' catchtap="bianji"></text>
+        <text class="iconfont icon-guanbi" style='font-size:45rpx;color:red' catchtap="delete" data-index="{{index}}"></text>
       </view>
-      <view>{{item.address}}</view>
+      <view class="second">
+         <view>{{item.address}}</view>
+         <text class="iconfont icon-bianjishuru" style='font-size:45rpx;color:#bb9340' catchtap="bianji" data-item="{{item}}"></text>
+      </view>
+      
       <view class="third" wx:if='{{index==leftCur}}'>
         <view class="iconfont icon-yuanquan_xuanzhong" style="font-size:30rpx;color:#bb9340">默认选中</view>
       </view>

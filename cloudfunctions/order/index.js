@@ -6,33 +6,55 @@ cloud.init({
 })
 
 var $ = cloud.database().command.aggregate   //定义聚合操作符
-exports.main = async (event, context) => {
-  return cloud.database().collection("order").aggregate()
-  .lookup({
-    from:"orderDetail", //把orderDetail用户表关联上
-    localField: '_id', //order表的关联字段
-    foreignField: 'orderId', //orderDetail表的关联字段
-    as: 'uapproval' //匹配的结果作为uapproval相当于起个别名
-  })
-  /*.replaceRoot({
+exports.main = async (event, context) => {//三表联合
+  try{
+     return await cloud.database().collection('orderDetail').aggregate()
+    .lookup({
+      from: "food",
+      localField: "foodsId",
+      foreignField: "_id",
+      as: "orders"
+     })
+    .replaceRoot({
+      newRoot: $.mergeObjects([ $.arrayElemAt(['$orders', 0]), '$$ROOT' ])
     //replaceRoot指定一个已有字段作为输出的根节点，也可以指定一个计算出的新字段作为根节点
-    newRoot:$.mergeObjects([$.arrayElemAt(['$uapproval',0]),'$$ROOT'])
              //mergeObjects 累计器操作符
             //$.mergeObjects([params1,params2...]) 可以合并多个元素
-            //$.arrayElemAt(['$uapproval', 0]), '$$ROOT']
-            //就是取uapproval数组的第一个元素，与原始的根融合在一起
-  })
-  .project({
-    uapproval:0
-  })*/
-  .end({
-    success:function(res){
-      return res;
-    },
-    fail(error) {
-      return error;
-    }
-  })
+            //$.arrayElemAt(['$orders', 0]), '$$ROOT']
+            //就是取orders数组的第一个元素，与原始的根融合在一起
+    })
+    .project({//不显示当前指定字段
+      orders: 0,
+      empty:0,
+      food_grade:0,
+      food_sales:0,
+      material:0,
+    })
+    .lookup({
+      from:'order',
+      localField: "orderId",
+      foreignField: "_id",
+      as: "ordersList"
+    })
+    .replaceRoot({
+      newRoot: $.mergeObjects([ $.arrayElemAt(['$ordersList', 0]), '$$ROOT' ])
+    })
+    .project({
+      ordersList:0,
+    })
+    .match({
+      canteen:event.canteen,
+      louhao:event.louhao,
+      dishes:event.dishes,
+      status:event.status,
+      bgcolor:event.bgcolor,
+      _openid:event.userid
+    })
+    .end()
+  }catch(e){
+      console.log(e)
+  }
+  
 
 }
 

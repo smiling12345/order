@@ -15,7 +15,7 @@ Page({
      translate:0,
      pack:0,
      average:0,
-     name:''
+     name:''//餐厅名字
   },
 
   /**
@@ -38,22 +38,23 @@ Page({
   //判断选择的是全部还是好评、差评、有图等来渲染页面
   select(e){
     console.log(e)
-    if(e.currentTarget.dataset.item=="全部"){
+    item=e.currentTarget.dataset.item
+    if(item=="全部"){
         this.setData({
           select:"全部"
         })
         this.allData()
-    }else  if(e.currentTarget.dataset.item=="好评"){
+    }else  if(item=="好评"){
       this.setData({
         select:"好评"
       })
       this.goodData()
-    }else if(e.currentTarget.dataset.item=="差评"){
+    }else if(item=="差评"){
       this.setData({
         select:"差评"
       })
       this.badData()
-    }else if(e.currentTarget.dataset.item=="有图"){
+    }else if(item=="有图"){
       this.setData({
         select:"有图"
       })
@@ -95,6 +96,7 @@ Page({
     taste=taste/countList.length
     translate=translate/countList.length
     pack=pack/countList.length
+    console.log(average)
     average=average/countList.length
     console.log(average)
     this.setData({

@@ -36,14 +36,27 @@
     <view class="content2" wx:if="{{currentTab===1}}">
      <view style="display: flex;justify-content: space-around;margin: 20rpx 0;">
        <newbutton name="新订单" bindtap="newOrder" selected="{{selected=='新订单'}}" ></newbutton>
+       <newbutton name="进行中" bindtap="orderIng" selected="{{selected=='进行中'}}" ></newbutton>
        <newbutton name="已完成" bindtap="alreadyOrder" selected="{{selected=='已完成'}}" ></newbutton>
      </view>
-     <view wx:for="{{list}}">
-       <view>
-          <view style="margin:30rpx 0">{{item}}</view>
-          <view style="font-size: 40rpx;text-align: center;">暂无该时间段的新订单</view>
-           <riderOrders></riderOrders>
+     <view wx:for="{{list}}" wx:for-item="item">
+       <view style="margin:30rpx 0">{{item}}</view>
+       <view  wx:for="{{newArr}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&selected=='新订单'}}">
+             <riderOrders orders="{{items}}" user="{{user}}"></riderOrders>
        </view>
+       <view  wx:for="{{ordering}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&selected=='进行中'}}">
+             <riderOrders orders="{{items}}" user="{{user}}"></riderOrders>
+       </view>
+       <view  wx:for="{{alreadyOrder}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&selected=='已完成'}}">
+             <riderOrders orders="{{items}}" user="{{user}}"></riderOrders>
+       </view>
+       <view  wx:for="{{riderDeliver}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&selected=='已完成'}}">
+             <riderOrders orders="{{items}}" user="{{user}}"></riderOrders>
+       </view>
+       <view  wx:for="{{customOrder}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&selected=='已完成'}}">
+             <riderOrders orders="{{items}}" user="{{user}}"></riderOrders>
+       </view>
+       
      </view>
     </view>
 
@@ -54,6 +67,14 @@
       <view class="primary {{evaluationSelect=='新消息'?'evaluation':''}}" bindtap="new">新消息</view>
      </view>
       <view style="margin-bottom:1rpx">
-        <evaluation select="商家"></evaluation>
+      <!--wx:if='{{evaluationSelect==全部}}'-->
+        <block >
+          <evaluation wx:for="{{fileList}}"  item="{{item}}" >
+          </evaluation>
+        </block>
+        
+<!--wx:if="{{evaluationSelect==新消息}}" -->
+        <evaluation wx:for="{{fileList}}" item="{{item}}" select="商家">
+        </evaluation>
       </view>
      </view>

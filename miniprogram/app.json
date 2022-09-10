@@ -1,22 +1,25 @@
 {
-  "pages": ["pages/user-login/user-login","pages/adminPage/adminPage", "pages/firstPage/firstPage",
-   "pages/canteen/canteen","pages/order/order",
-    "pages/deliveryPage/deliveryPage",
-    "pages/rider/rider","pages/testComponent/testComponent",
-    "pages/address/address", "pages/edit/edit",
-    "pages/newAddress/newAddress","pages/administrator/administrator",
+  "pages": [ "pages/personal/personal","pages/user-login/user-login",
     
+    "pages/search/search","pages/evaluate/evaluate",
+    "pages/edit/edit",
+    "pages/firstPage/firstPage",
+    "pages/adminPage/adminPage",
+    "pages/order/order",
+    "pages/deliveryPage/deliveryPage",
+    "pages/canteen/canteen",
+    "pages/rider/rider",
+    "pages/address/address",
+    "pages/newAddress/newAddress",
+    "pages/administrator/administrator",
     "pages/modifyAddress/modifyAddress",
     "pages/orderDetails/orderDetails",
-     
     "pages/evaluateDetail/evaluateDetail",
-     "pages/request/request","pages/evaluate/evaluate",
-    "pages/explain/explain",
     
-    "pages/personal/personal",
-    "pages/index/index","pages/coupon/coupon",
+   
     "pages/first/first",
-    "pages/search/search" 
+    "pages/myevaluate/myevaluate",
+    "pages/personLogin/personLogin"
   ],
   "window": {
     "backgroundColor": "#105450",
@@ -30,11 +33,7 @@
     {
       "root": "packageA",
       "pages": [
-        "pages/coupon",
-        "pages/rider",
-        
-        "pages/payment",
-        "pages/ceshi"
+        "pages/rider"
       ]
     }
   ],
@@ -64,5 +63,4 @@
   },
   "sitemapLocation": "sitemap.json",
   "style": "v2"
-
 }

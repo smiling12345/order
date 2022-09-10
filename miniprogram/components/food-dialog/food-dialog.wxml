@@ -3,7 +3,7 @@
  <view class="content">
    <view class="top">
       <text style="font-size: 40rpx;font-weight: bold;">{{foodName}}</text>                   
-      <text class="iconfont icon-yuanquan_guanbi" style="position:fixed;right:35rpx;font-size: 50rpx;color:#bb9450"></text>
+      <text class="iconfont icon-yuanquan_guanbi"  bindtap="guanbi" style="position:fixed;right:35rpx;font-size: 50rpx;color:#bb9450"></text>
    </view>
    <image class="tupian"></image>
    <view class="middle">

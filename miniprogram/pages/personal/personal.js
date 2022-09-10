@@ -10,22 +10,36 @@ Page({
   data: {
       username:"",
       openid:'',
+      userphoto:''
+  },
+
+  getInformation(){//从数据库中获取相应的头像和昵称信息
+    db.collection("user").where({
+      data:{
+        openid:this.data.openid,
+      }
+    })
+    .get()
+    .then(res=>{
+      console.log('获取用户个人信息成功',res)
+    })
+    .catch(err=>{
+      console.log('获取用户个人信息失败',err)
+    })
+    
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(app.globalData)
-    db.collection('user').add({
-      data:{
-        _id:app.globalData
-      },
-      success:function(res){
-        console.log(res)
-        that.setData({res})
-      }
-    })
+    const app=getApp()
+     var userid=app.globalData.userid
+     console.log(userid)
+     this.setData({
+       openid:userid
+     })
   },
   
 

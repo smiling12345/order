@@ -34,7 +34,7 @@ image图片标签
 <view class="pyg_index">
    <view class="index_swiper"><!--轮播图区域-->
       <swiper autoplay interval="1000" circular indicator-dots indicator-active-color="#105450">
-          <swiper-item wx:for="{{list}}">
+          <swiper-item wx:for="{{list}}" wx:key="index">
              <image mode="widthFix" src="{{item.picUrl}}" />
           </swiper-item>
       </swiper>
@@ -44,15 +44,16 @@ image图片标签
       <view class="wenzi">
          <text>今日推荐</text>
       </view>
-      <view class="left_Image">
+      <view class="random_Image">
+        <view  wx:for="{{randomList}}" wx:key="index">
+          <image src="{{item.food_image}}" bindtap="randomClick" data-item="{{item}}" style="width:340rpx;height:270rpx;border-radius: 5rpx;"></image>
+        </view>
       </view>
-      <view class="right_Image">
-
-      </view>
+      
    </view>
 
     <view class="bottom"><!--把餐厅的名字作为参数传过去页面-->
-         <navigator url="../canteen/canteen?name={{item.name}}" class="shitang" wx:for="{{canteenList}}" data-item="{{item}}">
+         <navigator url="../canteen/canteen?canteen={{item.name}}" class="shitang" wx:for="{{canteenList}}" data-item="{{item}}" wx:key="index">
              <view class="iconfont {{item.icon}}" style="font-size:50rpx"></view>
              <view class="ziti">{{item.name}}</view>
          </navigator>

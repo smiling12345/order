@@ -66,3 +66,20 @@ page{
   align-items: center;
   width:100%
 }
+
+
+.modalDlg{
+  width: 80%;
+  position: fixed;
+  top:300rpx;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  margin: 0 auto;
+  padding: 55rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

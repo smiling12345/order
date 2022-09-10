@@ -8,11 +8,13 @@ Page({
        msg:50,
        foodName:'',
        foodPrice:'',
-       multiText:''
+       multiText:'',
+       flag:false,//控制显示和隐藏
+       imgAddress:''
     },
 
     preserve(){
-
+       
     },
     text_input(e){
         const max_length = 50;
@@ -28,6 +30,20 @@ Page({
       },
       foodPriceInput(e){
 
+      },
+
+      addImg:function(){
+        let that=this;
+         wx.chooseImage({
+           count: 1,
+           success:res=>{
+             console.log(res)
+             that.setData({
+               flag:true,
+               imgAddress:res.tempFilePaths
+             })
+           }
+         })
       },
     
 

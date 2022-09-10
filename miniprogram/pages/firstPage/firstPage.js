@@ -9,6 +9,8 @@ Page({
   data: {
     //轮播图数组
     list:[],
+    //随机数组
+    randomList:[],
     //导航数组
     cateList:[],
     //餐厅数组
@@ -39,10 +41,25 @@ Page({
       }]
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {//页面开始加载，就会触发
+ 
+
+  randomData(){
+    wx.cloud.database().collection('food').aggregate()
+    .sample({
+      size:2//随机从数据库里获取两个数据
+    })
+    .end().then(res=>{
+      console.log(res)
+      this.setData({
+        randomList:res.list
+      })
+    })
+    .catch(err=>{
+      console.log('获取随机数据失败',err)
+    })
+  },
+
+  lunbotu(){
     //发送异步请求获取网络轮播图数据
     wx.cloud.database().collection('lunbotu').get()
         .then(res=>{
@@ -64,11 +81,27 @@ Page({
             ]
           })
         })
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {//页面开始加载，就会触发
+     this.lunbotu()
+     this.randomData()
 
        
-      },
+    },
   
-  
+   randomClick(e){//点击今日推荐图片跳转页面对应位置
+    let item=e.currentTarget.dataset.item
+     console.log(item)
+     wx.navigateTo({
+       url:'../canteen/canteen?canteen='+item.canteen
+     })
+
+   },
+
   //获取分类导航数据
   getCateList(){
     request({

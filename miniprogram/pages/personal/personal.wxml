@@ -1,7 +1,7 @@
 <view class="person">
    <view class="user"> 
      <view class="toplogo">
-       <open-data type="userAvatarUrl"></open-data>
+       <image src="{{userphoto}}"></image>
      </view>  
      <view class="toptext">
       <open-data type="userNickName" lang="zh_CN" class="user-name"></open-data>
@@ -22,7 +22,7 @@
        </view>
       </navigator>
 
-      <navigator class="item" url="../evaluate/evaluate">
+      <navigator class="item" url="../myevaluate/myevaluate">
        <view class='left'>
            <text class='iconfont icon-pingjia' style="color:#F9D4DC;font-size:50rpx"></text>   
            <text decode="{{true}}" space="{{true}}">&nbsp;&nbsp;</text>

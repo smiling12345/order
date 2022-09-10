@@ -1,6 +1,9 @@
 <!--pages/canteen/canteen.wxml-->
 <view class="all">
-   <searchInput>
+   <!--弹窗蒙版-->
+   <view class="model"  catchtouchmove='preventTouchMove' wx:if='{{showModel}}'></view>
+
+   <searchInput bindtap="searchTo">
    </searchInput>
 
    <view class="second">
@@ -19,19 +22,19 @@
 
    <view class="scroll">
        <!--左侧分类-->
-       <scroll-view scroll-y class="nav_left">
-          <block wx:for="{{lefts}}" wx:key="{{index}}">
+       <scroll-view scroll-y="true" class="nav_left">
+          <view wx:for="{{lefts}}" wx:key="index">
             <view class="nav_left_items {{leftCur==index?'active':''}}" data-index='{{index}}'  bindtap="switchLeftTab">
               {{item._id}}
             </view>
-          </block>
+          </view>
        </scroll-view>
 
        <!--右侧商品内容-->
-       <scroll-view scroll-y class="nav_right"> 
-           <block wx:for="{{rights}}" wx:key="index">
-                 <food  bindaddNum="addCart" data-item="{{item}}"  arrObject="{{item}}" num="{{item.num}}" empty="{{item.empty}}"></food>
-           </block>
+       <scroll-view scroll-y="true" class="nav_right"> 
+           <view wx:for="{{rights}}" wx:key="index">
+                 <food  bindaddNum="addCart" bind:guanbiEvent="guanbiEvent" bindmaskShow="maskShow" data-item="{{item}}"  arrObject="{{item}}" num="{{item.num}}" empty="{{item.empty}}"></food>
+           </view>
        </scroll-view>
    </view>
 
@@ -45,51 +48,4 @@
   </view>
 </view>
 
-<!--实现蒙层效果-->
-<view class="mask_bg"  wx:if="{{isMask}}" bindtap="closeMask"></view>
-<!--购物车列表-->
-<view class="cart_content" wx:if="{{isMask}}">
-  <view class="cart_top">
-  <view>
-    <text>已选商品</text>
-    <text style="color:red">（打包费￥3）</text>
-  </view>
-   <view>
-     <text class="iconfont icon-shanchu" style="font-size:65rpx"></text>
-     <text>清空购物车</text>
-   </view>
-  </view>
-                                <!--阻止页面滚动条滚动，有点类似阻止冒泡事件
-                                     必须设置高度，否则无法滚动，事件监听高度-->
-  <scroll-view class="cart_food" scroll-y="true" catchtouchmove="true" style="height:{{height?500+'rpx':'auto'}}">
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-  <!--  <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>
-    <view>1</view>-->
-  </scroll-view>
-
-</view>
 

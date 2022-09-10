@@ -10,10 +10,11 @@
   <view class="hotSearch">
      <view class="hotSearchTitleView">
         <view class="hotSearchTitle" style="font-size:30rpx">热门搜索</view>
-        <view class="iconfont icon-yuanquan_guanbi" style="font-size:40rpx"></view>
+        <view class="iconfont icon-yuanquan_guanbi" style="font-size:40rpx" ></view>
      </view>
      <view class="hotSearchTagView">
-        <view class="hotSearchTag" wx:for="{{hotSearchArr}}" wx:key="index" bindtap='ClickHotSearchItem' data-text='{{item}}'>{{item}}</view>
+        <!--注意，hover-class的样式要放在末尾，防止被覆盖样式没有效果-->
+        <view class="hotSearchTag" wx:for="{{hotSearchArr}}" hover-class="hover-class-1" wx:key="index" bindtap='clickAll' data-text='{{item.searchKey}}'>{{item.searchKey}}</view>
      </view>
   </view>
 
@@ -23,14 +24,19 @@
         <view class="iconfont icon-yuanquan_guanbi" style="font-size:40rpx"></view>
      </view>
      <view class="hotSearchTagView">
-        <view class="hotSearchTag" wx:for="{{searchHistoryArr}}" wx:key="index" bindtap='ClickHistoryItem' data-text='{{item}}'>{{item}}</view>
+        <view class="hotSearchTag" wx:for="{{searchHistoryArr}}" wx:key="index" bindtap='clickAll' data-text='{{item}}'>{{item}}</view>
      </view>
   </view>
 </view>
 
-<view wx:if="{{searchKey!==''}}">
-  <view class="resultCell" wx:for="searchResultArr" wx:key="index" bindtap='ClickResultItem' data-text='{{item}}'>
+<view wx:if="{{searchKey!==''&&show==true}}">
+  <view class="resultCell" wx:for="{{searchResultArr}}" wx:key="index" bindtap='ClickResultItem' data-text='{{item}}'>
     <view class="iconfont icon-sousuo" style="font-size:50rpx;"></view>
-    <view class="resultText">{{searchResultArr[index]}}</view>
+    <view class="resultText">{{searchResultArr[index].food_name}}</view>
   </view>
 </view>
+
+<view wx:for="{{arrObject}}" wx:if="{{searchKey!==''&&showFood==true}}" wx:key="index">
+   <food arrObject="{{item}}" bindaddNum="addCart" data-text="{{item}}" num="{{item.num}}"></food>
+</view>
+

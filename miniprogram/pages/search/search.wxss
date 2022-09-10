@@ -5,6 +5,10 @@
     padding:10rpx;
     background-color:var(--themeColor);
 }
+
+
+
+
 .inp{
     width:90%;
     height:100%;
@@ -67,4 +71,8 @@
     padding-left:30rpx;
 }
 
-
+.hover-class-1{
+   opacity: 0.9;
+   background: #105450;
+   color:white;
+}

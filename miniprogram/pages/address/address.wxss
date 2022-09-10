@@ -12,7 +12,7 @@ page{
   flex-direction: column;
 }
 
-.first{
+.first,.second{
    display: flex;
    flex-direction: row;
    justify-content: space-between;
@@ -39,9 +39,6 @@ page{
       background:#105450;
       color: #ffffff;
       margin:0;
-}
-.second>view{
-  margin:10rpx 20rpx;
 }
 
 .xuanfu{

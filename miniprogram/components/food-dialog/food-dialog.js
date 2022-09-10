@@ -29,6 +29,8 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+         guanbi(){//关闭弹窗传值
+            this.triggerEvent('guanbiEvent',{showModel:false})
+         }
   }
 })

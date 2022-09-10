@@ -16,7 +16,6 @@ Page({
     address:'泰山区',
     detailAddress:'',
     name:''
-
   },
 
   bindPickerChange: function(e) {//收货地址
@@ -100,17 +99,39 @@ preserve(e){//点击保存后若手机号校验成功则弹出保存成功，且
               name:this.data.name,
               gender:this.data.gender
       }
-     arrayList.push(arr)
-     console.log(arrayList)
-     wx.setStorageSync('dizhi', arrayList)
-     wx.showLoading({
-       title: '保存成功',
-     })
-     wx.showToast({
-       title:'成功',
-       icon:'success',
-       duration:2000
-     })
+      console.log(arr)
+      //用indexOf判断数组是否存在某值，返回值为值的索引，若不存在返回-1
+      //用遍历数组看对象的属性是否相同，从而判断是否含有该对象
+      let flag=true;
+      arrayList.forEach(item=>{
+        console.log(item)
+        if(item.address==arr.address&&item.phone==arr.phone&&item.name==arr.name&&item.gender==arr.gender){
+            //说明已经存在该地址，则提示保存失败
+            flag=false;
+            return;
+        }
+      })
+      if(flag==false){
+           wx.showToast({
+               title:'地址信息已存在',
+               icon:'error',
+               duration:2000
+           })
+      }else{
+          arrayList.push(arr)
+          console.log(arrayList)
+          wx.setStorageSync('dizhi', arrayList)
+          wx.showToast({
+            title:'保存成功',
+            icon:'success',
+            duration:2000
+          })
+      }
+    
+      
+        
+   
+      
   }
 
 },
@@ -119,7 +140,25 @@ preserve(e){//点击保存后若手机号校验成功则弹出保存成功，且
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if(options.item){
+      const item = JSON.parse(decodeURIComponent(options.item));
+      console.log(item)
+      let n=0;
+      let arrString=item.address.split(' ')//根据空格将字符串分割成数组
+      for(let i=0;i<this.data.array.length;i++){
+         if(this.data.array[i]==arrString[0]){
+           n=i;
+         }
+      }
+      this.setData({
+        name:item.name,
+        phone:item.phone,
+        gender:item.gender,
+        detailAddress:arrString[1],
+        index:n,
+      })
+    }
+    
   },
 
   /**

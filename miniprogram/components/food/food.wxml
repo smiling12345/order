@@ -2,8 +2,10 @@
 <view class="container" >
     <!--解决view包裹image时view有内边距：将view的宽高和image的宽高设置相同-->
     <!--若不用view包裹image，即使设置image的宽高，还是会改变的，即便设置成块元素，不知道为什么？？？-->
+
+    <food-dialog bind:guanbiEvent="guanbiEvent" class="modalDlg" catchtouchmove='preventTouchMove' wx:if='{{showModel}}'></food-dialog>
     <view style="height:200rpx;width:40%">
-      <image src='{{arrObject.food_image}}' class="photo" ></image>
+      <image src='{{arrObject.food_image}}' bindtap='dialog' class="photo" ></image>
     </view>
    
   <view class="right">
@@ -22,7 +24,7 @@
         <view style="white-space: nowrap;">
           <text wx:if="{{num!==0}}" class="iconfont icon-yuanquan_jianshao1" style="font-size:50rpx;color:#105450;margin-right:5rpx;" bindtap="reduce"></text>
           <text wx:if="{{show=='用户'&&num!==0}}">{{num}}</text>
-          <text wx:if="{{show=='用户'}}" class="iconfont icon-yuanquan_tianjia" style="font-size:50rpx;color:#105450;margin-left:5rpx;" bindtap="add"></text>
+          <text wx:if="{{show=='用户'&&arrObject.empty=='在售'}}" class="iconfont icon-yuanquan_tianjia" style="font-size:50rpx;color:#105450;margin-left:5rpx;" bindtap="add"></text>
           <text wx:if="{{show=='食堂'}}" style="color:#105450;margin-right:20rpx">月售{{arrObject.food_sales}}</text>
           <text wx:if="{{show=='食堂'}}" style="color: #C19946;">删除<text  class="iconfont icon-shanchu1" style="font-size: 40rpx;"></text></text>
         </view>

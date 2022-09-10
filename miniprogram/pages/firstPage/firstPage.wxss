@@ -11,7 +11,6 @@ image{
 }
 
 .tuijian{
-    height: 270rpx;
     margin:15rpx 0 0 0;
     border-radius: 40rpx;
     border-style:groove;
@@ -39,4 +38,19 @@ image{
 .ziti{
     margin:10rpx 0 0 0;
     font-size:40rpx;
+}
+
+.random_Image{
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+}
+
+.wenzi{
+  margin-left:10rpx;
+}
+
+.random_Image>view{
+   margin:10rpx 2rpx 
+
 }

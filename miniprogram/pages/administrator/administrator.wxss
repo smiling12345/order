@@ -1,1 +1,10 @@
 /* pages/administrator/administrator.wxss */
+
+.picker{
+  border: 5rpx solid #105450;
+  border-radius: 13rpx;
+  background-color:white;
+  padding:10rpx;
+  margin-top:150rpx;
+  color:#105450
+}

@@ -1,20 +1,20 @@
 <!--pages/address/address.wxml-->
 <view class="all">
    <!--地址内容-->
-   <view class="small">
+   <view class="small" wx:for='{{dizhi}}' wx:key='index'   data-index="{{index}}" bindtap="selected">
       <view class="first">
         <view class="one">
-          <view>王小明</view>
-          <view>先生</view>
-          <view>13589380694</view>
+          <view>{{item.name}}</view>
+          <view>{{item.gender}}</view>
+          <view>{{item.phone}}</view>
         </view>
-        <view>图形</view>
+        <text class="iconfont icon-bianjishuru" style='font-size:45rpx' catchtap="bianji"></text>
       </view>
-     <view class="second">
-        <button size="mini" class="home" style='font-size:35rpx'>家</button>
-        <view>广东省广州市天河区</view>
-     </view>  
-  </view>
+      <view>{{item.address}}</view>
+      <view class="third" wx:if='{{index==leftCur}}'>
+        <view class="iconfont icon-yuanquan_xuanzhong" style="font-size:30rpx;color:#bb9340">默认选中</view>
+      </view>
+   </view>
 
   <!--悬浮按钮-->
   <navigator url="../newAddress/newAddress">

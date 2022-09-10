@@ -1,27 +1,46 @@
 <!--components/food/food.wxml-->
-<view class="container">
-  <image class="photo" src='{{src}}'></image>
+<view class="container" >
+    <!--解决view包裹image时view有内边距：将view的宽高和image的宽高设置相同-->
+    <!--若不用view包裹image，即使设置image的宽高，还是会改变的，即便设置成块元素，不知道为什么？？？-->
+    <view style="height:200rpx;width:40%">
+      <image src='{{arrObject.food_image}}' class="photo" ></image>
+    </view>
+   
   <view class="right">
       <view class="top">
-        <text class="name">{{name}}</text>
-        <text wx:if="{{show=='用户'}}">月售{{sale}}</text>
-        <text wx:if="{{show=='食堂'}}" style="color: #C19946;">编辑<text  class="iconfont icon-bianjishuru" style="font-size: 40rpx;"></text></text>
-        
+        <view class="name" style="font-size:40rpx;color:#105450;font-weight: bold;">{{arrObject.food_name}}</view>
+        <view wx:if="{{show=='用户'}}" style="color:#105450;font-size: 25rpx;white-space: nowrap;">月售{{arrObject.food_sales}}</view>
+        <view wx:if="{{show=='食堂'}}" style="white-space: nowrap;display: flex;">
+          <text>所得评分:<text style="color:red">{{arrObject.food_grade}}</text></text>
+          <text  style="color: #bb9340;display:block;margin-left: 12rpx;">编辑</text>
+          <text  class="iconfont icon-bianjishuru" style="font-size: 40rpx;color: #C19946;"></text>
+        </view>
       </view>
+
       <view class="middle">
-        <text style="font-size:40rpx;font-weight:bold;color: red;">￥{{price}}</text>
-        <view>
+        <text style="font-size:40rpx;font-weight:bold;color: red;">￥{{arrObject.food_price}}</text>
+        <view style="white-space: nowrap;">
           <text wx:if="{{num!==0}}" class="iconfont icon-yuanquan_jianshao1" style="font-size:50rpx;color:#105450;margin-right:5rpx;" bindtap="reduce"></text>
-          <text wx:if="{{show=='用户'}}">{{num}}</text>
+          <text wx:if="{{show=='用户'&&num!==0}}">{{num}}</text>
           <text wx:if="{{show=='用户'}}" class="iconfont icon-yuanquan_tianjia" style="font-size:50rpx;color:#105450;margin-left:5rpx;" bindtap="add"></text>
+          <text wx:if="{{show=='食堂'}}" style="color:#105450;margin-right:20rpx">月售{{arrObject.food_sales}}</text>
           <text wx:if="{{show=='食堂'}}" style="color: #C19946;">删除<text  class="iconfont icon-shanchu1" style="font-size: 40rpx;"></text></text>
         </view>
       </view>
-      <stars wx:if="{{show=='用户'}}"></stars>
-      <view wx:if="{{show=='食堂'}}" style="margin-bottom: 30rpx;display: flex;justify-content: flex-end;">
-         <text class="material" >主料：{{material}}</text>
-         <text class="{{empty=='在售'?'empty':''}}" catchtap="saleLing" style="margin-right:20rpx">在售</text>
-         <text class="{{empty=='售罄'?'empty':''}}" catchtap="saleEmpty" style="margin-right:0">售罄</text>
+
+      <view class="third" wx:if="{{show=='用户'}}" style="white-space: nowrap;">
+        <stars2 starId="{{arrObject.food_grade}}"></stars2>
+        <text style="color:#bb9340" wx:if="{{arrObject.empty=='在售'}}">在售</text>
+        <text style="color:gray" wx:if="{{arrObject.empty=='售罄'}}">售罄</text>
+      </view>
+      
+      <view wx:if="{{show=='食堂'}}" style="margin-bottom: 30rpx;display: flex;justify-content: space-between;width:100%">
+         <text class="material" >主料：{{arrObject.material}}</text>
+         <view style="white-space: nowrap;">
+           <!--点击传入食物的id，方便在js里修改相应食物的售卖情况-->
+           <text class="{{empty=='在售'?'empty':''}}" catchtap="saleLing" style="margin-right:10rpx" data-id="{{arrObject._id}}">在售</text>
+           <text class="{{empty=='售罄'?'empty':''}}" catchtap="saleEmpty" data-id="{{arrObject._id}}">售罄</text>
+         </view>
       </view>
   </view>
 </view>

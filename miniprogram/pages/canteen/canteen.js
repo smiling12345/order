@@ -9,7 +9,7 @@ Page({
    */
   data: {
       tabs:[],
-      tabCur:1,//默认选中
+      tabCur:0,//默认选中
       lefts:[],
       leftCur:0,
       rights:[],
@@ -21,8 +21,7 @@ Page({
       isMask:false,
       bgcolor:'一楼',
       select:false,
-      name:''
-
+      name:''//餐厅的名字，选择存入哪个餐厅的本地存储
   },
 
   /**
@@ -53,7 +52,7 @@ Page({
       .then(res=>{   //异步 暂缓执行
         console.log('楼号列表',res)
         this.setData({
-          tabs:res.list
+          tabs:res.list.sort()
         })
         this.dishes()
       })

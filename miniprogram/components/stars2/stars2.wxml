@@ -1,7 +1,6 @@
 <!--components/stars2/stars2.wxml-->
 <view class="xingxing"><!--一行星星组件-->
      <!--如果描述为空则只显示星星-->
-     <view wx:if="{{description!=''}}" style="color:#105450">{{description}}：</view>
      <view class="point" style="color:red">{{starId}}</view>
      <view wx:for="{{imgs}}" wx:key="{{item.id}}"  data-index="{{item.id}}">
       <text wx:if="{{item.id>starId}}" class="iconfont icon-xingxingman" style="color: #BBBBBB;font-size: 35rpx;"></text>

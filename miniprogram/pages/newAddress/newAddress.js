@@ -15,8 +15,7 @@ Page({
     phone:'',
     address:'泰山区',
     detailAddress:'',
-    name:'',
-    arraylist:{}  //存储信息，以便存到本地存储中
+    name:''
 
   },
 
@@ -24,7 +23,7 @@ Page({
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value,
-      address:this.data.array[this.data.index]
+      address:this.data.array[e.detail.value],
     })
     console.log(this.data.address)
     //console.log(this.data.array[this.data.index])  
@@ -95,18 +94,23 @@ preserve(e){//点击保存后若手机号校验成功则弹出保存成功，且
   }else{
      let arrayList=wx.getStorageSync('dizhi')||[]
      console.log(arrayList)
-     if(arrayList.length==0){//注意不能用arrayList===[]来判断，此时已经是两个对象
-       let arr={address:this.data.address,phone:this.data.phone}
-       arrayList.push(arr)
-       console.log(arrayList)
-     }else{
-      // let len=arr.length
-      // arr[len].push(this.data.address)
-      // arr[len].push(this.data.phone)
-      console.log('已有数组')
-     }
-     
+     //注意不能用arrayList===[]来判断是否是空数组，此时已经是两个对象
+     let arr={address:this.data.address+' '+this.data.detailAddress,
+              phone:this.data.phone,
+              name:this.data.name,
+              gender:this.data.gender
+      }
+     arrayList.push(arr)
      console.log(arrayList)
+     wx.setStorageSync('dizhi', arrayList)
+     wx.showLoading({
+       title: '保存成功',
+     })
+     wx.showToast({
+       title:'成功',
+       icon:'success',
+       duration:2000
+     })
   }
 
 },

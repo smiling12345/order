@@ -1,4 +1,6 @@
 // pages/adminPage/adminPage.js
+const db = wx.cloud.database()
+const _=db.command
 Page({
 
   /**
@@ -6,7 +8,7 @@ Page({
    */
   data: {
       currentTab:0,//控制选择顶部 商品管理 订单管理 用户评价
-      select:'新订单',//控制订单管理的选择 新订单还是已完成
+      selected:'新订单',//控制订单管理的选择 新订单还是已完成
       list:[
         "10:30-11:00",
         "11:00-11:30",
@@ -18,6 +20,10 @@ Page({
         "18:00-18:30",
       ],
       evaluationSelect:'全部',
+      canteen:'',
+      louhao:'',
+      dishes:'',
+      arr:[]//装商品管理数据的数组
   },
 
   //商品管理
@@ -73,7 +79,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+     console.log(options);
+     this.setData({
+       canteen:options.canteen,
+       louhao:options.louhao,
+       dishes:options.dishes
+     })
   },
 
   /**
@@ -87,7 +98,23 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+     db.collection('food').where({
+        canteen:'荷园',
+        louhao:'一楼',
+        dishes:'其他'
+     }).get()
+     .then(res=>{
+       console.log('获取数据库成功',res.data)
+       this.setData({
+         arr:res.data
+       })
+     })
+     .catch(res=>{
+       console.log('获取数据库失败',res)
+     })
+     
+     
+     
   },
 
   /**

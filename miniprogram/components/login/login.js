@@ -17,6 +17,18 @@ Component({
         observer:function(newVal,oldVal){
           //属性值变化时执行
         }
+      },
+      canteen:{
+        type:String,
+        value:'',
+      },
+      louhao:{
+        type:String,
+        value:'',
+      },
+      dishes:{
+        type:String,
+        value:'',
       }
 
   },
@@ -56,6 +68,9 @@ Component({
       let inPassword=this.data.inPassword
       let outData=this.data.outData
       let prove=this.data.prove
+      let canteen=this.data.canteen
+      let louhao=this.data.louhao
+      let dishes=this.data.dishes
       console.log('账号',inAccount,'密码',inPassword)
       if(inAccount.length<4){
         wx.showToast({
@@ -73,28 +88,42 @@ Component({
       }
 
       for(let i=0;i<outData.length;i++){
-        if(inAccount==outData[i].user){
-          if(inPassword==outData[i].code){
+        if(inAccount==outData[i].user&&inPassword==outData[i].code)
+        {
+           if(canteen==outData[i].canteen&&louhao==outData[i].louhao&&dishes==outData[i].dishes)
+           {
             console.log('登陆成功')
             wx.showToast({
               title:'登陆成功'
             })
             setTimeout(function(){
-              wx.navigateTo({
-                url: '../../pages/'+prove+'/'+prove+'?name='+outData[i].user.name,
-            })},100)
-              
-          return 
-          
-        }
-      }
+              if(prove=='adminPage'){
+                 wx.navigateTo({
+                   url: '../../pages/'+prove+'/'+prove+'?id='+outData[i].user+'&canteen='+canteen+'&louhao='+louhao+'&dishes='+dishes,
+                 })
+              }else{
+                wx.navigateTo({
+                  url: '../../pages/'+prove+'/'+prove+'?id='+outData[i].user,
+                 })
+                }
+              },100)   
+             return 
+           }else{
+              wx.showToast({
+                icon:'none',
+                title:'选择管理窗口错误'
+              })
+              return
+           }   
+      }else{
+          console.log('登陆失败')
+          wx.showToast({
+             icon:'none',
+             title:'账号/密码错误'
+          })
+          return
+       }
     }
-      console.log('登陆失败')
-      wx.showToast({
-        icon:'none',
-        title:'账号/密码错误'
-      })
-    },
-
   }
+}
 })

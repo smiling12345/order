@@ -10,6 +10,7 @@ page {
     align-items: center;
     margin-left: 20rpx;
 }
+
 .font{
     color: #c3a569;
     font-weight:bolder;
@@ -21,6 +22,7 @@ input{
     border:4rpx solid gray;
     border-radius: 20rpx;
     margin-left:30rpx;
+    padding:0 10rpx;
 }
 .image{
     display: flex;

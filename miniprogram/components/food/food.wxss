@@ -2,6 +2,8 @@
 @import '../../style/iconfont.wxss';
 page{
   font-size:34rpx;
+  width:100%;
+  height:100%;
 }
 .container{
   border: 1rpx solid gray;
@@ -14,17 +16,18 @@ page{
   height:200rpx;
   margin-right:5rpx;
   margin-top:30rpx;
+  width:100%
 }
 
 .photo{
-  width:300rpx;
   height:200rpx;
+  width:100%;
   background-color: brown;
 }
 
 .right{
-  padding: 10rpx;
-  width:100%;
+  padding:5rpx 10rpx;
+  width:60%;
 }
 
 .top,.middle{
@@ -32,6 +35,13 @@ page{
   justify-content: space-between;
   align-items: center;
   margin-bottom:20rpx;
+  width:100%
+}
+
+.name{
+  overflow: hidden;/*超出部分隐藏*/
+  text-overflow: ellipsis;
+  white-space: nowrap;/*强制放在一行，不换行*/
 }
 
 .middle>view{
@@ -43,17 +53,16 @@ page{
    color:#105450;
    text-decoration:underline;
 }
-
 .material{
   overflow: hidden;/*超出部分隐藏*/
   text-overflow: ellipsis;
   white-space: nowrap;/*强制放在一行，不换行*/
-  width:300rpx;
-  margin-right:20rpx;
+  margin-right:5rpx;
 }
-.name{
-  overflow: hidden;/*超出部分隐藏*/
-  text-overflow: ellipsis;
-  white-space: nowrap;/*强制放在一行，不换行*/
-  width:170rpx;
+
+.third{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width:100%
 }

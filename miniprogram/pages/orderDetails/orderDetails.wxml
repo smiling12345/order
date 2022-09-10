@@ -27,7 +27,7 @@
              <checkbox-group class="midmid" bindchange="checkboxChange">
                  <view class="foodlist" wx:for="{{arrlist}}" wx:key="index">
                       <checkbox value="{{item._id}}" style="margin-top:100rpx; margin-left: 55rpx;margin-right: 20rpx;" checked="{{item.checked}}"></checkbox>
-                      <food  bindaddNum="addCart" data-item="{{item}}" src="{{item.food_image}}"  sale="{{item.food_sales}}"  price="{{item.food_price}}"  name="{{item.food_name}}" num="{{item.count}}"></food>
+                      <food  bindaddNum="addCart" data-item="{{item}}"  arrObject="{{item}}" num="{{item.count}}"></food>
                  </view> 
              </checkbox-group> 
 

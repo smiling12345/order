@@ -1,4 +1,17 @@
 <!--pages/administrator/administrator.wxml-->
 <!--将数据库的数据传入组件中-->
-<login outData="{{list}}" prove="{{name}}"> 
+<view>
+  <!--mode：选择器类型，此处为多列选择器
+      bindchange:value 改变时触发 change 事件，event.detail = {value}
+      bindcolumnchange:列改变时触发
+      range:mode 为 selector 或 multiSelector 时，range 有效
+      value:表示选择了 range 中的第几个（下标从 0 开始）
+  -->
+  <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    <view class="picker">
+      请点击选择对应管理窗口：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+    </view>
+  </picker>
+</view>
+<login outData="{{list}}" prove="{{name}}" canteen="{{multiArray[0][multiIndex[0]]}}" louhao="{{multiArray[1][multiIndex[1]]}}" dishes="{{multiArray[2][multiIndex[2]]}}"> 
 </login>

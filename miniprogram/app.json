@@ -1,24 +1,22 @@
 {
-  "pages": ["pages/newAddress/newAddress",
-     "pages/adminPage/adminPage","pages/user-login/user-login", 
-    "pages/orderDetails/orderDetails","pages/evaluateDetail/evaluateDetail",
-     "pages/request/request","pages/evaluate/evaluate",
-    "pages/explain/explain","pages/edit/edit",
-    "pages/firstPage/firstPage",
-    "pages/testComponent/testComponent",
-    "pages/personal/personal","pages/order/order",
-    "pages/index/index","pages/coupon/coupon",
-    
-     
-    
-    "pages/first/first",
-     "pages/canteen/canteen",
-    
+  "pages": ["pages/user-login/user-login","pages/adminPage/adminPage", "pages/firstPage/firstPage",
+   "pages/canteen/canteen","pages/order/order",
     "pages/deliveryPage/deliveryPage",
-    "pages/search/search",
+    "pages/rider/rider","pages/testComponent/testComponent",
+    "pages/address/address", "pages/edit/edit",
+    "pages/newAddress/newAddress","pages/administrator/administrator",
     
-    "pages/modifyAddress/modifyAddress"
-   
+    "pages/modifyAddress/modifyAddress",
+    "pages/orderDetails/orderDetails",
+     
+    "pages/evaluateDetail/evaluateDetail",
+     "pages/request/request","pages/evaluate/evaluate",
+    "pages/explain/explain",
+    
+    "pages/personal/personal",
+    "pages/index/index","pages/coupon/coupon",
+    "pages/first/first",
+    "pages/search/search" 
   ],
   "window": {
     "backgroundColor": "#105450",
@@ -34,7 +32,7 @@
       "pages": [
         "pages/coupon",
         "pages/rider",
-        "pages/administrator",
+        
         "pages/payment",
         "pages/ceshi"
       ]

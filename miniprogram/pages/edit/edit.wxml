@@ -1,13 +1,14 @@
 <!--pages/edit/edit.wxml-->
 <view class="name" style="margin-top: 10rpx;"> 
     <view class="font">商品名称</view>
-    <input type="text" class="input"  placeholder="请输入商品名称" bindinput="userNameInput"/>
+    <!--通过value在input框回显数据-->
+    <input type="text" class="input"  bindinput="foodNameInput" value="{{foodName}}"/>
 </view>
 
 
 <view class="name"> 
     <view class="font">商品价格</view>
-    <input type="text" class="input" bindinput="userNameInput" style="width:150rpx"/>
+    <input type="number" class="input" bindinput="foodPriceInput" value="{{foodPrice}}" style="width:150rpx"/>
     <view class="font" style="margin-left: 10rpx;">元</view>
 </view>
 
@@ -20,11 +21,10 @@
 </view>
 
 
-<view class="name"> 
+<view class="detail"> 
     <view class="font">商品详情</view>
+    <textarea maxlength="50" value="{{multiText}}" placeholder="这是一个多行输入的标签" bindinput="text_input" style="border:5rpx solid #105450;border-radius:20rpx;background-color: white;margin:30rpx auto 10rpx auto;padding:10rpx;height:170rpx;"></textarea>
+    <view style="display: flex;justify-content: center;">您还可以输入：{{ msg }}字</view>
 </view>
-    <view class="smell">
-        <view>主料：</view>
-        <input type="text" class="deInput" style="width:80%" placeholder="写入主料" />
-    </view>
-    <button style="margin-top: 100rpx;width:300rpx;background-color: #1f5c57; color: white; font-size: 28rpx;"> 保存</button> 
+
+<button style="margin-top: 100rpx;width:300rpx;background-color: #1f5c57; color: white; font-size: 28rpx;" bindtap='preserve'> 保存</button> 

@@ -1,5 +1,6 @@
 // pages/personal/personal.js
 var app=getApp()
+const db = wx.cloud.database();
 
 Page({
 
@@ -16,6 +17,15 @@ Page({
    */
   onLoad: function (options) {
     console.log(app.globalData)
+    db.collection('user').add({
+      data:{
+        _id:app.globalData
+      },
+      success:function(res){
+        console.log(res)
+        that.setData({res})
+      }
+    })
   },
   
 

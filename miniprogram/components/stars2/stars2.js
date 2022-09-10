@@ -6,10 +6,6 @@ Component({
    */
   properties: {
      //要接收的数据名称   在父组件(页面)使用<stars2 aaa=''></stars2>实现父组件向子组件传递数据
-     description:{
-       type:String,
-       value:''
-     },
      starId:{
        type:Number,
        value:0
@@ -36,7 +32,6 @@ Component({
 
   /**
    * 组件的方法列表
-   * 这个是用来评分的，将数据传到数据库
    */
   methods: {
   }

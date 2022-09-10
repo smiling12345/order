@@ -22,7 +22,10 @@
 
 <!--商品管理-->
     <view class="content" wx:if="{{currentTab===0}}">
-       <food show="食堂"></food>
+       <view wx:for="{{arr}}">
+         <food show="食堂" arrObject="{{item}}" empty="{{item.empty}}"></food>
+       </view>
+       
        <view style="display: flex;justify-content: center;position:fixed;bottom:20rpx;left: 0;right: 0;">
          <newbutton name="添加新商品" bindtap="addNewshop" selected="{{true}}"></newbutton>
        </view>
@@ -32,14 +35,14 @@
 <!-- 订单管理 "-->
     <view class="content2" wx:if="{{currentTab===1}}">
      <view style="display: flex;justify-content: space-around;margin: 20rpx 0;">
-       <newbutton name="新订单" selected="{{select=='新订单'}}" bindtap="newOrder"></newbutton>
-       <newbutton name="已完成" selected="{{select=='已完成'}}" bindtap="alreadyOrder"></newbutton>
+       <newbutton name="新订单" bindtap="newOrder" selected="{{selected=='新订单'}}" ></newbutton>
+       <newbutton name="已完成" bindtap="alreadyOrder" selected="{{selected=='已完成'}}" ></newbutton>
      </view>
      <view wx:for="{{list}}">
        <view>
           <view style="margin:30rpx 0">{{item}}</view>
           <view style="font-size: 40rpx;text-align: center;">暂无该时间段的新订单</view>
-           <!--<riderOrders></riderOrders>-->
+           <riderOrders></riderOrders>
        </view>
      </view>
     </view>

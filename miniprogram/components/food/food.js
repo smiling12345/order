@@ -1,44 +1,34 @@
 // components/food/food.js
+const db = wx.cloud.database()
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-      name:{
-        type:String,
-        value:'name'
+      arrObject:{
+        type:Object,//传入食物的对象
+        value:{}
       },
-      sale:{
-        type:Number,
-        value:0
-      },
-      price:{
-        type:Number,
-        value:79
-      },
-      src:{
+      empty:{
         type:String,
         value:''
-      },
-      num:{
-        type:Number,
-        value:0
-      },
-      material:{
-         type:String,
-         value:'大米、鸡肉huohuoh' //要在此处设计超过多少字则
       },
       show:{
         type:String,
         value:'用户'//默认为用户，可传值为食堂，值不同，呈现的效果不同
       },
+      num:{
+        type:Number,
+        value:0
+      }
+      
   },
 
   /**
    * 组件的初始数据
    */
   data: {
-       empty:'在售',//判断是在售还是售罄了，默认在售
+      
   },
 
   /**
@@ -58,12 +48,31 @@ Component({
         })
         this.triggerEvent('addNum',{type:'-'})
      },
-     saleLing(){
+     saleLing(e){
        this.setData({
          empty:'在售'
        })
+       db.collection('food').doc(e.currentTarget.dataset.id).update({
+        data:{
+          empty:'在售'
+        },
+        success:function(res){
+          console.log('更新成功',res.data)
+        }
+      })
+       
      },
-     saleEmpty(){
+     saleEmpty(e){
+      console.log(e.currentTarget.dataset.id)
+      db.collection('food').doc(e.currentTarget.dataset.id).update({
+        data:{
+          empty:'售罄'
+        },
+        success:function(res){
+          console.log('更新成功',res.data)
+        }
+      })
+      //this.setData()能实时更新properties的值，不推荐，暂无解决办法
       this.setData({
         empty:'售罄'
       })

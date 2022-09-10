@@ -7,7 +7,7 @@ Page({
    */
   data: {
     first:'订单配送至',
-    address: '泰山区10栋101',
+    address:'',
     contact:'风先生 13538612391',
     index:0,
     time: [
@@ -30,7 +30,9 @@ Page({
     arrlist:[],//存放加入购物车的菜品数据
     arrSelected:[], //存储选中的数据，对象数组，以便支付时将数据存储到数据库
     select_all:false,
-    name:''//标志是哪个园
+    dizhi:[],//装载地址信息的数组，从缓存所取
+    selected:0,//选中的地址信息的索引
+    selectedDizhi:{},//装有所选中的地址信息
   },
 
   bindPickerChange: function(e) {//送达时间
@@ -206,10 +208,10 @@ orderDetail(res){
   let that=this
   let arr=this.data.arrSelected
   for(let i=0;i<arr.length;i++){
-    arr[i].status='待接单'
     db.collection('orderDetail').add({//将菜品id信息存入orderDetail表
      data:{
        foodsId:arr[i],
+       status:'待接单',
        orderId:res._id
      }
    })
@@ -262,13 +264,47 @@ addCart(e){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      console.log(options)
-      this.setData({
-        name:options.name
+    let that=this
+    try{
+      var selected=wx.getStorageSync('selected')
+      if(selected){
+        that.setData({
+            selected:selected
+        })
+        console.log(that.data.selected)
+      }
+   }
+   catch(e){
+     console.log(e)
+   }
+
+   try{
+    var dizhi=wx.getStorageSync('dizhi')
+    if(dizhi){
+      that.setData({
+          dizhi:dizhi
       })
-      let that=this
-      try{
-         var value=wx.getStorageSync(this.data.name)
+      console.log(that.data.dizhi)
+    }
+ }
+ catch(e){
+   console.log(e)
+ }
+
+     let selectedDizhi=this.data.dizhi[this.data.selected]
+      this.setData({
+        selectedDizhi:selectedDizhi
+      })
+    
+    console.log(that.data.selectedDizhi)
+    this.setData({
+      address:that.data.selectedDizhi.address,
+      contact:that.data.selectedDizhi.name+that.data.selectedDizhi.gender+'  '+that.data.selectedDizhi.phone
+    })
+      
+     console.log(options.canteen)
+      try{//获取存储餐厅信息，从中获取本地缓存而进行渲染
+         var value=wx.getStorageSync(options.canteen)
          if(value){
            that.setData({
                arrlist:value

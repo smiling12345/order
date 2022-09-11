@@ -17,8 +17,10 @@
         <view class="card" wx:for="{{item.children}}" wx:for-item="foodItem">
           <image src="{{foodItem.food_image}}" mode="aspectFill" style="width:350rpx;height:230rpx;"></image>
            <view class="card-text">
+               
                <view class="card-text_">
-                  <view>{{foodItem.food_name}}</view>
+                  <view>{{foodItem.food_name}}.............................{{foodItem.dishes}}</view>
+                  
                   <view>{{foodItem.status}}</view>
                </view>
                <view class="jiage">

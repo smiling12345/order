@@ -2,14 +2,14 @@
 <view class="all">
  <view class="content">
    <view class="top">
-      <text style="font-size: 40rpx;font-weight: bold;">{{foodName}}</text>                   
-      <text class="iconfont icon-yuanquan_guanbi"  bindtap="guanbi" style="position:fixed;right:35rpx;font-size: 50rpx;color:#bb9450"></text>
+      <text style="font-size: 40rpx;font-weight: bold;">{{foodname}}</text>                   
+      <text class="iconfont icon-yuanquan_guanbi"  bindtap="guanbiDetail" style="position:fixed;right:35rpx;font-size: 50rpx;color:#bb9450"></text>
    </view>
-   <image class="tupian"></image>
+   <image class="tupian" src="{{foodimage}}"></image>
    <view class="middle">
-      <text class="jiage">￥{{jiage}}</text>
+      <text class="jiage">￥{{foodprice}}</text>
       <text class="zhu" style="font-weight: bold;font-size: 36rpx;color: #105450;width:120rpx;">主料：</text>
-      <text class="liao" style="font-size:33rpx;">{{zhuliao}}</text>
+      <text class="liao" style="font-size:33rpx;">{{material}}</text>
    </view>
    <newbutton name="查看评价"></newbutton>
  </view>

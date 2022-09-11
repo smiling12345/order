@@ -31,9 +31,12 @@ Page({
     .catch(err=>{
       console.log('获取用户个人信息失败',err)
     })
-    
-
   },
+ tuichu(){
+    wx.navigateTo({
+      url: '../user-login/user-login',
+    })
+ },
 
   /**
    * 生命周期函数--监听页面加载

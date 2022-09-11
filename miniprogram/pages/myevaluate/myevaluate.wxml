@@ -1,5 +1,5 @@
-<view>
-  <evaluation select="商家"></evaluation>
+<view wx:for="{{arr}}" style="margin-top: 10rpx;">
+  <evaluation item="{{item}}" ></evaluation>
 </view>
 
 

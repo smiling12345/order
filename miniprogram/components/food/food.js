@@ -30,6 +30,10 @@ Component({
    */
   data: {
       showModel:false,
+      foodname:'',
+      foodimage:'',
+      foodprice:0,
+      material:''
   },
 
   /**
@@ -80,18 +84,26 @@ Component({
     },
 
     //弹出窗口
-    dialog(){
+    dialog(e){
+      console.log(e.currentTarget.dataset.item)
+      let item=e.currentTarget.dataset.item
        this.setData({
          showModel:true,
+         foodname:item.food_name,
+         foodprice:item.food_price,
+         foodimage:item.food_image,
+         material:item.material
        })
-
+     
        this.triggerEvent('maskShow',{showModel:true})
     },
 
     guanbiEvent(e){//关闭弹窗
+       console.log('guanbiEvent')
        this.setData({
          showModel:false
        })
+       this.triggerEvent('foodClose',{showModel:false})
     },
 
     deleteshop(id){

@@ -33,7 +33,7 @@
        <!--右侧商品内容-->
        <scroll-view scroll-y="true" class="nav_right"> 
            <view wx:for="{{rights}}" wx:key="index">
-                 <food  bindaddNum="addCart" bind:guanbiEvent="guanbiEvent" bindmaskShow="maskShow" data-item="{{item}}"  arrObject="{{item}}" num="{{item.num}}" empty="{{item.empty}}"></food>
+                 <food  bindaddNum="addCart" bind:foodClose="canteenClose" bindmaskShow="maskShow" data-item="{{item}}"  arrObject="{{item}}" num="{{item.num}}" empty="{{item.empty}}"></food>
            </view>
        </scroll-view>
    </view>

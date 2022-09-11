@@ -56,7 +56,7 @@
       </button>
    </view>
 
-   <button class="tuichu">
+   <button class="tuichu" bindtap="tuichu">
       退出账号
    </button>
      

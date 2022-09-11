@@ -38,7 +38,7 @@ Page({
   //判断选择的是全部还是好评、差评、有图等来渲染页面
   select(e){
     console.log(e)
-    item=e.currentTarget.dataset.item
+    let item=e.currentTarget.dataset.item
     if(item=="全部"){
         this.setData({
           select:"全部"

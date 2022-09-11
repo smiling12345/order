@@ -1,21 +1,22 @@
 <!--components/evaluation/evaluation.wxml-->
 <view class="content">
   <view class="top">
-     <image></image>
+     <image style="width:150rpx;height:130rpx;border-radius: 10rpx;" src="{{item.userphoto}}"></image>
      <view class="top-time">
         <view class="time">
-           <text style="font-size:40rpx;">yhu</text>
+           <text style="font-size:38rpx;">{{item.username}}</text>
            <text style="font-size:30rpx;color:gray;">{{item.timestamp}}</text>
         </view>
         <stars2 starId="{{item.average}}"></stars2>
-        <view style="color:gray">评价--{{item.canteen}} {{item.louhao}} {{item.dishes}}  {{item.foodname}}</view>
+        <view style="color:gray;font-size:28rpx">评价--{{item.canteen}} {{item.louhao}} {{item.dishes}}  {{item.foodname}}</view>
      </view>
   </view>
 
   <view class="middle">
     <text style="font-size: 33rpx;">{{item.user_comment}}</text>
     <view class="img-view">  
-      <image  src="{{item}}" wx:for="{{image}}" wx:key="index" mode="scaleToFill" style="width:230rpx;height:230rpx;border-radius: 5rpx;"></image>
+       <!--src的item是for里的-->
+      <image  src="{{item}}" wx:for="{{item.fileId}}" wx:key="index" mode="scaleToFill" style="width:230rpx;height:230rpx;border-radius: 5rpx;"></image>
     </view>
   </view>
 <!--若商家未回复则不显示该字段-->

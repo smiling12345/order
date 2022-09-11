@@ -26,6 +26,7 @@ image{
 .time{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .tupian{

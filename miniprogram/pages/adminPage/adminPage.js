@@ -59,6 +59,8 @@ Page({
     clearInterval(this.data.a)
     clearInterval(this.data.b)
      clearInterval(this.data.c)
+
+     this.shopUpdate()
   },
 
 orderAdmin(statuOrder,bgcolor){//1.封装数据请求方法（异步）
@@ -371,7 +373,6 @@ alreadyOrder(){//点击订单管理下的已完成订单
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-     let that=this
      
      
 
@@ -398,7 +399,7 @@ alreadyOrder(){//点击订单管理下的已完成订单
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+         this.shopUpdate(()=>wx.stopPullDownRefresh())
   },
 
   /**

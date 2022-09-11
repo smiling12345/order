@@ -23,7 +23,9 @@ Page({
       canteen:'',
       louhao:'',
       foodname:'',
-      dishes:''
+      dishes:'',
+      userphoto:'',
+      username:''
   },
 
   /**
@@ -39,6 +41,29 @@ Page({
        foodname:options.foodname,
        dishes:options.dishes
      })
+
+     this.getInformation()
+  },
+
+  getInformation(){//获得用户头像和昵称
+    const app=getApp()
+     var userid=app.globalData.userid
+     console.log(userid)
+
+     db.collection("user").where({
+        openid:userid,
+    })
+    .get()
+    .then(res=>{
+      console.log('获取用户个人信息成功',res)
+      this.setData({
+        userphoto:res.data[0].userphoto,
+        username:res.data[0].user_name
+      })
+    })
+    .catch(err=>{
+      console.log('获取用户个人信息失败',err)
+    })
   },
   //接收星星的值
   starsnumber(e){
@@ -138,11 +163,11 @@ Page({
    //上传信息到数据库中
    uploadInformation(){
      console.log(this.data.dishes)
-
      console.log(this.data.ID)
      var timestamp=Date.parse(new Date())
      console.log(timestamp)//将日期存入数据库
      let timeStamp=time.formatTime(timestamp, 'Y/M/D h:m:s')
+
       
 
       db.collection('orderDetail').doc(this.data.ID).update({
@@ -172,7 +197,9 @@ Page({
              louhao:this.data.louhao,
              foodname:this.data.foodname,
              dishes:this.data.dishes,
-             adminComment:''//先放置商家回复评论的空数据，后续会进行更新
+             adminComment:'',//先放置商家回复评论的空数据，后续会进行更新
+             username:this.data.username,
+             userphoto:this.data.userphoto
           }
       })
       .then(res=>{

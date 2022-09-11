@@ -3,9 +3,10 @@
     <!--解决view包裹image时view有内边距：将view的宽高和image的宽高设置相同-->
     <!--若不用view包裹image，即使设置image的宽高，还是会改变的，即便设置成块元素，不知道为什么？？？-->
 
-    <food-dialog bind:guanbiEvent="guanbiEvent" class="modalDlg" catchtouchmove='preventTouchMove' wx:if='{{showModel}}'></food-dialog>
+    <food-dialog bind:guanbi="guanbiEvent" foodname="{{foodname}}" foodprice="{{foodprice}}" foodimage="{{foodimage}}" material="{{material}}" class="modalDlg"  catchtouchmove='preventTouchMove' wx:if='{{showModel}}'></food-dialog>
     <view style="height:200rpx;width:40%">
-      <image src='{{arrObject.food_image}}' bindtap='dialog' class="photo" ></image>
+      <image src='{{arrObject.food_image}}' wx:if="{{show=='用户'}}" data-item="{{arrObject}}" bindtap='dialog' class="photo" ></image>
+      <image src='{{arrObject.food_image}}'  wx:if="{{show=='食堂'}}" class="photo" ></image>
     </view>
    
   <view class="right">

@@ -7,8 +7,8 @@
 </view>
 
 <view wx:if="{{searchKey===''}}">
-  <view class="hotSearch">
-     <view class="hotSearchTitleView">
+  <view class="hotSearch" wx:if="{{hotSearchArr.length!==0}}">
+     <view class="hotSearchTitleView" >
         <view class="hotSearchTitle" style="font-size:30rpx">热门搜索</view>
         <view class="iconfont icon-yuanquan_guanbi" style="font-size:40rpx" ></view>
      </view>
@@ -18,7 +18,7 @@
      </view>
   </view>
 
-  <view class="hotSearch">
+  <view class="hotSearch" wx:if="{{searchHistoryArr.length!==0}}">
     <view class="hotSearchTitleView">
         <view class="hotSearchTitle" style="font-size:30rpx">历史搜索</view>
         <view class="iconfont icon-yuanquan_guanbi" style="font-size:40rpx"></view>

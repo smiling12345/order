@@ -173,6 +173,13 @@ Page({
       })
   },
 
+  canteenClose(e){
+    console.log(1)
+     this.setData({
+      showModel:false
+     })
+  },
+
   //加入购物车逻辑
   /*1.拿到点击要添加入到购物车的商品
     2.判断该商品在不在购物车里面
@@ -265,11 +272,7 @@ Page({
     showModel:true
    })
  },
- guanbiEvent(){
-   this.setData({
-     showModel:false
-   })
- },
+
 
  
   /**

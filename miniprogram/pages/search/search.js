@@ -58,7 +58,51 @@ Page({
     }).catch(err=>{
       console.log(err)
     })
-   
+  },
+
+  hotPresever(searchKey){
+    let that=this
+    db.collection('hotSearch').where({
+      searchKey:searchKey,
+      canteen:this.data.canteen
+    }).get()
+    .then(res=>{
+        console.log(res.data)
+        if(res.data.length!==0){//若数据存在
+           wx.cloud.callFunction({
+             name:'hotSearch',
+             data:{
+               amount:1,
+               searchKey:searchKey,
+               canteen:that.data.canteen
+             },
+             success:res=>{
+               console.log(res)
+             },
+            fail:err=>{
+              console.log(err)
+            }
+           })
+          }else{
+            wx.cloud.callFunction({
+               name:'hotSearch',
+               data:{
+                 amount:0,
+                 searchKey:that.data.searchKey,
+                 canteen:that.data.canteen
+               },
+               success:res=>{
+                 console.log(res)
+               },
+              fail:err=>{
+                console.log(err)
+              }
+             })
+          }
+        })
+        .catch(err=>{
+          console.log(err)
+        })
   },
   //触发搜索事件
   goSearch(){
@@ -128,47 +172,7 @@ Page({
       console.log(searchKey)
       //存入热门搜索的数据库中，以便分析热搜词
       //要注意数据读写权限问题！！！
-      db.collection('hotSearch').where({
-        searchKey:searchKey,
-        canteen:this.data.canteen
-      }).get()
-      .then(res=>{
-          console.log(res.data)
-          if(res.data.length!==0){//若数据存在
-             wx.cloud.callFunction({
-               name:'hotSearch',
-               data:{
-                 amount:1,
-                 searchKey:searchKey,
-                 canteen:that.data.canteen
-               },
-               success:res=>{
-                 console.log(res)
-               },
-              fail:err=>{
-                console.log(err)
-              }
-             })
-          }else{
-            wx.cloud.callFunction({
-               name:'hotSearch',
-               data:{
-                 amount:0,
-                 searchKey:searchKey,
-                 canteen:that.data.canteen
-               },
-               success:res=>{
-                 console.log(res)
-               },
-              fail:err=>{
-                console.log(err)
-              }
-             })
-          }
-        })
-        .catch(err=>{
-          console.log(err)
-        })
+      this.hotPresever()
   },
 
   getHistory(){//获得历史搜索数据显示
@@ -199,6 +203,7 @@ Page({
 
   hotTop(){//热门排行显示，取出查询次数最多的前10个搜索词
     let that=this;
+    console.log(1)
 
     db.collection('hotSearch')
      .aggregate()
@@ -286,12 +291,13 @@ addCart(e){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      this.setData({
+         canteen:options.canteen,
+       })
        this.getHistory();
        this.hotTop();
        console.log(options)
-       this.setData({
-         canteen:options.canteen
-       })
+       
 
   },
 

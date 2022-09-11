@@ -16,7 +16,8 @@ exports.main = async (event, context) => {
   if(event.amount==1){//有数据，则更新数据
     try{
       return await db.collection('hotSearch').where({
-         searchKey:event.searchKey
+         searchKey:event.searchKey,
+         canteen:event.canteen
       })
       .update({
         data:{
@@ -31,7 +32,8 @@ exports.main = async (event, context) => {
       return await db.collection('hotSearch').add({
        data:{
          searchKey:event.searchKey,
-         num:1
+         num:1,
+         canteen:event.canteen
        }
      })
     }catch(e){

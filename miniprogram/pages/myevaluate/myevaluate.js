@@ -1,10 +1,12 @@
 // pages/myevaluate/myevaluate.js
+const db=wx.cloud.database()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    arr:[]
 
   },
 
@@ -12,7 +14,27 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    //获得用户头像和昵称
+      const app=getApp()
+       var userid=app.globalData.userid
+       console.log(userid)
 
+       let that=this
+  
+       db.collection("comment").where({
+          _openid:userid,
+      })
+      .get()
+      .then(res=>{
+        console.log('获取用户个人评论成功',res)
+        that.setData({
+            arr:res.data
+        })
+      })
+      .catch(err=>{
+        console.log('获取用户个人评论失败',err)
+      })
+    
   },
 
   /**

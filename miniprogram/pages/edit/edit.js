@@ -21,84 +21,116 @@ Page({
        dishes:''
     },
 
+    preserveNew(){
+      let that=this
+      console.log(that.data.canteen)
+      let foodname=that.data.foodname
+      let foodprice=parseFloat(that.data.foodprice)
+      console.log(foodprice)
+      console.log(typeof(foodprice))
+      let image=that.data.image
+      let material=that.data.material
+
+      if(foodname==''){
+        wx.showToast({
+          title: '商品名称未填',
+          duration:3500,
+          icon:'none'
+        })
+      }else if(foodprice==0){
+        wx.showToast({
+          title: '商品价格未填',
+          duration:3500,
+          icon:'none'
+        })
+      }else if(image==''){
+        wx.showToast({
+          title: '商品图片未选择',
+          duration:3500,
+          icon:'none'
+        })
+      }else if(material==''){
+        wx.showToast({
+          title: '商品详情未说明',
+          duration:3500,
+          icon:'none'
+        })
+      }else{
+        db.collection('food').add({
+          data:{
+            food_name:foodname,
+            food_price:foodprice,
+            food_image:image,
+            material:material,
+
+            canteen:that.data.canteen,
+            louhao:that.data.louhao,
+            dishes:that.data.dishes,
+
+            empty:'在售',
+            food_grade:0,
+            food_sales:0,
+          }
+        })
+        .then(res=>{
+          console.log('添加入数据库成功',res)
+          wx.showToast({
+            title: '保存成功',
+            duration:3000,
+          })
+        })
+        .catch(err=>{
+          console.log('添加入数据库失败',err)
+          wx.showToast({
+            title: '保存失败,请重新保存',
+            duration:3000,
+            icon:'error'
+          })
+        })
+      }
+    },
+
+    updateData(id){
+      db.collection('food').doc(id).update({
+        data:{
+          food_name:that.data.foodname,
+          food_price:that.data.price,
+          food_image:that.data.image,
+          material:that.data.material
+        }
+      })
+      .then(res=>{
+        console.log('更新数据库成功',res)
+        wx.showToast({
+          title: '更新数据成功',
+          duration:3000,
+        })
+      })
+      .catch(res=>{
+        console.log('更新数据库失败',res)
+        wx.showToast({
+          title: '更新数据失败，请重新保存',
+          duration:3000,
+          icon:'error'
+        })
+      })
+
+    },
+
     preserve(){//判断在数据库中进行增加数据，还是更新数据
       //若一开始有对象传入，则是更新数据
       //更新数据在云函数中进行，增加数据不需要云函数进行
       //传入id能更新数据
       console.log(this.data.arrNewObject)
+
       //Object.keys()返回一个由一个给定对象的自身可枚举属性组成的数组，
       //若length==0，说明对象为空
       let length=Object.keys(this.data.arrNewObject).length
-
       let that=this
       if(length==0){
-        console.log(that.data.canteen)
-        let foodname=that.data.foodname
-        let foodprice=parseFloat(that.data.foodprice)
-        console.log(foodprice)
-        console.log(typeof(foodprice))
-        let image=that.data.image
-        let material=that.data.material
-
-        if(foodname==''){
-          wx.showToast({
-            title: '商品名称未填',
-            duration:3500,
-            icon:'none'
-          })
-        }else if(foodprice==0){
-          wx.showToast({
-            title: '商品价格未填',
-            duration:3500,
-            icon:'none'
-          })
-        }else if(image==''){
-          wx.showToast({
-            title: '商品图片未选择',
-            duration:3500,
-            icon:'none'
-          })
-        }else if(material==''){
-          wx.showToast({
-            title: '商品详情未说明',
-            duration:3500,
-            icon:'none'
-          })
-        }else{
-          db.collection('food').add({
-            data:{
-              food_name:foodname,
-              food_price:foodprice,
-              food_image:image,
-              material:material,
-
-              canteen:that.data.canteen,
-              louhao:that.data.louhao,
-              dishes:that.data.dishes,
-
-              empty:'在售',
-              food_grade:0,
-              food_sales:0,
-            }
-          })
-          .then(res=>{
-            console.log('添加入数据库成功',res)
-            wx.showToast({
-              title: '保存成功',
-              duration:3000,
-            })
-          })
-          .catch(err=>{
-            console.log('添加入数据库失败',err)
-            wx.showToast({
-              title: '保存失败,请重新保存',
-              duration:3000,
-              icon:'error'
-            })
-          })
-        }
+          this.preserveNew()
       }else{
-        console.log(2)
+          this.updateData(this.data.arrNewObject._id)
 
       }
        
@@ -207,8 +239,9 @@ Page({
          console.log(options.arrObject)//获得传入过来的对象序列化形式
          let arrNewObject=JSON.parse(options.arrObject)//反序列化，即恢复成对象形式
          that.setData({
-          arrNewObject:arrNewObject,
+           arrNewObject:arrNewObject,
 
+           flag:true,
            foodname:arrNewObject.food_name,
            foodprice:arrNewObject.food_price,
            image:arrNewObject.food_image,

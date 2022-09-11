@@ -272,6 +272,24 @@ alreadyOrder(){//点击订单管理下的已完成订单
     })
  },
 
+ shopUpdate(){//商品管理加载
+  wx.cloud.callFunction({//商品管理再最初加载一次，而后下拉刷新加载一次
+    name:'food',
+    data:{
+      action:'part',//控制选择云函数的功能
+      canteen:this.data.canteen,
+      louhao:this.data.louhao,
+      dishes:this.data.dishes
+    }
+  })
+  .then(res=>{
+    console.log(res)
+    this.setData({
+      arr:res.result.data
+    })
+  })
+ },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -284,7 +302,7 @@ alreadyOrder(){//点击订单管理下的已完成订单
        dishes:options.dishes
      })
 
-     wx.cloud.callFunction({//商品管理只加载一次
+     wx.cloud.callFunction({//商品管理再最初加载一次，而后下拉刷新加载一次
       name:'food',
       data:{
         action:'part',//控制选择云函数的功能

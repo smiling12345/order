@@ -94,8 +94,33 @@ Component({
        })
     },
 
-    delete(){//删除商品
-       
+    deleteshop(id){
+       db.collection('food').where({
+         _id:id
+       }).remove()
+       .then(res=>{
+         console.log('删除对应数据成功',res)
+       })
+       .catch(err=>{
+         console.log('删除对应数据失败',err)
+       })
+    },
+
+    deleteData(e){//删除商品
+      let that=this
+       console.log(e.currentTarget.dataset.item)
+       wx.showModal({
+         title:'删除',
+         content:'是否删除该商品？',
+         success(res){
+           if(res.confirm){
+             console.log('用户点击确定')
+             that.deleteshop(e.currentTarget.dataset.item._id)
+           }else if(res.cancel){
+             console.log('用户点击取消')
+           }
+         }
+       })
     },
 
     edit(e){//编辑商品
@@ -104,10 +129,6 @@ Component({
       wx.navigateTo({
         url: '../../pages/edit/edit?arrObject='+item,
       })
-
-      
-       
-
     }
  
   }

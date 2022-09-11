@@ -1,4 +1,5 @@
 // components/food/food.js
+//用的是food云函数
 const db = wx.cloud.database()
 Component({
   /**
@@ -57,7 +58,7 @@ Component({
           empty:'在售'
         },
         success:function(res){
-          console.log('更新成功',res.data)
+          console.log('更新成功',res)
         }
       })
        
@@ -69,7 +70,7 @@ Component({
           empty:'售罄'
         },
         success:function(res){
-          console.log('更新成功',res.data)
+          console.log('更新成功',res)
         }
       })
       //this.setData()能实时更新properties的值，不推荐，暂无解决办法
@@ -92,6 +93,22 @@ Component({
          showModel:false
        })
     },
+
+    delete(){//删除商品
+       
+    },
+
+    edit(e){//编辑商品
+      console.log(e.currentTarget.dataset.item)
+      let item=JSON.stringify(e.currentTarget.dataset.item)//将对象形式序列化
+      wx.navigateTo({
+        url: '../../pages/edit/edit?arrObject='+item,
+      })
+
+      
+       
+
+    }
  
   }
 })

@@ -14,7 +14,7 @@
         <view wx:if="{{show=='用户'}}" style="color:#105450;font-size: 25rpx;white-space: nowrap;">月售{{arrObject.food_sales}}</view>
         <view wx:if="{{show=='食堂'}}" style="white-space: nowrap;display: flex;">
           <text>所得评分:<text style="color:red">{{arrObject.food_grade}}</text></text>
-          <text  style="color: #bb9340;display:block;margin-left: 12rpx;">编辑</text>
+          <text  style="color: #bb9340;display:block;margin-left: 12rpx;" bindtap="edit" data-item="{{arrObject}}">编辑</text>
           <text  class="iconfont icon-bianjishuru" style="font-size: 40rpx;color: #C19946;"></text>
         </view>
       </view>
@@ -26,7 +26,7 @@
           <text wx:if="{{show=='用户'&&num!==0}}">{{num}}</text>
           <text wx:if="{{show=='用户'&&arrObject.empty=='在售'}}" class="iconfont icon-yuanquan_tianjia" style="font-size:50rpx;color:#105450;margin-left:5rpx;" bindtap="add"></text>
           <text wx:if="{{show=='食堂'}}" style="color:#105450;margin-right:20rpx">月售{{arrObject.food_sales}}</text>
-          <text wx:if="{{show=='食堂'}}" style="color: #C19946;">删除<text  class="iconfont icon-shanchu1" style="font-size: 40rpx;"></text></text>
+          <text wx:if="{{show=='食堂'}}" style="color: #C19946;" bindtap="delete">删除<text  class="iconfont icon-shanchu1" style="font-size: 40rpx;"></text></text>
         </view>
       </view>
 

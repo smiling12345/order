@@ -14,12 +14,19 @@ Page({
   logged(userid){//查看数据库user的openid和全局的userid是否相等，若相等，则表示登录过了
     console.log(userid)
     db.collection('user').where({
- 
         openid:_.eq(userid)
-
     }).get()
     .then(res=>{
       console.log('获取用户个人信息成功',res)
+      if(res.data.length==0){//表示没有登录过
+        wx.navigateTo({
+          url: '../personLogin/personLogin',
+        })
+      }else{
+        wx.switchTab({
+          url: '../personal/personal',
+        })
+      }
     })
     .catch(err=>{
       console.log('获取用户个人信息失败',err)

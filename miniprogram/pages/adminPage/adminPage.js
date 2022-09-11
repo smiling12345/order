@@ -46,6 +46,7 @@ Page({
       a:null,//a，b，c为定时器的id,便于销毁定时器
       b:null,
       c:null,
+      fileList:[]
 
   },
 
@@ -195,7 +196,7 @@ alreadyOrder(){//点击订单管理下的已完成订单
   //添加新商品
   addNewshop(){
       wx.navigateTo({
-        url: '../edit/edit',
+        url: '../edit/edit?canteen='+this.data.canteen+'&louhao='+this.data.louhao+'&dishes='+this.data.dishes,
       })
   },
 
@@ -206,6 +207,7 @@ alreadyOrder(){//点击订单管理下的已完成订单
       canteen:_.eq(this.data.canteen),
       louhao:_.eq(this.data.louhao),
       dishes:_.eq(this.data.dishes),
+      adminComment:_.eq('')
     }).get()
     .then(res=>{
       console.log('获取数据成功',res.data)
@@ -221,25 +223,53 @@ alreadyOrder(){//点击订单管理下的已完成订单
 
   new(){//商家未评论就是新消息
     //从全部获得的数组里筛选出一个新数组
+    let that=this
     this.setData({
        evaluationSelect:'新消息'
     })
-    let fileList=this.data.fileList.filter((item)=>{
-      if(item.adminComment==''){
-        return item
-      }
+   
+    db.collection('comment')
+    .where({
+      canteen:_.eq(this.data.canteen),
+      louhao:_.eq(this.data.louhao),
+      dishes:_.eq(this.data.dishes),
+      adminComment:_.eq('')
+    }).get()
+    .then(res=>{
+      console.log('获取数据成功',res.data)
+      this.setData({
+        fileList:res.data
+      })
+      console.log(this.data.fileList)
     })
-    console.log(fileList)
-    this.setData({
-      fileList:fileList
+    .catch(res=>{
+      console.log('获取数据失败',res)
     })
+    
+    
+    
 
  },
  all(){
    this.setData({
      evaluationSelect:'全部'
   })
-  this.answer()
+  db.collection('comment')
+    .where({
+      canteen:_.eq(this.data.canteen),
+      louhao:_.eq(this.data.louhao),
+      dishes:_.eq(this.data.dishes),
+    }).get()
+    .then(res=>{
+      console.log('获取数据成功',res.data)
+      this.setData({
+        fileList:res.data
+      })
+      console.log(this.data.fileList)
+    })
+    .catch(res=>{
+      console.log('获取数据失败',res)
+    })
  },
 
   /**

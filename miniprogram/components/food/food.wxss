@@ -50,8 +50,7 @@ page{
 }
 
 .empty{/*选择在售还是售罄后得到的样式*/
-   color:#105450;
-   text-decoration:underline;
+   color:red;
 }
 .material{
   overflow: hidden;/*超出部分隐藏*/

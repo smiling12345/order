@@ -67,14 +67,16 @@
       <view class="primary {{evaluationSelect=='新消息'?'evaluation':''}}" bindtap="new">新消息</view>
      </view>
       <view style="margin-bottom:1rpx">
-      <!--wx:if='{{evaluationSelect==全部}}'-->
-        <block >
+
+        <block wx:if='{{evaluationSelect=="全部"}}'>
           <evaluation wx:for="{{fileList}}"  item="{{item}}" >
           </evaluation>
         </block>
         
-<!--wx:if="{{evaluationSelect==新消息}}" -->
-        <evaluation wx:for="{{fileList}}" item="{{item}}" select="商家">
-        </evaluation>
+        <block wx:if="{{evaluationSelect=='新消息'}}">
+          <evaluation wx:for="{{fileList}}" item="{{item}}" select="商家">
+          </evaluation>
+        </block>
+        
       </view>
      </view>

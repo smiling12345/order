@@ -1,7 +1,0 @@
-{
-  "usingComponents": {
-    "food-dialog":"../../components/food-dialog/food-dialog",
-    "image-view":"../../components/image-view/image-view"
-
-  }
-}

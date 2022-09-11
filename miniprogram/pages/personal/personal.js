@@ -9,19 +9,24 @@ Page({
    */
   data: {
       username:"",
-      openid:'',
       userphoto:''
   },
 
   getInformation(){//从数据库中获取相应的头像和昵称信息
-    db.collection("user").where({
-      data:{
-        openid:this.data.openid,
-      }
+     const app=getApp()
+     var userid=app.globalData.userid
+     console.log(userid)
+
+     db.collection("user").where({
+        openid:userid,
     })
     .get()
     .then(res=>{
       console.log('获取用户个人信息成功',res)
+      this.setData({
+        userphoto:res.data[0].userphoto,
+        username:res.data[0].user_name
+      })
     })
     .catch(err=>{
       console.log('获取用户个人信息失败',err)
@@ -34,12 +39,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const app=getApp()
-     var userid=app.globalData.userid
-     console.log(userid)
-     this.setData({
-       openid:userid
-     })
+     this.getInformation()
+     
   },
   
 

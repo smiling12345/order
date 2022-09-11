@@ -21,7 +21,7 @@
                <view class="card-text_">
                   <view>{{foodItem.food_name}}.............................{{foodItem.dishes}}</view>
                   
-                  <view>{{foodItem.status}}</view>
+                  <view >{{foodItem.status}}</view>
                </view>
                <view class="jiage">
                   <view>单价：￥{{foodItem.food_price}}</view>

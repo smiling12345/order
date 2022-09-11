@@ -112,7 +112,7 @@
 
 .input {
     height: 75rpx;
-    width: 600rpx;
+    width: 500rpx;
     font-size: 28rpx;
     text-align:end;
 }

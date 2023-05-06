@@ -30,13 +30,47 @@ Page({
     })
   },
 
+getAll(){
+         //显示{name:'X园'}，用其进行数据库数据选取
+         db.collection('food').aggregate()
+         .match({
+           canteen:_.eq(this.data.name)
+         })
+         .group({
+              _id:'$louhao'   //依据楼号进行分组
+          })
+          .end()
+           .then(res=>{   //异步 暂缓执行
+             console.log('楼号列表',res.list)
+             for(let i=0;i<res.list.length;i++){
+               if(res.list[i]._id=='一楼'){
+                 res.list[i]['num']=0
+               }else if(res.list[i]._id=='二楼'){
+                res.list[i]['num']=1
+              }else if(res.list[i]._id=='三楼'){
+                res.list[i]['num']=2
+              }
+             }
+             console.log('楼号列表',res.list)
+             //sort用对象字符串进行排序会出错，因此上面就是给对象添加number类型的属性，便于正确排序
+             console.log('楼号列表',res.list.sort((a,b)=>a.num-b.num))
+             console.log(res.list.sort())
+             this.setData({
+               tabs:res.list.sort()
+             })
+             this.dishes()
+           })
+           .catch(res=>{
+             console.log('获取楼号失败',res)
+           }
+           )
+},
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     console.log(options)
-    
-    
     wx.setNavigationBarTitle({//修改标题栏
       title: options.canteen,
       success: function(res) {
@@ -47,32 +81,14 @@ Page({
     this.setData({
       name:options.canteen,
     })
-      //显示{name:'X园'}，用其进行数据库数据选取
-      console.log(this.data.name)
-      db.collection('food').aggregate()
-      .match({
-        canteen:_.eq(this.data.name)
-      })
-      .group({
-           _id:'$louhao'   //依据楼号进行分组
-       })
-       .end()
-        .then(res=>{   //异步 暂缓执行
-          console.log('楼号列表',res.list.sort())
-          this.setData({
-            tabs:res.list.sort()
-          })
-          this.dishes()
-        })
-        .catch(res=>{
-          console.log('获取楼号失败',res)
-        }
-        )
+      this.getAll()
   },
 
   //加载当前的菜式窗口
   dishes(){
-    let louhao=this.data.tabs[this.data.tabCur]._id
+    
+          let louhao=this.data.tabs[this.data.tabCur]._id
+    console.log(louhao)
     db.collection('food').aggregate()
       .match({
         louhao,
@@ -92,6 +108,7 @@ Page({
       .catch(res=>{
         console.log('获取菜式失败',res)
       })
+   
   },
   food(){
      let louhao=this.data.tabs[this.data.tabCur]._id
@@ -125,7 +142,7 @@ Page({
         this.data.tabCur=i;
       }
     }
-    console.log('一楼点击成功')
+    console.log('一楼点击成功'+this.data.tabCur)
     this.dishes()
   },
 
@@ -138,7 +155,7 @@ Page({
         this.data.tabCur=i;
       }
     }
-    console.log('二楼点击成功')
+    console.log('二楼点击成功'+this.data.tabCur)
     this.dishes()
   },
 
@@ -244,6 +261,7 @@ Page({
     var arr=wx.getStorageSync(this.data.name)
     console.log(arr)
     for(var i in this.data.rights){
+      this.data.rights[i].num=0;
       for(var j in arr){
         if(this.data.rights[i]._id===arr[j]._id){
             this.data.rights[i].num=arr[j].count
@@ -285,7 +303,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function (e) {
       this.getData()
       this.countall()
   },

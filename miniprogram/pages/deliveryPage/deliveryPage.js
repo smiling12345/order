@@ -75,66 +75,55 @@ Page({
     newOrder(e){
         let that=this
         console.log(e)
-        clearInterval(this.data.c)
-        clearInterval(this.data.b)
 
         this.setData({
           currentTab:0,
-          a:setInterval(function(){
-            that.asyncFn(that.data.statuThird,that.data.deliver).then(res=>{
-              console.log(res)
-              that.setData({
-                newArr:res
-              })
-            })
-          },36000),
+        })
+        that.asyncFn(that.data.statuThird,that.data.deliver).then(res=>{
+          console.log(res)
+          that.setData({
+            newArr:res
+          })
         })
 
         
     },
     orderIng(e){//进行中
       let that=this
-      clearInterval(this.data.a)
-      clearInterval(this.data.c)
 
       console.log(e)
       this.setData({
         currentTab:1,
-        b:setInterval(function(){
-          that.asyncFn(that.data.statuFour).then(res=>{
-            console.log(res)
-            that.setData({
-              orderIng:res
-            })
-          })
-        },36000),
+      })
+
+      that.asyncFn(that.data.statuFour).then(res=>{
+        console.log(res)
+        that.setData({
+          orderIng:res
+        })
       })
     },
     //已完成订单
     alreadyOrder(e){
       let that=this
-      clearInterval(this.data.a)
-      clearInterval(this.data.b)
        
       console.log(e)
       this.setData({
         currentTab:2,
-        c:setInterval(function(){
-          that.asyncFn(that.data.statuFive).then(res=>{
-            console.log(res)
-            that.setData({
-              alreadyOrder:res
-            })
-          })
-
-            that.asyncFn(that.data.statuSix).then(res=>{
-              console.log(res)
-              that.setData({
-                customOrder:res
-              })
-            })
-        },36000),
       })
+      that.asyncFn(that.data.statuFive).then(res=>{
+        console.log(res)
+        that.setData({
+          alreadyOrder:res
+        })
+      })
+
+        that.asyncFn(that.data.statuSix).then(res=>{
+          console.log(res)
+          that.setData({
+            customOrder:res
+          })
+        })
     },
 
     /**
@@ -210,14 +199,40 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
+      this.asyncFn(this.data.statuThird,this.data.deliver).then(res=>{
+        console.log(res)
+        that.setData({
+          newArr:res
+        })
+      })
 
+      this.asyncFn(this.data.statuFour).then(res=>{
+        console.log(res)
+        that.setData({
+          orderIng:res
+        })
+      })
+
+      this.asyncFn(this.data.statuFive).then(res=>{
+        console.log(res)
+        that.setData({
+          alreadyOrder:res
+        })
+      })
+
+      this.asyncFn(this.data.statuSix,this.data.deliver).then(res=>{
+        console.log(res)
+        that.setData({
+          customOrder:res
+        })
+      })
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+ 
     },
 
     /**

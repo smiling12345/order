@@ -35,12 +35,11 @@ exports.main = async (event, context) => {//调用order云函数
         louhao:event.louhao,
         dishes:event.dishes,
         status:event.status,
-        bgcolor:event.bgcolor,
+        bgcolor:event.bgcolor,//配送方式
         userid:event.userid
       }
   })
   const arr=res.result.list
   console.log(arr)
   return mergeObjects(arr);
-  
 }

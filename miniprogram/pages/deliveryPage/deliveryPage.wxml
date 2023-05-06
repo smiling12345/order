@@ -24,20 +24,20 @@
     <view class="order">
       <view wx:for="{{list}}" wx:for-item="item" >
         <view style="margin:30rpx 0">{{item}}</view>
-        <view  wx:for="{{newArr}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&currentTab==0}}">
-             <riderOrders orders="{{items}}" user="{{user}}" rider="{{rider}}"></riderOrders>
+        <view  wx:for="{{newArr}}" wx:for-item="items" wx:key="_id">
+             <riderOrders wx:if="{{items.children[0].time=='明天'+item&&currentTab==0}}" orders="{{items}}" user="{{user}}" rider="{{rider}}"></riderOrders>
        </view>
 
-        <view  wx:for="{{orderIng}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&currentTab==1}}">
-             <riderOrders orders="{{items}}" user="{{user}}" ></riderOrders>
+        <view  wx:for="{{orderIng}}" wx:for-item="items" wx:key="_id">
+             <riderOrders wx:if="{{items.children[0].time=='明天'+item&&currentTab==1}}" orders="{{items}}" user="{{user}}" ></riderOrders>
        </view>
 
-       <view  wx:for="{{alreadyOrder}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&currentTab==2}}">
-             <riderOrders orders="{{items}}" user="{{user}}" ></riderOrders>
+       <view  wx:for="{{alreadyOrder}}" wx:for-item="items" wx:key="_id">
+             <riderOrders wx:if="{{items.children[0].time=='明天'+item&&currentTab==2}}" orders="{{items}}" user="{{user}}" ></riderOrders>
        </view>
 
-       <view  wx:for="{{customOrder}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&currentTab==2}}">
-             <riderOrders orders="{{items}}" user="{{user}}" ></riderOrders>
+       <view  wx:for="{{customOrder}}" wx:for-item="items" wx:key="_id">
+             <riderOrders wx:if="{{items.children[0].time=='明天'+item&&currentTab==2}}" orders="{{items}}" user="{{user}}" ></riderOrders>
        </view>
 
       </view>

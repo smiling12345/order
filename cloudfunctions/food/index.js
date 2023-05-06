@@ -16,7 +16,15 @@ exports.main = async (event, context) => {
     }
 
     case 'part':{
-      return getPart(event)
+      return  await db.collection("food").where({
+        //根据传入的canteen，louhao，dishes获得food相应数据库信息
+        canteen:event.canteen,
+        louhao:event.louhao,
+        dishes:event.dishes
+   }).get()
+   .then(res=>{
+     return res
+   })
     }
   }
   
@@ -31,14 +39,5 @@ async function getAll(){//获得food所有数据库信息
    })
 }
 
-async function getPart(event){//根据传入的canteen，louhao，dishes获得food相应数据库信息
-    await db.collection("food").where({
-      canteen:event.canteen,
-      louhao:event.louhao,
-      dishes:event.dishes
- }).get()
- .then(res=>{
-   return res
- })
-}
+
 

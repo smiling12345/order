@@ -11,6 +11,5 @@
       <text class="zhu" style="font-weight: bold;font-size: 36rpx;color: #105450;width:120rpx;">主料：</text>
       <text class="liao" style="font-size:33rpx;">{{material}}</text>
    </view>
-   <newbutton name="查看评价"></newbutton>
  </view>
 </view>

@@ -8,7 +8,7 @@
     -->
     
     <image bindtap='showImg' src="{{item}}" mode="scaleToFill" style="width:230rpx;height:230rpx;border-radius: 5rpx;"></image>
-    <view bindtap='deleteImg' data-index="{{index}}" class='iconfont icon-a-shanchucuowu' style="position:absolute;right:15rpx;top:15rpx;color:#105450;"></view>
+    <view bindtap='deleteImg' data-index="{{index}}" class='iconfont icon-guanbi' style="position:absolute;right:15rpx;top:15rpx;color:red;"></view>
   </view>
   
   <view class='iconfont icon-tianjia' bindtap='addImg' style="font-size:230rpx" ></view>

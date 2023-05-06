@@ -1,6 +1,6 @@
 <!--components/login/login.wxml-->
 <view class="big">
   <input placeholder="账号" class="xinxi" bindinput="getAccount"/>
-  <input placeholder="密码" class="xinxi" bindinput="getPassword"/>
+  <input password="true" placeholder="密码" class="xinxi" bindinput="getPassword"/>
   <button bindtap="login" size="mini">认证</button>
 </view>

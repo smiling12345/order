@@ -15,7 +15,8 @@ Page({
     phone:'',
     address:'泰山区',
     detailAddress:'',
-    name:''
+    name:'',
+   
   },
 
   bindPickerChange: function(e) {//收货地址
@@ -118,6 +119,8 @@ preserve(e){//点击保存后若手机号校验成功则弹出保存成功，且
                duration:2000
            })
       }else{
+          let length=arrayList.length//获取缓存地址数组的长度，便于更改选中的地址
+          console.log(length)
           arrayList.push(arr)
           console.log(arrayList)
           wx.setStorageSync('dizhi', arrayList)
@@ -126,21 +129,19 @@ preserve(e){//点击保存后若手机号校验成功则弹出保存成功，且
             icon:'success',
             duration:2000
           })
-      }
-    
-      
-        
-   
-      
+          wx.setStorageSync('selected',length)
+          wx.navigateBack({
+            url: '../address/address',
+          })
+      } 
   }
-
 },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(options.item){
+    if(options.item){//如果有数据传入，则代表是编辑地址
       const item = JSON.parse(decodeURIComponent(options.item));
       console.log(item)
       let n=0;

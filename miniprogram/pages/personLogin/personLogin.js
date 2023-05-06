@@ -32,6 +32,7 @@ Page({
       })
       var that=this;
       console.log(this.data.avatarUrl)
+  
       wx.cloud.uploadFile({
               //存储在user下
           cloudPath:'user/'+(new Date()).valueOf()+'.png',//文件名
@@ -46,7 +47,12 @@ Page({
             that.upload(res.fileID)
           },
           fail:err=>{
-            console.log(err)
+            console.log(err);
+            wx.showToast({
+              title:'头像未填写哦！',
+              icon:'none',
+              duration:2000
+            })
           }
         })
         

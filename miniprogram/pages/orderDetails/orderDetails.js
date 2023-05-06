@@ -1,5 +1,6 @@
 // pages/orderDetails/orderDetails.js
 const db = wx.cloud.database()
+const _ = db.command;
 const time = require("../utils/utils.js");//引入时间戳转换为日期的js文件
 
 Page({
@@ -200,35 +201,45 @@ uploadOrder(){
 
 
   console.log(this.data.time[this.data.index])
-  db.collection('order').add({
-    data:{
-      bgcolor:that.data.bgcolor,//传递是配送还是自提还是堂食等就餐方式
-      time:that.data.time[that.data.index],//期望送达时间
-      remark:that.data.remark,//订单备注
-      money:that.data.money,//配送费
-      packMoney:that.data.packMoney,//打包费
-      totalMoney:that.data.totalmoney,//实付价格，包括配送费和打包费
-      canteen:that.data.canteen,
-      name:that.data.name,//收货人姓名
-      phone:that.data.phone,//收货人电话
-      gender:that.data.gender,//收货人性别
-      address:that.data.address,//收货人地址
-      timestamp:timeStamp
-    }
-  })
-  .then(res=>{
-    console.log(res)
-    this.orderDetail(res)
-    //将order表中生成的_id是主键也是外键，放入orderDetail表中，进行多表联查，order和orderDetail是一对多
-  })
-  .catch(res=>{
-    console.log('上传订单表失败',res)
-  })
+  if(that.data.name==''){
+    wx.showToast({
+      title: '地址信息未填！',
+      duration:3000,
+      icon:'error'
+    })
+  }else{
+      db.collection('order').add({
+      data:{
+        bgcolor:that.data.bgcolor,//传递是配送还是自提还是堂食等就餐方式
+        time:that.data.time[that.data.index],//期望送达时间
+        remark:that.data.remark,//订单备注
+        money:that.data.money,//配送费
+        packMoney:that.data.packMoney,//打包费
+        totalMoney:that.data.totalmoney,//实付价格，包括配送费和打包费
+        canteen:that.data.canteen,
+        name:that.data.name,//收货人姓名
+        phone:that.data.phone,//收货人电话
+        gender:that.data.gender,//收货人性别
+        address:that.data.address,//收货人地址
+        timestamp:timeStamp
+      }
+    })
+    .then(res=>{
+      console.log(res)
+      this.orderDetail(res)
+      //将order表中生成的_id是主键也是外键，放入orderDetail表中，进行多表联查，order和orderDetail是一对多
+    })
+    .catch(res=>{
+      console.log('上传订单表失败',res)
+    })
+  }
+  
 
 },
 //传入订单详情表
 orderDetail(res){
   let that=this
+  //从表food中获取用户选中支付的菜品
   let arr=this.data.arrSelected;
   console.log(arr)
   for(let i=0;i<arr.length;i++){
@@ -242,6 +253,31 @@ orderDetail(res){
    })
    .then(res=>{
      console.log(res)
+     console.log(this)
+     this.modifyPay(arr[i]._id)
+     
+   })
+   .catch(res=>{
+     console.log('上传orderDetail表失败',res)
+   })
+  
+ }
+},
+
+//修改foods中的销售额
+modifyPay(id){
+    console.log(id)
+    //找到对应的菜品对其里面的销售额进行处理
+    //此处数据若更新失败，请查看数据库表权限问题，自定义读写都是true就可以了
+    db.collection('food').doc(id)
+    .update({//将菜品id信息存入orderDetail表
+     data:{
+      food_sales:_.inc(1)
+      //注意：如果先取再加1则会出现多个用户同时操作会出现覆盖的情况，使用inc则不会
+     }
+   })
+   .then(res=>{
+     console.log(res)
      wx.showToast({
       title: '支付成功',
       icon: 'success',
@@ -249,10 +285,10 @@ orderDetail(res){
     })
    })
    .catch(res=>{
-     console.log('上传orderDetail表失败',res)
+     console.log('更新food表失败',res)
    })
- }
 },
+
 //更新购物车缓存数组
 addCart(e){
   console.log(e)

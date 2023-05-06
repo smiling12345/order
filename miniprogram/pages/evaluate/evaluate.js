@@ -25,7 +25,8 @@ Page({
       foodname:'',
       dishes:'',
       userphoto:'',
-      username:''
+      username:'',
+      foodsId:''//为了评价计算评分
   },
 
   /**
@@ -39,7 +40,8 @@ Page({
        canteen:options.canteen,
        louhao:options.louhao,
        foodname:options.foodname,
-       dishes:options.dishes
+       dishes:options.dishes,
+       foodsId:options.foodsId
      })
 
      this.getInformation()
@@ -167,9 +169,6 @@ Page({
      var timestamp=Date.parse(new Date())
      console.log(timestamp)//将日期存入数据库
      let timeStamp=time.formatTime(timestamp, 'Y/M/D h:m:s')
-
-      
-
       db.collection('orderDetail').doc(this.data.ID).update({
         data:{
           ['status']:'已评价'
@@ -199,20 +198,77 @@ Page({
              dishes:this.data.dishes,
              adminComment:'',//先放置商家回复评论的空数据，后续会进行更新
              username:this.data.username,
-             userphoto:this.data.userphoto
+             userphoto:this.data.userphoto,
+             foodsId:this.data.foodsId
           }
       })
       .then(res=>{
          console.log('上传数据库成功',res)
+         this.getEvaluate(this.data.foodsId)//查询comment数据库中相应的foodsId
+
          wx.showToast({
           title: '提交成功',
           icon: 'succes',
           duration: 1000,
           mask:true
-      })
+        })
+        wx.navigateBack({
+          url:'../order/order',
+        })
       })
       .catch(res=>{
         console.log('上传数据库失败',res)
+      })
+   },
+
+   //获取评论的食品的评分数据计算平均值后存入food中
+   getEvaluate(Id){
+     console.log('=======',Id)
+     //调用云函数是去寻找comment数组里所有对应foodsId值的数据，返回数组
+     //从而对数据评分进行平均值再存入food表中
+      wx.cloud.callFunction({
+        name: 'commentNum', //云函数的名字
+        data:{
+          foodsId:Id
+        },
+        success: (res) => {
+          console.log(res)
+          console.log(res.result)
+          let sum=0;
+          let arr=res.result;
+          for(let i=0;i<arr.length;i++){
+              sum+=arr[i].average;
+          }
+          console.log(sum)
+          let avg=Math.round(sum/arr.length);
+          console.log(avg)
+
+          db.collection('food').doc(Id).update({
+            data:{
+              food_grade:avg
+            }
+          }).then(res=>{
+            console.log('修改food的food_grade成功',res)
+          }).catch(err=>{
+            console.log(err)
+          })
+        },
+        fail:(err)=>{
+          console.log(err)
+        }
+      })
+   },
+
+   depositFood(id,avg){//将评分数据存入food数据库的对应食物表中
+      db.collection('food').doc(id)
+      .update({
+        food_grade:avg
+      })
+      .then(res=>{
+        console.log('food评分更新成功',res)
+      })
+      .catch(err=>{
+        console.log('food评分表更新失败',err)
       })
    },
 

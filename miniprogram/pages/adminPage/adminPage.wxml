@@ -22,7 +22,7 @@
 
 <!--商品管理-->
     <view class="content" wx:if="{{currentTab===0}}">
-       <view wx:for="{{arr}}">
+       <view wx:for="{{arr}}" wx:key="index">
          <food show="食堂" arrObject="{{item}}" empty="{{item.empty}}"></food>
        </view>
        
@@ -39,24 +39,24 @@
        <newbutton name="进行中" bindtap="orderIng" selected="{{selected=='进行中'}}" ></newbutton>
        <newbutton name="已完成" bindtap="alreadyOrder" selected="{{selected=='已完成'}}" ></newbutton>
      </view>
-     <view wx:for="{{list}}" wx:for-item="item">
+     <view wx:for="{{list}}" wx:for-item="item" wx:key="index">
        <view style="margin:30rpx 0">{{item}}</view>
-       <view  wx:for="{{newArr}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&selected=='新订单'}}">
-             <riderOrders orders="{{items}}" user="{{user}}"></riderOrders>
+       <view  wx:for="{{newArr}}" wx:for-item="items" wx:key="index">
+             <riderOrders wx:if="{{items.children[0].time=='明天'+item&&selected=='新订单'}}" orders="{{items}}" user="{{user}}"></riderOrders>
        </view>
-       <view  wx:for="{{ordering}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&selected=='进行中'}}">
-             <riderOrders orders="{{items}}" user="{{user}}"></riderOrders>
+       <view  wx:for="{{alreadyOrder}}" wx:for-item="items" wx:key="index">
+             <riderOrders wx:if="{{items.children[0].time=='明天'+item&&selected=='已完成'}}" orders="{{items}}" user="{{user}}"></riderOrders>
        </view>
-       <view  wx:for="{{alreadyOrder}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&selected=='已完成'}}">
-             <riderOrders orders="{{items}}" user="{{user}}"></riderOrders>
-       </view>
-       <view  wx:for="{{riderDeliver}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&selected=='已完成'}}">
-             <riderOrders orders="{{items}}" user="{{user}}"></riderOrders>
-       </view>
-       <view  wx:for="{{customOrder}}" wx:for-item="items" wx:if="{{items.children[0].time=='明天'+item&&selected=='已完成'}}">
-             <riderOrders orders="{{items}}" user="{{user}}"></riderOrders>
+      <view  wx:for="{{ordering}}" wx:for-item="items" wx:key="index">
+             <riderOrders wx:if="{{items.children[0].time=='明天'+item&&selected=='进行中'}}" orders="{{items}}" user="{{user}}"></riderOrders>
        </view>
        
+       <view  wx:for="{{riderDeliver}}" wx:for-item="items" wx:key="index">
+             <riderOrders wx:if="{{items.children[0].time=='明天'+item&&selected=='已完成'}}" orders="{{items}}" user="{{user}}"></riderOrders>
+       </view>
+       <view  wx:for="{{customOrder}}" wx:for-item="items" wx:key="index">
+             <riderOrders wx:if="{{items.children[0].time=='明天'+item&&selected=='已完成'}}" orders="{{items}}" user="{{user}}"></riderOrders>
+       </view>     
      </view>
     </view>
 
@@ -69,12 +69,12 @@
       <view style="margin-bottom:1rpx">
 
         <block wx:if='{{evaluationSelect=="全部"}}'>
-          <evaluation wx:for="{{fileList}}"  item="{{item}}" >
+          <evaluation wx:for="{{fileList}}"  wx:key="_id" item="{{item}}" >
           </evaluation>
         </block>
         
         <block wx:if="{{evaluationSelect=='新消息'}}">
-          <evaluation wx:for="{{fileList}}" item="{{item}}" select="商家">
+          <evaluation wx:for="{{fileList}}" wx:key="_id" item="{{item}}" select="商家">
           </evaluation>
         </block>
         

@@ -90,7 +90,7 @@ Component({
                     selected:'取消接单',
                     unabled:true
                })
-               this.orderupdate(e.currentTarget.dataset.index,'订单被取消')
+               that.orderupdate(e.currentTarget.dataset.index,'订单被取消')
             } else if (res.cancel) {
               console.log('用户点击取消')
             }

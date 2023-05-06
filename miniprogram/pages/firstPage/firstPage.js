@@ -17,22 +17,22 @@ Page({
     canteenList:[
       {
         icon:'icon-bianlidian5',
-        name:"荷园"
+        name:"荷园",
       },
       {
         icon:'icon-bianlidian6',
         name:"稻香园"
       },
       {
-        icon:'icon-bianlidian',
+        icon:'icon-24gf-store2',
         name:"莘园"
       },
       {
-        icon:'icon-store',
+        icon:'icon-24gf-store',
         name:"西园"
       },
       {
-        icon:'icon-store',
+        icon:'icon-a-ziyuan10',
         name:"芷园"
       },
       {
@@ -61,8 +61,7 @@ Page({
 
   lunbotu(){
     //发送异步请求获取网络轮播图数据
-    wx.cloud.database().collection('lunbotu').get()
-        .then(res=>{
+    wx.cloud.database().collection('lunbotu').get().then(res=>{
           console.log('获取轮播图成功',res)
           this.setData({
             list:res.data
@@ -97,7 +96,7 @@ Page({
     let item=e.currentTarget.dataset.item
      console.log(item)
      wx.navigateTo({
-       url:'../canteen/canteen?canteen='+item.canteen
+       url:'../canteen/canteen?canteen='+item.canteen+'&louhao='+item.louhao+'&dishes='+item.dishes
      })
 
    },

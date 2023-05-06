@@ -54,7 +54,7 @@ image图片标签
 
     <view class="bottom"><!--把餐厅的名字作为参数传过去页面-->
          <navigator url="../canteen/canteen?canteen={{item.name}}" class="shitang" wx:for="{{canteenList}}" data-item="{{item}}" wx:key="index">
-             <view class="iconfont {{item.icon}}" style="font-size:50rpx"></view>
+             <view class="iconfont {{item.icon}}" style="font-size:50rpx;color:#105450"></view>
              <view class="ziti">{{item.name}}</view>
          </navigator>
       </view>

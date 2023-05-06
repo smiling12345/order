@@ -21,7 +21,7 @@ input{
     height: 55rpx;
     border:4rpx solid gray;
     border-radius: 20rpx;
-    margin-left:30rpx;
+    margin-left:40rpx;
     padding:0 10rpx;
 }
 .image{

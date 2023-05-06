@@ -8,7 +8,8 @@ cloud.init({
 var $ = cloud.database().command.aggregate   //定义聚合操作符
 exports.main = async (event, context) => {//三表联合
   try{
-     return await cloud.database().collection('orderDetail').aggregate()
+     return await cloud.database().collection('orderDetail')
+    .aggregate()
     .lookup({
       from: "food",
       localField: "foodsId",
@@ -50,7 +51,10 @@ exports.main = async (event, context) => {//三表联合
       bgcolor:event.bgcolor,
       _openid:event.userid
     })
+    .limit(100)
+    //必须要加limit，否则虽然官网上说云函数端获取数据最多只是100条限制，但若不加，仍然是返回20条数据的，大坑！！！！！
     .end()
+
   }catch(e){
       console.log(e)
   }

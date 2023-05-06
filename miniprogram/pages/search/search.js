@@ -291,12 +291,21 @@ addCart(e){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setNavigationBarTitle({//修改标题栏
+      title: options.canteen,
+      success: function(res) {
+        console.log('修改成功',res)
+      }
+    })
+
       this.setData({
          canteen:options.canteen,
        })
        this.getHistory();
        this.hotTop();
        console.log(options)
+
+
        
 
   },

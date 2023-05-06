@@ -17,8 +17,6 @@ Page({
        
   },
 
-
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -59,10 +57,13 @@ Page({
              console.log(arr)
              wx.setStorageSync('dizhi', arr)
              that.setData({//渲染页面数据改变
-                  dizhi:arr
+                  dizhi:arr,
+                  leftCur:--that.data.leftCur
                })
+             wx.setStorageSync('selected', that.data.leftCur)
+
            }else{//用户点了取消之后
-            console.log('用户点击取消')
+              console.log('用户点击取消')
            }
         }
       })

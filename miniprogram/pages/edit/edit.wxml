@@ -2,7 +2,7 @@
 <view class="name" style="margin-top: 10rpx;"> 
     <view class="font">商品名称</view>
     <!--通过value在input框回显数据-->
-    <input type="text" class="input"  bindinput="foodNameInput" value="{{foodname}}"/>
+    <input type="text" class="input"  style="width:500rpx" bindinput="foodNameInput" value="{{foodname}}"/>
 </view>
 
 
@@ -27,7 +27,7 @@
 
 
 <view class="detail"> 
-    <view class="font">商品详情</view>
+    <view class="font" style="margin-left:20rpx">商品详情</view>
     <textarea maxlength="50" value="{{material}}" placeholder="这是一个多行输入的标签" bindinput="text_input" style="border:5rpx solid #105450;border-radius:20rpx;background-color: white;margin:30rpx auto 10rpx auto;padding:10rpx;height:170rpx;"></textarea>
     <view style="display: flex;justify-content: center;">您还可以输入：{{ msg }}字</view>
 </view>

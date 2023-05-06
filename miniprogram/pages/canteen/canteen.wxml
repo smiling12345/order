@@ -43,7 +43,7 @@
         <view class="iconfont icon-gouwuche" style="color: white;font-size:100rpx"></view>
         <view wx:if="{{numall!==0}}" style="margin-bottom: 50rpx;font-size:30rpx;color: white;">{{numall}}</view>
      </view>
-     <view style="font-size:35rpx;color:#BB9340">另需配送费￥</view>
+     
      <navigator style="font-size:40rpx;color:white" url="../orderDetails/orderDetails?canteen={{name}}">去结算</navigator>
   </view>
 </view>

@@ -36,7 +36,7 @@ image{
 
 .middle{
     width:80%;
-    margin-left:130rpx;
+    margin-left:170rpx;
     margin-bottom:30rpx;
 }
 
@@ -45,7 +45,7 @@ image{
   flex-direction: row;
 }
 
-.middle>view{
+.img-view{
    margin-top:15rpx;
 }
 

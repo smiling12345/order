@@ -91,10 +91,12 @@ Page({
     },
 
     updateData(id){
+      let that=this
+      console.log(that.data.foodprice)
       db.collection('food').doc(id).update({
         data:{
           food_name:that.data.foodname,
-          food_price:that.data.price,
+          food_price:that.data.foodprice,
           food_image:that.data.image,
           material:that.data.material
         }

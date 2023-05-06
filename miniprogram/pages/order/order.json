@@ -1,4 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "newbutton":"../../components/newbutton/newbutton",
+    "riderOrders":"../../components/riderOrders/riderOrders"
+  },
   "navigationBarTitleText":"订单"
 }

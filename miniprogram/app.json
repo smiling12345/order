@@ -1,7 +1,9 @@
 {
-  "pages": [ "pages/user-login/user-login",
+  "pages": [
+    "pages/user-login/user-login",
     "pages/personal/personal",
-    "pages/search/search","pages/evaluate/evaluate",
+    "pages/search/search",
+    "pages/evaluate/evaluate",
     "pages/edit/edit",
     "pages/firstPage/firstPage",
     "pages/adminPage/adminPage",
@@ -12,11 +14,8 @@
     "pages/address/address",
     "pages/newAddress/newAddress",
     "pages/administrator/administrator",
-    "pages/modifyAddress/modifyAddress",
     "pages/orderDetails/orderDetails",
     "pages/evaluateDetail/evaluateDetail",
-    
-   
     "pages/first/first",
     "pages/myevaluate/myevaluate",
     "pages/personLogin/personLogin"
@@ -25,18 +24,12 @@
     "backgroundColor": "#105450",
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#105450",
-    "navigationBarTitleText": "点餐食堂",
+    "navigationBarTitleText": "小农餐吧",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true
   },
-  "subpackages": [
-    {
-      "root": "packageA",
-      "pages": [
-        "pages/rider"
-      ]
-    }
-  ],
+  "subpackages": [],
+  "lazyCodeLoading": "requiredComponents",
   "tabBar": {
     "list": [
       {

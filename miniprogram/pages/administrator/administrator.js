@@ -178,7 +178,9 @@ wx.cloud.callFunction({
     multiArray.push(['荷园','西园','芷园','莘园','稻香园','绿榕园']);
     multiArray.push(['一楼','二楼','三楼'])
     for(let n=0;n<res.result.data.length;n++){
+      console.log(res.result.data[n])
       if(res.result.data[n].canteen===multiArray[0][0]&&res.result.data[n].louhao===multiArray[1][0]){
+        
          arr.push(res.result.data[n].dishes)
       }
     }

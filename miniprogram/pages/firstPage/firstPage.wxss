@@ -47,7 +47,8 @@ image{
 }
 
 .wenzi{
-  margin-left:10rpx;
+  margin-left:30rpx;
+  color: #bb9340;
 }
 
 .random_Image>view{

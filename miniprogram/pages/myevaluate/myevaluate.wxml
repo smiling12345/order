@@ -1,4 +1,4 @@
-<view wx:for="{{arr}}" style="margin-top: 10rpx;">
+<view wx:for="{{arr}}" style="margin-top: 10rpx;" wx:key="_id">
   <evaluation item="{{item}}" ></evaluation>
 </view>
 

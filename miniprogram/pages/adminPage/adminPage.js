@@ -56,9 +56,9 @@ Page({
     this.setData({
       currentTab:0
     })
-    clearInterval(this.data.a)
+  /*  clearInterval(this.data.a)
     clearInterval(this.data.b)
-     clearInterval(this.data.c)
+     clearInterval(this.data.c)*/
 
      this.shopUpdate()
   },
@@ -81,6 +81,7 @@ async asyncFn(orderStatu,bgcolor){//2.通过async/await去操作得到的Promise
 //如果不是Promise对象：把这个非promise的东西当做await表达式的结果。
    try{
         let returnData=await this.orderAdmin(orderStatu,bgcolor)
+        console.log(returnData)
         console.log(returnData.result)
         return returnData.result
    }catch(e){
@@ -90,22 +91,18 @@ async asyncFn(orderStatu,bgcolor){//2.通过async/await去操作得到的Promise
 
   //订单管理
   order(e){//点击再从数据库加载数据,先加载所有数据，再在页面显示处看需要哪些数据
-    let that=this
+   let that=this 
     console.log(e)
     this.setData({
       currentTab:1,
-      a:setInterval(function(){
-        that.asyncFn(that.data.statuFirst).then(res=>{
-          console.log(res)
-          that.setData({
-            newArr:res
-          })
-        })
-      },36000),
+  })
+  that.asyncFn(that.data.statuFirst).then(res=>{
+      console.log(res)
+      that.setData({
+        newArr:res
+      })
     })
-    clearInterval(this.data.b)
-    clearInterval(this.data.c)
-
+ 
   },
 
 
@@ -115,30 +112,20 @@ async asyncFn(orderStatu,bgcolor){//2.通过async/await去操作得到的Promise
     this.setData({
       currentTab:2
     })
-    clearInterval(this.data.a)
-    clearInterval(this.data.b)
-    clearInterval(this.data.c)
-
     this.all()
-
-
   },
 
   newOrder(){//点击订单管理下的新订单
     let that=this
      this.setData({
        selected:'新订单',
-       a:setInterval(function(){
-        that.asyncFn(that.data.statuFirst).then(res=>{
-          console.log(res)
-          that.setData({
-            newArr:res
-          })
-        })
-      },36000),   
      })
-     clearInterval(this.data.b)
-     clearInterval(this.data.c)
+     that.asyncFn(that.data.statuFirst).then(res=>{
+      console.log(res)
+      that.setData({
+        newArr:res
+      })
+    })
 
      this.answer()
      
@@ -148,51 +135,43 @@ async asyncFn(orderStatu,bgcolor){//2.通过async/await去操作得到的Promise
     let that=this
     this.setData({
       selected:'进行中',
-      b:setInterval(function(){
-        that.asyncFn(that.data.statuSecond).then(res=>{
-          console.log(res)
-          that.setData({
-            ordering:res
-          })
-        })
-      },36000),
     })
 
-    clearInterval(this.data.a)
-    clearInterval(this.data.c)
+    that.asyncFn(that.data.statuSecond).then(res=>{
+      console.log(res);
+      that.setData({
+        ordering:res
+      })
+    })
+
   },
 
 alreadyOrder(){//点击订单管理下的已完成订单
     let that=this
     this.setData({
       selected:'已完成',
-      c:setInterval(function(){
-        that.asyncFn(that.data.statuThird).then(res=>{
-          console.log(res)
-          that.setData({
-            alreadyOrder:res
-          })
-        })
-
-        that.asyncFn(that.data.statuFour).then(res=>{
-          console.log(res)
-          that.setData({
-           riderDeliver:res
-         })
-        })
-
-        that.asyncFn(that.data.statuSix).then(res=>{
-          console.log(res)
-          that.setData({
-            customOrder:res
-          })
-        })
-
-      },36000),
     })
 
-    clearInterval(this.data.a)
-    clearInterval(this.data.b)
+    that.asyncFn(that.data.statuThird).then(res=>{
+      console.log(res)
+      that.setData({
+        alreadyOrder:res
+      })
+    })
+
+    that.asyncFn(that.data.statuFour).then(res=>{
+      console.log(res)
+      that.setData({
+       riderDeliver:res
+     })
+    })
+
+    that.asyncFn(that.data.statuSix).then(res=>{
+      console.log(res)
+      that.setData({
+        customOrder:res
+      })
+    })
 
   },
   //添加新商品
@@ -275,6 +254,7 @@ alreadyOrder(){//点击订单管理下的已完成订单
  },
 
  shopUpdate(){//商品管理加载
+  let that=this
   wx.cloud.callFunction({//商品管理再最初加载一次，而后下拉刷新加载一次
     name:'food',
     data:{
@@ -286,9 +266,12 @@ alreadyOrder(){//点击订单管理下的已完成订单
   })
   .then(res=>{
     console.log(res)
-    this.setData({
-      arr:res.result.data
-    })
+    if(res.result!==null){
+      that.setData({
+        arr:res.result.data
+      })
+    }
+    
   })
  },
 
@@ -315,9 +298,12 @@ alreadyOrder(){//点击订单管理下的已完成订单
     })
     .then(res=>{
       console.log(res)
-      this.setData({
-        arr:res.result.data
-      })
+      if(res.result!==null){
+          this.setData({
+          arr:res.result.data
+        })
+      }
+      
     })
 
     //订单管理
@@ -383,9 +369,7 @@ alreadyOrder(){//点击订单管理下的已完成订单
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-      clearInterval(this.data.a);
-      clearInterval(this.data.b);
-      clearInterval(this.data.c);
+    
   },
 
   /**
@@ -399,6 +383,45 @@ alreadyOrder(){//点击订单管理下的已完成订单
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    let that=this;
+
+    this.asyncFn(this.data.statuFirst).then(res=>{
+      console.log(res)
+      that.setData({
+        newArr:res
+      })
+    })
+
+    this.asyncFn(this.data.statuSecond).then(res=>{
+     console.log(res)
+     that.setData({
+      ordering:res
+    })
+   })
+
+   this.asyncFn(this.data.statuThird).then(res=>{
+     console.log(res)
+     that.setData({
+      alreadyOrder:res
+    })
+   })
+
+   this.asyncFn(this.data.statuFour).then(res=>{
+    console.log(res)
+    that.setData({
+     riderDeliver:res
+   })
+  })
+
+  this.asyncFn(this.data.statuSix).then(res=>{
+    console.log(res)
+    that.setData({
+      customOrder:res
+    })
+  })
+
+
+
          this.shopUpdate(()=>wx.stopPullDownRefresh())
   },
 
